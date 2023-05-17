@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Estilo.css">
+        <title>Editar Datos</title>
+    </head>
+    <body>
+           <h1>Editar Datos</h1>
+
+        <form class="form_edit" data-Edit>
+        <label for="E_name">Nombre</label>
+        <input 
+        id="E_name"
+        class="N_Nombre"
+        placeholder="Ingrese el Nombre"
+        type="text"
+        required
+        data-N_Nombre
+        >
+        <label for="N_sexo"> Sexo</label>
+        <select
+        name="N_sexo"
+        id="N_sexo"
+        required 
+        data-Nsexo>
+<option value="select">Seleccione una opcion</option>
+<option value="Hombre">Hombre</option>
+<option value="Mujer">Mujer</option>
+</select> 
+<label for="N_edad">Edad</label> 
+<input
+ type="number"
+ class="N_edad"
+ placeholder="Ingrese solo Números"
+ required
+ data-N_edad
+ >  
+ <button type="submit">Finalizar Edicion</button>     
+        
+        </form>
+        <script type="module" src="Edit.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,30 @@
+body{margin-left: 12em;
+
+}
+.form, .form_edit{display: flex;
+flex-direction: column;
+gap: 15px;
+max-width:fit-content;
+justify-content: center;
+text-align: center;}
+
+.list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+a{
+    text-decoration: none;
+    color: tomato;
+    font-size:  20px;
+}
+
+.lineas{
+    list-style-type: none;
+    margin-bottom: 1em;
+}
+
+.edit{
+    margin-left: 4px;
+}

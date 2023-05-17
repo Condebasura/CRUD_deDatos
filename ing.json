@@ -1,0 +1,48 @@
+{
+  "Hombre": [
+    {
+      "nombre": "mariano",
+      "sexo": "Hombre",
+      "edad": "33",
+      "id": "97e03cfd-640d-4d11-8017-de94f5355374"
+    },
+    {
+      "nombre": "Marco",
+      "sexo": "Hombre",
+      "edad": "45",
+      "id": "361d5bb3-1df7-4e35-a02d-667027c223e7"
+    },
+    {
+      "nombre": "dario",
+      "sexo": "Hombre",
+      "edad": "32",
+      "id": "5f70177d-7833-4a64-bdf4-78580e26e036"
+    },
+    {
+      "nombre": "Pablo",
+      "sexo": "Hombre",
+      "edad": "39",
+      "id": "b9f05665-94e9-44c8-bece-3e4f5cbc02b6"
+    }
+  ],
+  "Mujer": [
+    {
+      "nombre": "Natalia",
+      "sexo": "Mujer",
+      "edad": "17",
+      "id": "8a51ccda-4fe5-4176-bb7d-c39ee7d100f3"
+    },
+    {
+      "nombre": "Mariana",
+      "sexo": "Mujer",
+      "edad": "34",
+      "id": "76d45bc5-9ecc-4d97-a7c0-73959db17c9e"
+    },
+    {
+      "nombre": "Alejandra",
+      "sexo": "Mujer",
+      "edad": "45",
+      "id": "95fbf581-16eb-4d13-b56b-7baf761cd610"
+    }
+  ]
+}

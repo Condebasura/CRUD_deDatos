@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Estilo.css">
+    <title>Envio de Datos por JSON</title>
+</head>
+<body>
+    <ul>
+        <li class="list" data-li>
+            <a data-hombre href="Homb.html">Hombre</a>
+            <a data-Mujer href="Muj.html">Mujer</a>
+        </li>
+        
+    </ul>
+    <form class="form" data-form>
+
+        
+    <label for="name">Nombre</label>
+    <input
+    id="name"
+     class="Nombre"
+       type="text"
+       placeholder="Nombre"
+       required
+       data-Nombre
+       >    
+       <label for="sexo">Sexo</label>    
+       <select 
+       name="sexo"
+        id="sexo"
+        required
+        data-sexo>
+        <option value="selec">Selecione una opción</option>
+        <option value="Hombre">Hombre</option>
+        <option value="Mujer">Mujer</option>
+            
+       </select>
+       <label id="edad">Edad</label>
+       <input 
+       type="number"
+       class="edad"
+       placeholder="edad"
+       id="edad"
+       required
+       data-edad>
+<button type="submit">Enviar</button>
+    
+    </form>
+    <script type="module" src="Envio.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
