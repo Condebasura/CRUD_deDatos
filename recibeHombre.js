@@ -8,27 +8,27 @@ $fragment = document.createDocumentFragment();
  axios.get("http://localhost:3004/Hombre")
   .then(res=>{
     let json = res.data;
-console.log(json)
+
 
    json.forEach(el =>{
-  let $li = document.createElement("li");
-  $li.innerHTML = `${el.nombre} --- ${el.sexo} --- ${el.edad} años `;
-  $fragment.appendChild($li);
+ let  $li = document.createElement("li");
+  $li.textContent = `${el.nombre} --- ${el.sexo} --- ${el.edad} años `;
   $li.setAttribute("class", "lineas");
-
+  
+ let $btnEdit = document.createElement("button");
+  $btnEdit.setAttribute("class", "edit");
+$btnEdit.textContent = "Editar";
+$li.appendChild($btnEdit);
+  $fragment.appendChild($li);
+  $btnEdit.addEventListener("click", (e)=>{
+   if(e.target == $btnEdit){
+    e.preventDefault();
+    console.log(el)
+   }
+  })
 })
 RecibeDatos.appendChild($fragment);
-
 
   })
   .catch(err=> console.error(err))
 
-
-document.addEventListener("DOMContentLoaded", (e)=>{
-  e.preventDefault();
-  let datos = RecibeDatos.childNodes;
-datos.forEach(el =>{
-  
-})
-
-})
