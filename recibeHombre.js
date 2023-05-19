@@ -20,12 +20,13 @@ $fragment = document.createDocumentFragment();
 $btnEdit.textContent = "Editar";
 $li.appendChild($btnEdit);
   $fragment.appendChild($li);
-  $btnEdit.addEventListener("click", (e)=>{
-   if(e.target == $btnEdit){
+$btnEdit.addEventListener("click", (e)=>{
+  if(e.target){
     e.preventDefault();
-    console.log(el)
-   }
-  })
+  console.log( el.id);
+  // tengo que hacer que los datos se carguen en el formulari de editar
+  }
+})
 })
 RecibeDatos.appendChild($fragment);
 
