@@ -15,18 +15,13 @@ $fragment = document.createDocumentFragment();
   $li.textContent = `${el.nombre} --- ${el.sexo} --- ${el.edad} años `;
   $li.setAttribute("class", "lineas");
   
- let $btnEdit = document.createElement("button");
+ let $btnEdit = document.createElement("a");
   $btnEdit.setAttribute("class", "edit");
+  $btnEdit.setAttribute("href", `Editar.html?id=${el.id}`)
 $btnEdit.textContent = "Editar";
 $li.appendChild($btnEdit);
   $fragment.appendChild($li);
-$btnEdit.addEventListener("click", (e)=>{
-  if(e.target){
-    e.preventDefault();
-  console.log( el.id);
-  // tengo que hacer que los datos se carguen en el formulari de editar
-  }
-})
+
 })
 RecibeDatos.appendChild($fragment);
 
