@@ -9,7 +9,6 @@ $fragment = document.createDocumentFragment();
   .then(res=>{
     let json = res.data;
 
-
    json.forEach(el =>{
  let  $li = document.createElement("li");
   $li.textContent = `${el.nombre} --- ${el.sexo} --- ${el.edad} años `;
@@ -17,7 +16,8 @@ $fragment = document.createDocumentFragment();
   
  let $btnEdit = document.createElement("a");
   $btnEdit.setAttribute("class", "edit");
-  $btnEdit.setAttribute("href", `Editar.html?id=${el.id}`)
+  // creando el ipervinculo al editor con set!!
+  $btnEdit.setAttribute("href", `Editar.html?id=${el.id}&desdepagina=Homb.html`)
 $btnEdit.textContent = "Editar";
 $li.appendChild($btnEdit);
   $fragment.appendChild($li);
@@ -26,5 +26,7 @@ $li.appendChild($btnEdit);
 RecibeDatos.appendChild($fragment);
 
   })
-  .catch(err=> console.error(err))
+  .catch(err=> console.error(err));
+
+
 

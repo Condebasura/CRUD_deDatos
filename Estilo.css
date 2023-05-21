@@ -20,6 +20,14 @@ a{
     font-size:  20px;
 }
 
+.edit{
+    padding: 3px;
+    box-shadow: 1px 1px 5px 0.1px #444;
+    font-size: 15px;
+    border-radius: 2px;
+    color: royalblue;
+}
+
 .lineas{
     list-style-type: none;
     margin-bottom: 1em;
