@@ -11,7 +11,7 @@ e.preventDefault();
 
 const addDatos = (nombre, sexo,edad) =>{
 
-    if(sexo == "Hombre")
+    if(sexo == "Hombre"){
     return fetch("http://localhost:3004/Hombre",{
     method: "POST",
 headers:{
@@ -20,9 +20,12 @@ headers:{
 body: JSON.stringify({nombre, sexo,edad,id: uuid.v4()})
 })
 .then(res => console.log(res))
-.catch(err => console.log(err));
+.catch(err => console.log(err))
+    };
 
-if(sexo == "Mujer")
+
+    
+if(sexo == "Mujer"){
 return fetch("http://localhost:3004/Mujer",{
     method: "POST",
 headers:{
@@ -31,7 +34,7 @@ headers:{
 body: JSON.stringify({nombre, sexo, edad, id: uuid.v4()})
 })
 .then(res => console.log(res))
-.catch(err => console.log(err))};
+.catch(err => console.log(err))}};
    
 
   
