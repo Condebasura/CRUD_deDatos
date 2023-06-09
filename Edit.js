@@ -36,7 +36,8 @@ const detalleDatosH = (id) =>{
         const url = new URL(window.location);
         const id = url.searchParams.get("id");
         const DesdePagina = url.searchParams.get("desdepagina");
-      
+        
+    
 
         if(id == null){
             console.error("Datos no encontrados")
@@ -85,9 +86,11 @@ const detalleDatosH = (id) =>{
 
         form.addEventListener("submit", (e) =>{
             e.preventDefault();
+           
             const url = new URL(window.location);
             const id = url.searchParams.get("id");
             const DesdePagina = url.searchParams.get("desdepagina");
+          
 
             const nombre = document.querySelector("[data-N_Nombre]").value;
         const sexo = document.querySelector("[data-Nsexo]").value;
@@ -95,17 +98,17 @@ const detalleDatosH = (id) =>{
           if(DesdePagina == "Homb.html"){
             actualizaDatosH(nombre, sexo, edad, id)
            .then(()=>{
-                window.location.href = "Homb.html";
+             window.location.href = DesdePagina;
             }).catch(err =>console.log(err));
         };
 
             if(DesdePagina == "Muj.html"){
                 actualizaDatosM(nombre, sexo, edad, id)
                 .then(()=>{
-                     window.location.href = "Muj.html";
+                     window.location.href = DesdePagina;
                  }).catch(err =>console.log(err));
             }
-            
+           
         });
 
-      
+    
