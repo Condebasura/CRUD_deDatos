@@ -1,0 +1,117 @@
+* {
+    margin: 2px auto;
+}
+
+body {
+    background-color: rgb(250, 247, 244);
+}
+
+
+
+
+.Titulo_edit {
+    color: rgb(158, 98, 30);
+    margin: 2px auto;
+    text-align: center;
+}
+
+.form,
+.form_edit {
+    background-color: rgba(23, 92, 241, 0.637);
+    border-radius: 2em;
+    box-shadow: 1px 2px 16px 2px rgb(158, 98, 30);
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+    gap: 35px;
+    justify-content: center;
+    max-width: fit-content;
+    margin-top: 3em;
+    padding: 4em;
+    text-align: center;
+}
+
+
+
+label {
+    color: white;
+    font-size: 1.2em;
+    font-family: cursive;
+    text-align: start;
+    text-shadow: 1.4px 1.4px 0.2px rgb(102, 97, 97);
+
+}
+
+input,
+select {
+    background-color: white;
+    border-radius: 0.2em;
+    border-style: none;
+    color: rgb(52, 44, 163);
+    font-size: 15px;
+    padding: 0.4em;
+}
+
+
+input:focus , select:focus{
+outline: none;
+}
+.caja_flex {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+
+.btnEnv,
+.btn_end {
+    background-color: rgba(36, 197, 21, 0.952);
+    border-radius: 0.4em;
+    border-style: none;
+    color: white;
+    font-size: 16px;
+    margin: 2em;
+    padding: 1em 2em;
+    text-shadow: 1.4px 1.4px 0.2px #0e0d0d44;
+    text-align: center;
+    
+
+}
+
+.btn_disable {
+    border-style: none;
+    border-radius: 0.4em;
+    background: #ccc;
+    color: white;
+    font-size: 16px;
+    margin: 2em;
+    padding: 1em 2em;
+    text-shadow: 1.4px 1.4px 0.2px #0e0d0d44;
+    text-align: center;
+
+}
+
+.btnEnv:active,
+.btn_end:active {
+    box-shadow: 2px 2px 8px 2px #1d1b1b44;
+
+
+}
+
+.exito {
+    background-color: tomato;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 1.5em;
+    padding: 3px;
+
+}
+
+
+.error {
+    color: red;
+    font-size: 12px;
+}

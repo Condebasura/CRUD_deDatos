@@ -1,0 +1,126 @@
+/*barra de navegacion*/
+.box_ul{
+    box-shadow: 1px 2px 10px   #7083f0a9 ;
+    display: grid;
+    gap: 2em;
+    grid-template-columns: 1fr 1fr 1fr ;
+    list-style-type: none;
+    padding: 2.5em;
+    text-align: center;
+ 
+    
+}
+.titulo{
+    background-color: rgba(23, 92, 241, 0.637);
+    border-radius: 5em;
+    box-shadow: 1px 1px 12px  rgba(78, 77, 76, 0.589);
+    color: white;
+    font-size: 38px;
+    font-style: italic;
+    padding: .1em .3em;
+}
+
+
+   .fa-bars-staggered::first-line , .fa-bars::first-line {
+       align-items: center;
+       color:rgba(23, 92, 241, 0.637) ;
+       cursor: pointer;
+       font-size: 25px;
+       list-style-type: none;
+       text-align: center;
+       text-shadow: 1px 1px 12px rgba(148, 146, 146, 0.795);
+            
+}
+
+.Estas_en{
+    color: tomato;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.sexo, .ing {
+    border-radius: 2px;
+    color: tomato;
+    font-size: 14px;
+    max-width: fit-content;
+    padding: 3.5px;
+    text-decoration: none;
+    
+    
+}
+.sexo:hover , .ing:hover{
+    background-color: rgba(23, 92, 241, 0.445);
+    color: aliceblue;
+}
+.sex_container{
+   
+    display:inline-flex;
+    flex-direction:column;
+    position: absolute;top: 2.3em;
+    padding: .4em;
+    text-align: center; 
+    
+    
+    
+    
+}
+
+
+.sex_on{
+    animation: fadeIn 2s;
+    display: flex;
+    }
+    @keyframes fadeIn{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+        
+        
+    }
+    
+    
+ .sex_off{
+     animation: fadeOut 2s;
+     display: none;
+    }
+    @keyframes fadeOut{
+        from{
+            opacity: 1;
+        }
+        to{
+            opacity: 0;
+        }
+    
+}
+
+
+/*Pie de pagina*/
+
+footer{
+    background-color: #000000c9;
+    border-top-color: rgb(241, 102, 10);
+    border-top-style: solid;
+    color: cornsilk;
+    height: 8em;
+    margin: 14em 0 -1em 0 ;
+    max-width:  100%;
+    text-align: center;
+}
+    
+    .fa-linkedin , .fa-hashtag{
+        color: white;
+        font-size:  30px;
+        margin-right: 5px;
+        position: relative;left: 2px;
+        text-decoration: none;
+        top: 5px;
+    }
+    
+    .sig{
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+    
+    .der{font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}

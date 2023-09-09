@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/Estilo.css">
+        <link rel="stylesheet" href="../css/Nav.css">
+        <title>Editar Datos</title>
+        <script src="https://kit.fontawesome.com/523f183385.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="box_ul">
+            <li class="logo">
+                <h1 class="titulo">Form</h1>
+            </li>
+            <li class="Ingreso">
+                    <a class="Estas_en" href="../html/Editar.html">Editar Datos</a>
+                
+            </li>
+            
+            <div class="fa-solid fa-bars"> 
+            
+             <ul class="sex_off">
+                <li class="sex_container">
+                    <a class="ing" href="../index.html">Ing. de Datos</a>
+                    <a class="sexo" data-hombre href="../html/Homb.html">Masculino  </a>
+                        <a  class="sexo " data-mujer href="../html/Muj.html">Femenino</a>
+                    </li>
+                    </ul>  
+            
+                </div>
+            
+        </nav>
+        
+        <form class="form_edit" data-Edit>
+            <label for="name">Nombre</label>
+            <input
+            id="name"
+             class="nombre"
+               type="text"
+               placeholder="Ingresa tu Nombre"
+               required
+               data-Nombre
+               />    
+               <label for="apellido">Apellido</label>
+               <input
+               id="apellido"
+                class="ap"
+                  type="text"
+                  placeholder="Ingresa tu Apellido"
+                  required
+                  data-apellido
+                  /> 
+                  <label for="email">Email</label>
+          <input 
+          type="email" 
+          class="mail"
+           id="email"
+           placeholder="ejemplo@algun.esto"
+           data-email
+           required> 
+               <label for="sexo">Sexo</label>    
+               <select 
+               name="sexo"
+                id="sexo"
+                class="sex"
+                required
+                data-sexo>
+                <option value="">- -- -</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                    
+               </select>
+               <label id="Nacimiento">Fecha de Nacimiento</label>
+               <input 
+               type="date"
+               pattern="\d{2}/\d{2}/\d{4}"
+               class="naci"
+               id="Nacimiento"
+               required
+               data-nacimiento/>
+        
+               <label for="telefono">Telefono</label>
+               <input 
+               type="number"
+                id="telefono"
+                class="tel"
+                data-telefono 
+                required/>
+        
+               <label for="direccion">Direccion</label>
+               <input type="text"
+                name="direccion"
+                 id="direccion"
+                 class="direc"
+                 data-direccion
+                 required/>
+             
+                 <label for="Ciudad">Ciudad</label>
+                     <input 
+                     type="text" 
+                     id="Ciudad"
+                     class="city"
+                     data-ciudad
+                     required/>
+                     
+                    <label for="Provincia">Provincia</label>
+                       <input type="text"
+                        id="Provincia"
+                        class="prov"
+                        data-provincia
+                        required/>
+                 <label for="pais">Pais</label>
+                 <input type="text" 
+                 name="Pais" 
+                 id="pais"
+                 class="pais"
+                  data-pais 
+                  required/>
+ <button type="submit" class="btn_end">Finalizar Edicion</button>     
+        
+        </form>
+
+        <footer>
+            <br>
+            <br>
+            <span class="sig">
+                Contacto:
+                <a href="https://www.linkedin.com/in/pablo-c%C3%A9sar-zabala-51055b1bb"  class="fa-brands fa-linkedin"></a>
+                <a href="https://instagram.com/condebasura?utm_source=qr&igshid=NGExMmI2YTkyZg%3D%3D" target="_blank" class="fas fa-hashtag"></a>
+            </span>
+                
+                
+            <br>
+            <br>
+            <p class="der">Pablo C. Zabala &copy; 2023 </p>
+        </footer> 
+        
+        <script type="module" src="../js/Edit.js"></script>
+        <script src="../js/Nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+    </body>
+</html>
