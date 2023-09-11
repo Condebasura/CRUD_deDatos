@@ -2,11 +2,12 @@
 .box_ul{
     box-shadow: 1px 2px 10px   #7083f0a9 ;
     display: grid;
-    gap: 2em;
-    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-columns: 2fr 1fr 2fr;
     list-style-type: none;
     padding: 2.5em;
     text-align: center;
+    width: 100% ;
+    
  
     
 }
@@ -17,8 +18,7 @@
     color: white;
     font-size: 38px;
     font-style: italic;
-    padding: .1em .3em;
-}
+    padding: .1em .3em;}
 
 
    .fa-bars-staggered::first-line , .fa-bars::first-line {
@@ -52,13 +52,13 @@
     background-color: rgba(23, 92, 241, 0.445);
     color: aliceblue;
 }
+
+
 .sex_container{
-   
-    display:inline-flex;
-    flex-direction:column;
-    position: absolute;top: 2.3em;
-    padding: .4em;
-    text-align: center; 
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   position: absolute;
     
     
     
@@ -67,6 +67,9 @@
 
 
 .sex_on{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     animation: fadeIn 2s;
     display: flex;
     }
@@ -124,3 +127,21 @@ footer{
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
     
     .der{font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+
+
+    @media screen and (max-device-width: 769px) {
+        
+    
+
+        .box_ul{
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            justify-content: center;
+            padding: 2.5em 0;
+            }
+               .sex_container{
+                gap: .4rem;
+               }
+    }    

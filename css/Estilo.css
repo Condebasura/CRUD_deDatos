@@ -24,7 +24,7 @@ body {
     grid-template-columns: 3fr 3fr;
     gap: 35px;
     justify-content: center;
-    max-width: fit-content;
+    max-width: max-content;
     margin-top: 3em;
     padding: 4em;
     text-align: center;
@@ -114,4 +114,18 @@ outline: none;
 .error {
     color: red;
     font-size: 12px;
+}
+
+
+
+
+@media screen and (max-device-width: 426px) {
+    
+    .form,
+.form_edit{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    
+}
 }
