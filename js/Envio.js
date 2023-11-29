@@ -22,7 +22,9 @@ const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const regexLetras = /^[a-z A-Z\\s]+$/;
 
 // Para letras y hasta 5 digitos, para direccion.
-const regexLetrasNum = /^\w+\s+\w{0,5}$/;
+const regexLetrasmasLetrasNum = /^\w+\s\w+\s\d{0,15}$/;
+
+const regexLetrasMasNum = /^\w+\s\w+\d{0,15}u\$/;
 
 // validaciones para el formulario
 const validaNombre = () => {
@@ -111,7 +113,7 @@ const Valtel = () =>{
 tel.addEventListener("input", Valtel);
 
 const Validardireccion = () =>{
-    if (!regexLetrasNum.test(direc.value)) {
+    if (!regexLetrasmasLetrasNum.test(direc.value) || !regexLetrasMasNum.test(direc.value)) {
         direc.style.border = " 2px solid tomato";
         direc.setCustomValidity(`El campo no puede estar vacio contener  caracteres especiales o mas de 5 números`);
         return false;
