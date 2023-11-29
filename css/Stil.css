@@ -10,15 +10,7 @@ table{
 
 
 
-.linea {
-    align-content: center;
-    border-radius: 6px;
-    margin: 0;
-    padding: .3em ;
-    text-align: center;
 
-
-}
 
 .edit , .del {
     border-style: none;
@@ -48,6 +40,12 @@ table{
     display: grid;
     grid-template-columns: repeat(12,1fr);
     margin: .4em 2em;
+    align-items: center;
+    align-content: center;
+    border-radius: 6px;
+    padding: .3em ;
+    text-align: center;
+
     
    
 }

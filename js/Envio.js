@@ -24,7 +24,7 @@ const regexLetras = /[a-z A-Z\\s]+/gu;
 // Para letras y hasta 5 digitos, para direccion.
 
 
-const regexLetrasMasNum = /^\w+([A-z])\s\w+\w+.{0,15}$/;
+const regexLetrasMasNum = /^\w+([A-z])\s\w+\w+.{0,5}$/;
 
 // validaciones para el formulario
 const validaNombre = () => {

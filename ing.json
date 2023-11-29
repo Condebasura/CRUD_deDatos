@@ -5,9 +5,9 @@
       "apellido": "Contretas",
       "email": "codito@outlook.com",
       "sexo": "Masculino",
-      "edad": "24-03-1984",
+      "edad": "04-08-1992",
       "tel": "43324423",
-      "direc": "San martin 1232",
+      "direc": "San martin 1230",
       "city": "Parana",
       "prov": "Entre Rios",
       "pais": "Argentina",
@@ -155,6 +155,19 @@
       "prov": "Entre rios",
       "pais": "Argentina",
       "id": "09fb4f7c-9b9c-4de9-b7c5-ff4f6fe84784"
+    },
+    {
+      "nombre": "Donato ",
+      "apellido": "Alsogaray",
+      "email": "al_soga@outlook.com",
+      "sexo": "Masculino",
+      "edad": "10-03-1987",
+      "tel": "3432888323",
+      "direc": "Santa fe 123",
+      "city": "Paraná",
+      "prov": "Entre rios",
+      "pais": "Argentina",
+      "id": "f2d8437a-7ab2-499b-b340-0c9230f344fe"
     }
   ],
   "Mujer": [
