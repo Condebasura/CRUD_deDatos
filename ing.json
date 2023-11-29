@@ -142,6 +142,19 @@
       "prov": "Entre Rios",
       "pais": "Argentina",
       "id": "f9ec8c2a-f260-4836-817d-ac0e02986a37"
+    },
+    {
+      "nombre": "pablo",
+      "apellido": "redo",
+      "email": "cosa@outlook.com",
+      "sexo": "Masculino",
+      "edad": "28-10-2017",
+      "tel": "34322222221",
+      "direc": "salta 01",
+      "city": "Parana",
+      "prov": "Entre rios",
+      "pais": "Argentina",
+      "id": "09fb4f7c-9b9c-4de9-b7c5-ff4f6fe84784"
     }
   ],
   "Mujer": [
