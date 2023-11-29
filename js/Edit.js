@@ -15,9 +15,9 @@ const pais = document.querySelector(".pais");
 //  Para emails.
 const regexEmails = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Para solo letras.
-const regexLetras = /^[a-z A-Z\\s]+$/;
+const regexLetras = /[a-z A-Z\\s]+/gu;
 // Para letras y hasta 5 digitos, para direccion
-const regexLetrasNum = /^\w+\s+\w{0,5}$/;
+const regexLetrasMasNum = /^\w+([A-z])\s\w+\w+.{0,15}$/;
 
 // Trae los datos por id que van a ser cambiados
 const detalleDatosH = (id) => {
@@ -225,9 +225,9 @@ const Valtel = () => {
 tel.addEventListener("input", Valtel);
 
 const Validardireccion = () => {
-    if (!regexLetrasNum.test(direc.value)) {
+    if (!regexLetrasMasNum.test(direc.value)) {
         direc.style.border = " 2px solid red";
-        direc.setCustomValidity(`El campo no puede estar vacio contener  caracteres especiales o mas de 5 numeros`);
+        direc.setCustomValidity(`El campo no puede estar vacio o contener  caracteres especiales (para numeros de un digito anteponer cero)`);
         return false;
     } else {
         direc.style.border = "none";

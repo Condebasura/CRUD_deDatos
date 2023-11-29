@@ -19,7 +19,7 @@ const btn_submit = document.querySelector(".btnEnv");
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Para solo letras.
-const regexLetras = /^[a-z A-Z\\s]+$/;
+const regexLetras = /[a-z A-Z\\s]+/gu;
 
 // Para letras y hasta 5 digitos, para direccion.
 
