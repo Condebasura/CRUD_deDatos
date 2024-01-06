@@ -288,24 +288,42 @@ form.addEventListener("submit", (e) => {
         e.preventDefault();
     };
 
-
-
+   
+    
 
     const url = new URLSearchParams(window.location.search);
     const id = url.get("id");
     const DesdePagina = url.get("desdepagina");
 
+    const EdicionFin = () =>  {
 
+        if(e.target.matches(".form_edit") ){
+           
+           let check = document.createElement("span");
+            let parrafoModal = document.createElement("p");
+            check.setAttribute("class", "fa-sharp fa-solid fa-check")
+            parrafoModal.setAttribute("class", "p_modal-edit");
+            parrafoModal.textContent = `Edición Finalizada!! Volviendo al Listado` ;
+             let modal = document.getElementById("modal");
+             modal.showModal();
+             modal.appendChild(check);
+             modal.appendChild(parrafoModal);
+            
+           }
+           console.log(DesdePagina);
+           return window.location.assign(DesdePagina);    
+                   
+           }
 //dependiendo de donde vengan los datos se actualizan y se regresa nuevamente a la pagina. 
     if (DesdePagina == "../html/Homb.html") {
 
 
-        actualizaDatosH(nombre.value, apellido.value, email.value, sexo, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)
+        actualizaDatosH(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)
             .then( () => { 
                 
 
      // si el status es ok al ingresar los datos vuelve a la planilla de datos
-                    window.location.href = DesdePagina;
+                   EdicionFin();
                 
                
             })
@@ -313,12 +331,12 @@ form.addEventListener("submit", (e) => {
     };
 
     if (DesdePagina == "../html/Muj.html") {
-
-        actualizaDatosM(nombre.value, apellido.value, email.value, sexo, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)
+       
+        actualizaDatosM(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)
             .then(() => {
  // si el status es ok al ingresar los datos vuelve a la planilla de datos
-                  window.location.href = DesdePagina
-                
+                 // window.location.href = DesdePagina
+                EdicionFin();
                
             }).catch(err => console.log(err));
     }

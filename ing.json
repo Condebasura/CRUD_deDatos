@@ -176,7 +176,7 @@
       "apellido": "Desire",
       "email": "loreDes@outlook.com",
       "sexo": "Femenino",
-      "edad": "19-10-1994",
+      "edad": "25-10-1993",
       "tel": "0345889745",
       "direc": "Lavase 1486",
       "city": "Concordia",
@@ -214,12 +214,8 @@
       "nombre": "Danila",
       "apellido": "Nogaró",
       "email": "DNoga@gmail.com",
-      "sexo": {
-        "0": {},
-        "1": {},
-        "2": {}
-      },
-      "edad": "21-02-1988",
+      "sexo": "Femenino",
+      "edad": "06-02-2008",
       "tel": "03455221454",
       "direc": "patriarca 612",
       "city": "Cordoba",
