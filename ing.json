@@ -40,19 +40,6 @@
       "id": "67cc5da8-fd78-4ac5-9b07-a4801485a4a9"
     },
     {
-      "nombre": "Norberto Ramon",
-      "apellido": "Arias",
-      "email": "NAri_32@gmail.com",
-      "sexo": "Masculino",
-      "edad": "18-08-2023",
-      "tel": "03458974518",
-      "direc": "Lasalada 543",
-      "city": "Portugal",
-      "prov": "España",
-      "pais": "Argentina",
-      "id": "07830c22-b7c0-452d-be70-00d3780af6b9"
-    },
-    {
       "nombre": "troy",
       "apellido": "Mackliur",
       "email": "try@hotmail.com",
@@ -171,45 +158,6 @@
     }
   ],
   "Mujer": [
-    {
-      "nombre": "Lorena",
-      "apellido": "Desire",
-      "email": "loreDes@outlook.com",
-      "sexo": "Femenino",
-      "edad": "25-10-1993",
-      "tel": "0345889745",
-      "direc": "Lavase 1486",
-      "city": "Concordia",
-      "prov": "Entre Rios",
-      "pais": "Argentina",
-      "id": "da23b4f5-9c81-465c-8d36-692765479075"
-    },
-    {
-      "nombre": "Maria",
-      "apellido": "Dacota",
-      "email": "mDac@outlook.com",
-      "sexo": "Femenino",
-      "edad": "27-06-2023",
-      "tel": "3435879455",
-      "direc": "brown 248",
-      "city": "Colon",
-      "prov": "Entre Rios",
-      "pais": "Argentina",
-      "id": "75d038ba-4516-4116-9215-6ad72b002607"
-    },
-    {
-      "nombre": "Adriana",
-      "apellido": "Fernandez",
-      "email": "LaFer_76@hotmail.com",
-      "sexo": "Femenino",
-      "edad": "12-04-1899",
-      "tel": "2422547891",
-      "direc": "Paracao 1243",
-      "city": "Bonavena",
-      "prov": "Alcaraz",
-      "pais": "Argentia",
-      "id": "a6c5c7f3-1d83-4ada-8a97-3155f6b5b944"
-    },
     {
       "nombre": "Danila",
       "apellido": "Nogaró",

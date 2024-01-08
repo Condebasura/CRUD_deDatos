@@ -75,13 +75,32 @@ axios.get("http://localhost:3004/Mujer")
                  $btnDelet.addEventListener("click", (e)=>{
                   e.preventDefault();
                   if(e.target.matches(".del")){
-                    let isDelete = confirm(`¿Esta seguro de eliminar los datos de ${el.nombre} ${el.apellido}?`)
-                  if(isDelete){
-                    axios.delete(`http://localhost:3004/Mujer/${el.id}`)
-                    .then(res => location.reload())
-                    .catch(err => console.error(err))
-                  }
-                  
+                    let modal = document.getElementById("modal");
+                    let parrafo = document.createElement("p");
+                    let aceptar = document.createElement("button");
+                    let cancelar = document.createElement("button");
+                    parrafo.setAttribute("class", "p_delete");
+                    aceptar.setAttribute("class", "aceptar");
+                    cancelar.setAttribute("class", "cancelar");
+                    parrafo.innerHTML = `Se va a eliminar de su lista el cliente: ${el.nombre} ${el.apellido}`;
+                    aceptar.textContent = "Eliminar";
+                    cancelar.textContent = "Cancelar";
+                    modal.showModal();
+                    modal.appendChild(parrafo);
+                    modal.appendChild(aceptar);
+                    modal.appendChild(cancelar);
+                    if(aceptar){
+                      aceptar.addEventListener("click",()=>{
+
+                        axios.delete(`http://localhost:3004/Mujer/${el.id}`)
+                        .then(res => location.reload())
+                        .catch(err => console.error(err))
+                      })
+                      
+                    }
+                    cancelar.addEventListener("click",()=>{
+                      modal.close();
+                    })
                   }
                 })
     
