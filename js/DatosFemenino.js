@@ -1,9 +1,9 @@
 const RecibeDatos = document.querySelector("[data-recibe]"),
 
-$fragment = document.createDocumentFragment();
+  $fragment = document.createDocumentFragment();
 
 
- // El tr que va dentro de $thead, th que es el encabezado para cada columna de datos 
+// El tr que va dentro de $thead, th que es el encabezado para cada columna de datos 
 // datos en version larga...
 const $table = document.createElement("table");
 const $thead = document.createElement("thead");
@@ -19,7 +19,7 @@ axios.get("http://localhost:3004/Mujer")
     let json = res.data;
 
     // Metodo resumido utilizando for
-    const NombColumn = ["Nombre", "Apelido","Email", "Sexo", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
+    const NombColumn = ["Nombre", "Apelido", "Email", "Sexo", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
     for (let i = 0; i < NombColumn.length; i++) {
       let total = NombColumn[i];
       let th_head = document.createElement("th");
@@ -35,7 +35,7 @@ axios.get("http://localhost:3004/Mujer")
       let tr = tbody.insertRow();
       let tdNonmb = tr.insertCell();
       let tdApll = tr.insertCell();
-      let tdemail =tr.insertCell();
+      let tdemail = tr.insertCell();
       let tdSexo = tr.insertCell();
       let tdEdad = tr.insertCell();
       let tdTel = tr.insertCell();
@@ -49,63 +49,67 @@ axios.get("http://localhost:3004/Mujer")
       tdemail.textContent = el.email;
       tdSexo.textContent = el.sexo;
       tdEdad.textContent = el.edad;
-       tdTel.textContent = el.tel;
-       tdDirec.textContent = el.direc;
-       tdCity.textContent = el.city;
-       tdProv.textContent = el.prov;
-       tdPais.textContent = el.pais;
+      tdTel.textContent = el.tel;
+      tdDirec.textContent = el.direc;
+      tdCity.textContent = el.city;
+      tdProv.textContent = el.prov;
+      tdPais.textContent = el.pais;
       tr.setAttribute("class", "linea");
       tbody.appendChild(tr);
-    
-      
-     let Edit = tr.insertCell();
-       let Delet = tr.insertCell();
-       let $btnEdit = document.createElement("a");
-       let $btnDelet = document.createElement("a");
-       Edit.appendChild($btnEdit);
-       Delet.appendChild($btnDelet);
+
+
+      let Edit = tr.insertCell();
+      let Delet = tr.insertCell();
+      let $btnEdit = document.createElement("a");
+      let $btnDelet = document.createElement("a");
+      Edit.appendChild($btnEdit);
+      Delet.appendChild($btnDelet);
       $btnDelet.textContent = "Eliminar";
       $btnEdit.textContent = "Editar";
       $btnDelet.setAttribute("class", "del");
       $btnEdit.setAttribute("class", "edit");
       // creando el ipervinculo al editor con set!!    
-       $btnEdit.setAttribute("href", `../html/Editar.html?id=${el.id}&desdepagina=../html/Muj.html`);
-    
-                 // programamos el ipervinculo de eliminacion
-                 $btnDelet.addEventListener("click", (e)=>{
-                  e.preventDefault();
-                  if(e.target.matches(".del")){
-                    let modal = document.getElementById("modal");
-                    let parrafo = document.createElement("p");
-                    let aceptar = document.createElement("button");
-                    let cancelar = document.createElement("button");
-                    parrafo.setAttribute("class", "p_delete");
-                    aceptar.setAttribute("class", "aceptar");
-                    cancelar.setAttribute("class", "cancelar");
-                    parrafo.innerHTML = `Se va a eliminar de su lista el cliente: ${el.nombre} ${el.apellido}`;
-                    aceptar.textContent = "Eliminar";
-                    cancelar.textContent = "Cancelar";
-                    modal.showModal();
-                    modal.appendChild(parrafo);
-                    modal.appendChild(aceptar);
-                    modal.appendChild(cancelar);
-                    if(aceptar){
-                      aceptar.addEventListener("click",()=>{
+      $btnEdit.setAttribute("href", `../html/Editar.html?id=${el.id}&desdepagina=../html/Muj.html`);
 
-                        axios.delete(`http://localhost:3004/Mujer/${el.id}`)
-                        .then(res => location.reload())
-                        .catch(err => console.error(err))
-                      })
-                      
-                    }
-                    cancelar.addEventListener("click",()=>{
-                      modal.close();
-                    })
-                  }
-                })
-    
-      
-       $fragment.appendChild($table);
+      // programamos el ipervinculo de eliminacion
+      $btnDelet.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (e.target.matches(".del")) {
+          let modal = document.getElementById("modal");
+          let parrafo = document.createElement("h2");
+          let cajaBtn = document.createElement("div");
+          let aceptar = document.createElement("button");
+          let cancelar = document.createElement("button");
+          parrafo.setAttribute("class", "p_delete");
+        cajaBtn.setAttribute("class", "cajabtn");
+          aceptar.setAttribute("class", "aceptar");
+          cancelar.setAttribute("class", "cancelar");
+          parrafo.innerHTML = `Se va a eliminar de su lista el cliente: <h1>${el.nombre} ${el.apellido}</h1>`;
+          aceptar.textContent = "Eliminar";
+          cancelar.textContent = "Cancelar";
+          modal.showModal();
+          modal.innerHTML = "";
+          modal.appendChild(parrafo);
+          cajaBtn.appendChild(aceptar);
+          cajaBtn.appendChild(cancelar);
+          modal.appendChild(cajaBtn);
+          if (aceptar) {
+            aceptar.addEventListener("click", () => {
+
+              axios.delete(`http://localhost:3004/Mujer/${el.id}`)
+                .then(res => location.reload())
+                .catch(err => console.error(err))
+            })
+
+          }
+          cancelar.addEventListener("click", () => {
+            modal.close();
+          })
+        }
+      })
+
+
+      $fragment.appendChild($table);
 
 
     })

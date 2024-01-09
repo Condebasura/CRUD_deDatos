@@ -1,32 +1,6 @@
 {
   "Hombre": [
     {
-      "nombre": "Pablo ",
-      "apellido": "Contretas",
-      "email": "codito@outlook.com",
-      "sexo": "Masculino",
-      "edad": "04-08-1992",
-      "tel": "43324423",
-      "direc": "San martin 1230",
-      "city": "Parana",
-      "prov": "Entre Rios",
-      "pais": "Argentina",
-      "id": "6e836516-3e74-4609-9dff-5975ef9e3312"
-    },
-    {
-      "nombre": "fausto",
-      "apellido": "Pelroso",
-      "email": "Elfausto@hotmail.com",
-      "sexo": "Masculino",
-      "edad": "12-05-1899",
-      "tel": "03245587887",
-      "direc": "casasa 876",
-      "city": "belgica",
-      "prov": "faringe",
-      "pais": "Argentina",
-      "id": "68374bc6-6680-48f7-8b76-7b706561d293"
-    },
-    {
       "nombre": "dario",
       "apellido": "Portes",
       "email": "dariPort@outlook.com",
@@ -147,7 +121,6 @@
       "nombre": "Donato ",
       "apellido": "Alsogaray",
       "email": "al_soga@outlook.com",
-      "sexo": "Masculino",
       "edad": "10-03-1987",
       "tel": "3432888323",
       "direc": "Santa fe 123",

@@ -79,20 +79,23 @@ axios.get("http://localhost:3004/Hombre")
       e.preventDefault();
       if(e.target.matches(".del")){
         let modal = document.getElementById("modal");
-        let parrafo = document.createElement("p");
+        let parrafo = document.createElement("h2");
+        let cajaBtn = document.createElement("div");
         let aceptar = document.createElement("button");
         let cancelar = document.createElement("button");
         parrafo.setAttribute("class", "p_delete");
+        cajaBtn.setAttribute("class", "cajabtn");
         aceptar.setAttribute("class", "aceptar");
         cancelar.setAttribute("class", "cancelar");
-        parrafo.innerHTML = `Se va a eliminar de su lista el cliente: ${el.nombre} ${el.apellido}`;
+        parrafo.innerHTML = `Se va a eliminar de su lista el cliente:<h1> ${el.nombre} ${el.apellido}</h1>`;
         aceptar.textContent = "Eliminar";
         cancelar.textContent = "Cancelar";
         modal.showModal();
         modal.innerHTML = "";
         modal.appendChild(parrafo);
-        modal.appendChild(aceptar);
-        modal.appendChild(cancelar);
+        cajaBtn.appendChild(aceptar);
+        cajaBtn.appendChild(cancelar);
+        modal.appendChild(cajaBtn);
         if(aceptar){
           aceptar.addEventListener("click",()=>{
 

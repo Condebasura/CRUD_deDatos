@@ -85,29 +85,31 @@ const obtenerDatos = async () => {
 
 
     if (DesdePagina == "../html/Homb.html") {
+       try{
 
-        const perfil = await detalleDatosH(id);
-
-        console.log(perfil);
-        if (perfil.nombre && perfil.apellido && perfil.email, perfil.sexo && perfil.edad && perfil.direc && perfil.tel && perfil.city && perfil.prov && perfil.pais) {
-            nombre.value = perfil.nombre;
-            apellido.value = perfil.apellido;
-            email.value = perfil.email;
-            sexo.value = perfil.sexo;
+           const perfil = await detalleDatosH(id);
+           console.log(perfil);
+           if (perfil.nombre && perfil.apellido && perfil.email, perfil.sexo && perfil.edad && perfil.direc && perfil.tel && perfil.city && perfil.prov && perfil.pais) {
+               nombre.value = perfil.nombre;
+               apellido.value = perfil.apellido;
+               email.value = perfil.email;
+               sexo.value = perfil.sexo;
             edad.value = perfil.edad;
             tel.value = perfil.tel;
             direc.value = perfil.direc;
             city.value = perfil.city;
             prov.value = perfil.prov;
             pais.value = perfil.pais;
-
+            
         }
+        
+        
+        else {throw new Error();}
+            }catch(err){
 
-
-        else {
-            throw new Error(err,
-                console.error('Error fetching data', err));
-        }
+                console.error('Error fetching data', err);
+            }
+        
     };
 
     if (DesdePagina == "../html/Muj.html") {

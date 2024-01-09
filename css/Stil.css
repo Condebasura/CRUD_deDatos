@@ -103,3 +103,46 @@ td:nth-child(even):hover{
     background-color: rgba(40, 105, 245, 0.205);
 
 }
+
+
+#modal{
+    border-style: none;
+    box-shadow: 2px 2px 12px #467bee9d;
+    text-align: center;
+    justify-content: center;
+    padding: 2em;
+    margin-top: 15% ;
+}
+.p_delete{
+    font-size: 18px;
+    color: rgb(54, 54, 54);
+}
+
+.cajabtn{
+    margin:2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.aceptar, .cancelar{
+    padding: 0.5em;
+    font-size: 16px;
+    box-shadow: 1px 1px 12px #9b9a9a;
+    border-style: none;
+}
+
+.aceptar:hover{
+    background-color: red;
+    color: white;
+}
+
+.cancelar:hover{
+    background-color: rgb(9, 170, 22);
+    color: white;
+}
+
+.cancelar:focus , .aceptar:focus{
+box-shadow: none
+}
