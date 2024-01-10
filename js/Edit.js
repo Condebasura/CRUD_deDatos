@@ -4,7 +4,7 @@ const nombre = document.querySelector(".nombre");
 const apellido = document.querySelector(".ap");
 const email = document.querySelector(".mail");
 let sexo = document.querySelector("[data-sexo]");
-let edad = document.querySelector(".naci");
+let edad = document.querySelector(".naci").value;
 const tel = document.querySelector(".tel");
 const direc = document.querySelector(".direc");
 const city = document.querySelector(".city");
@@ -86,21 +86,21 @@ const obtenerDatos = async () => {
 
     if (DesdePagina == "../html/Homb.html") {
        try{
-
            const perfil = await detalleDatosH(id);
            console.log(perfil);
+           
            if (perfil.nombre && perfil.apellido && perfil.email, perfil.sexo && perfil.edad && perfil.direc && perfil.tel && perfil.city && perfil.prov && perfil.pais) {
                nombre.value = perfil.nombre;
                apellido.value = perfil.apellido;
                email.value = perfil.email;
                sexo.value = perfil.sexo;
-            edad.value = perfil.edad;
+            edad = perfil.edad;
             tel.value = perfil.tel;
             direc.value = perfil.direc;
             city.value = perfil.city;
             prov.value = perfil.prov;
             pais.value = perfil.pais;
-            
+            console.log(edad)
         }
         
         
@@ -121,7 +121,7 @@ const obtenerDatos = async () => {
                 apellido.value = perfil.apellido;
                 email.value = perfil.email;
                 sexo.value = perfil.sexo;
-                edad.value = perfil.edad;
+                edad = perfil.edad;
                 tel.value = perfil.tel;
                 direc.value = perfil.direc;
                 city.value = perfil.city;
