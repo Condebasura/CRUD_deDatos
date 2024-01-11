@@ -84,6 +84,8 @@ if (sexo.value == "Femenino"){
 
 };
 
+sexo.addEventListener("change", Elsexo);
+
 const ValidarFecha =() =>{
     const max = new Date().getFullYear('dd/mm/yyyy') + '-12-31';
     edad.setAttribute("max", max);
@@ -172,7 +174,7 @@ formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 
     //si las validaciones no se cumplen se cancela el envio del formulario
-    if (!validaNombre() || !validaApellido() || !validaEmail() || Elsexo() || ValidarFecha() || Valtel()||Validardireccion() || ValidaCiudad() || validaProvincia()|| ValidaPais()) {
+    if (!validaNombre() || !validaApellido() || !validaEmail() || !Elsexo() || !ValidarFecha() ||! Valtel()||!Validardireccion() || !ValidaCiudad() || !validaProvincia()|| !ValidaPais()) {
     e.preventDefault();
     }
 
@@ -202,11 +204,13 @@ formulario.addEventListener("submit", (e) => {
                
                            // si el status es ok al ingresar los datos aparece un aviso de que los datos an ingresados correctamente.
                     if (res.status >= 201 && res.status <= 300) {
+                        const modal = document.getElementById("modal");
                         const Exito = document.createElement("p");
                         Exito.textContent = "Datos Ingresados!!";
                         Exito.setAttribute("class", "exito");
+                        modal.showModal();
 
-                        setTimeout(() =>{ formulario.appendChild(Exito), location.reload(), 100000});
+                        setTimeout(() =>{ modal.appendChild(Exito), location.reload(), 100000});
                     }
                     
                 })
@@ -228,11 +232,13 @@ formulario.addEventListener("submit", (e) => {
             .then(res => {
                        
                 if (res.status >= 201 && res.status <= 300) {
+                    const modal = document.getElementById("modal");
                     const Exito = document.createElement("p");
                     Exito.textContent = "Datos Ingresados!!";
                     Exito.setAttribute("class", "exito");
+                    modal.showModal();
 
-                    setTimeout(formulario.appendChild(Exito), location.reload(), 10000);
+                    setTimeout(() =>{ modal.appendChild(Exito), location.reload(), 100000});
                 }
             })
 

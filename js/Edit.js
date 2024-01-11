@@ -4,7 +4,7 @@ const nombre = document.querySelector(".nombre");
 const apellido = document.querySelector(".ap");
 const email = document.querySelector(".mail");
 let sexo = document.querySelector("[data-sexo]");
-let edad = document.querySelector(".naci").value;
+let edad = document.querySelector(".naci");
 const tel = document.querySelector(".tel");
 const direc = document.querySelector(".direc");
 const city = document.querySelector(".city");
@@ -69,6 +69,10 @@ const actualizaDatosM = (nombre, apellido, email, sexo, edad, tel, direc, city, 
 
 
 
+function revertDateFormat(date) {
+   const dateParts = date.split("-");
+   return `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+}
 // Funcion para obtener los datos por su id
 const obtenerDatos = async () => {
 
@@ -78,6 +82,7 @@ const obtenerDatos = async () => {
     const DesdePagina = url.get("desdepagina");
      console.log(DesdePagina);
    
+
      if (id == null) {
         console.error("Datos no encontrados");
         alert("NO SE ENCONTRARON LOS DATOS!!!");
@@ -88,19 +93,21 @@ const obtenerDatos = async () => {
        try{
            const perfil = await detalleDatosH(id);
            console.log(perfil);
-           
            if (perfil.nombre && perfil.apellido && perfil.email, perfil.sexo && perfil.edad && perfil.direc && perfil.tel && perfil.city && perfil.prov && perfil.pais) {
                nombre.value = perfil.nombre;
                apellido.value = perfil.apellido;
                email.value = perfil.email;
                sexo.value = perfil.sexo;
-            edad = perfil.edad;
-            tel.value = perfil.tel;
-            direc.value = perfil.direc;
-            city.value = perfil.city;
-            prov.value = perfil.prov;
-            pais.value = perfil.pais;
-            console.log(edad)
+               perfil.edad = revertDateFormat(perfil.edad);
+               edad.value = perfil.edad;
+               tel.value = perfil.tel;
+               direc.value = perfil.direc;
+               city.value = perfil.city;
+               prov.value = perfil.prov;
+               pais.value = perfil.pais;
+               console.log(perfil.edad);
+            
+            
         }
         
         
@@ -121,13 +128,14 @@ const obtenerDatos = async () => {
                 apellido.value = perfil.apellido;
                 email.value = perfil.email;
                 sexo.value = perfil.sexo;
-                edad = perfil.edad;
+                perfil.edad = revertDateFormat(perfil.edad);
+                edad.value = perfil.edad;
                 tel.value = perfil.tel;
                 direc.value = perfil.direc;
                 city.value = perfil.city;
                 prov.value = perfil.prov;
                 pais.value = perfil.pais;
-
+                console.log(perfil.edad)
             }
 
             else { throw new Error(); }
@@ -186,6 +194,7 @@ const validaEmail = () => {
 email.addEventListener("input", validaEmail);
 
 const Elsexo = () => {
+    console.log("cambio en el elemento sexo");
     if (sexo.value == "") {
         return false;
     }
@@ -199,6 +208,8 @@ const Elsexo = () => {
     }
 
 };
+
+sexo.addEventListener("change", Elsexo);
 
 const ValidarFecha = () => {
     const max = new Date().getFullYear() + '-12-31';
@@ -284,10 +295,10 @@ pais.addEventListener("input", ValidaPais);
 form.addEventListener("submit", (e) => {
     // cancelamos el comportamiento por defecto del formulario
     e.preventDefault();
-
+    
     // tambien se cancela el envio del formulario si no se cumplen todas las validaciones
-    if (!validaNombre() || !validaApellido() || !validaEmail() || Elsexo() || ValidarFecha() || Valtel() || Validardireccion() || ValidaCiudad() || validaProvincia() || ValidaPais()) {
-        e.preventDefault();
+    if (!validaNombre() || !validaApellido() || !validaEmail() || !Elsexo() || !ValidarFecha() || !Valtel() || !Validardireccion() || !ValidaCiudad() || !validaProvincia() || !ValidaPais()) {
+        return;
     };
 
    

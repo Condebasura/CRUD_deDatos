@@ -16,6 +16,7 @@ body {
 }
 
 #modal{
+    margin-top: 2em;
     border-style: none;
     padding: 1em;
    /*width: 30%;*/
@@ -122,13 +123,13 @@ outline: none;
 }
 
 .exito {
-    background-color: tomato;
-    border-radius: 5px;
-    color: white;
+    text-shadow: 1px 2px 1px #1e201f;
+    color: rgb(78, 233, 86);
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 1.5em;
     padding: 3px;
+    margin: 2em;
 
 }
 
