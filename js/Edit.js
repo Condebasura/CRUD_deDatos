@@ -296,13 +296,9 @@ form.addEventListener("submit", (e) => {
     // cancelamos el comportamiento por defecto del formulario
     e.preventDefault();
     
-    // tambien se cancela el envio del formulario si no se cumplen todas las validaciones
-    if (!validaNombre() || !validaApellido() || !validaEmail() || !Elsexo() || !ValidarFecha() || !Valtel() || !Validardireccion() || !ValidaCiudad() || !validaProvincia() || !ValidaPais()) {
-        return;
-    };
+if(e.target){
 
-   
-    
+
 
     const url = new URLSearchParams(window.location.search);
     const id = url.get("id");
@@ -353,6 +349,13 @@ form.addEventListener("submit", (e) => {
                
             }).catch(err => console.log(err));
     }
-
+}else{
+      // tambien se cancela el envio del formulario si no se cumplen todas las validaciones
+    if (!validaNombre() || !validaApellido() || !validaEmail() || !Elsexo() || !ValidarFecha() || !Valtel() || !Validardireccion() || !ValidaCiudad() || !validaProvincia() || !ValidaPais()) 
+        {
+           throw new Error(console.log(Error.value));
+           return;
+        };
+}
 });
 

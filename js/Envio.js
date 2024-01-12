@@ -170,6 +170,7 @@ pais.addEventListener("input",ValidaPais);
 
 // Creamos la programacion de el evento submit
 formulario.addEventListener("submit", (e) => {
+
     // cancelamos el comportamiento por defecto
     e.preventDefault();
 
