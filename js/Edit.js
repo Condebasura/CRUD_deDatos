@@ -324,7 +324,8 @@ if(e.target){
                    
            }
 //dependiendo de donde vengan los datos se actualizan y se regresa nuevamente a la pagina. 
-    if (DesdePagina == "../html/Homb.html") {
+   
+if(DesdePagina == "../html/Homb.html" && sexo == "Masculino") { 
 
 
         actualizaDatosH(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)
@@ -337,9 +338,48 @@ if(e.target){
                
             })
             .catch(err => console.log(err));
-    };
+    }else if(sexo == "Femenino"){
+        const dataH = detalleDatosH(id);
+       if(dataH.nombre){
 
-    if (DesdePagina == "../html/Muj.html") {
+           nombre.value = dataH.nombre;
+       }
+        
+     function CambioASexoF () {
+
+        // Buscando la forma de que al colocarlo en la planilla erroneo se pueda cambiar tomando los datos y eliminarlo de la otra planilla
+
+       
+         
+               return fetch(`http://localhost:3004/Mujer`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais, id })
+                })
+                .then(res => {
+
+                    if (res.status >= 201 && res.status <= 300) {
+                    const modal = document.getElementById("modal");
+                    const Exito = document.createElement("p");
+                    Exito.textContent = "Datos enviados a la seccion FEMENINO !!";
+                    Exito.setAttribute("class", "exito");
+                    modal.showModal();
+
+                     modal.appendChild(Exito);
+                }
+                
+            })
+            .catch (err => console.log(err))
+    }
+        CambioASexoF(dataH.nombre, apellido, email, sexo,edad , tel, direc, city, prov, pais);
+
+       axios.delete(`http://localhost:3004/Hombre/${id}`)
+           .then(res => location.reload())
+           .catch(err => console.error(err))
+}
+     if(DesdePagina == "../html/Muj.html" && sexo == "Femenino") {
        
         actualizaDatosM(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)
             .then(() => {
@@ -349,6 +389,36 @@ if(e.target){
                
             }).catch(err => console.log(err));
     }
+    else if(sexo == "Masculino"){
+        return fetch(`http://localhost:3004/Hombre`, {
+                 method: "POST",
+                 headers: {
+                     "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais, id })
+            })
+            .then(res => {
+
+                let json = res.data;
+               
+                           // si el status es ok al ingresar los datos aparece un aviso de que los datos an ingresados correctamente.
+                    if (res.status >= 201 && res.status <= 300) {
+                        const modal = document.getElementById("modal");
+                        const Exito = document.createElement("p");
+                        Exito.textContent = "Datos enviados a la seccion Masculino!!";
+                        Exito.setAttribute("class", "exito");
+                        modal.showModal();
+
+                        setTimeout(() =>{ modal.appendChild(Exito), location.reload(), 100000});
+                    }
+                    
+                })
+
+                .catch(err => console.log(err));
+    }
+    else{
+    console.log("Algo salio mal")
+}
 }else{
       // tambien se cancela el envio del formulario si no se cumplen todas las validaciones
     if (!validaNombre() || !validaApellido() || !validaEmail() || !Elsexo() || !ValidarFecha() || !Valtel() || !Validardireccion() || !ValidaCiudad() || !validaProvincia() || !ValidaPais()) 
