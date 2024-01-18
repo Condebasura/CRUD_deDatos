@@ -339,13 +339,9 @@ if(DesdePagina == "../html/Homb.html" && sexo == "Masculino") {
             })
             .catch(err => console.log(err));
     }else if(sexo == "Femenino"){
-        const dataH = detalleDatosH(id);
-       if(dataH.nombre){
-
-           nombre.value = dataH.nombre;
-       }
+       
         
-     function CambioASexoF () {
+     function CambioASexoF (nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais) {
 
         // Buscando la forma de que al colocarlo en la planilla erroneo se pueda cambiar tomando los datos y eliminarlo de la otra planilla
 
@@ -367,18 +363,24 @@ if(DesdePagina == "../html/Homb.html" && sexo == "Masculino") {
                     Exito.setAttribute("class", "exito");
                     modal.showModal();
 
-                     modal.appendChild(Exito);
+                    setTimeout(() =>{ modal.appendChild(Exito), location.reload(), 100000});
                 }
                 
             })
             .catch (err => console.log(err))
     }
-        CambioASexoF(dataH.nombre, apellido, email, sexo,edad , tel, direc, city, prov, pais);
+        CambioASexoF(nombre.value, apellido.value, email.value, sexo, edad.value, tel.value, direc.value, city.value, prov.value, pais.value);
 
        axios.delete(`http://localhost:3004/Hombre/${id}`)
            .then(res => location.reload())
            .catch(err => console.error(err))
 }
+
+
+
+
+
+
      if(DesdePagina == "../html/Muj.html" && sexo == "Femenino") {
        
         actualizaDatosM(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)
@@ -390,6 +392,10 @@ if(DesdePagina == "../html/Homb.html" && sexo == "Masculino") {
             }).catch(err => console.log(err));
     }
     else if(sexo == "Masculino"){
+
+        function CambioASexoM(nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais){
+
+        
         return fetch(`http://localhost:3004/Hombre`, {
                  method: "POST",
                  headers: {
@@ -416,9 +422,14 @@ if(DesdePagina == "../html/Homb.html" && sexo == "Masculino") {
 
                 .catch(err => console.log(err));
     }
-    else{
-    console.log("Algo salio mal")
-}
+
+    CambioASexoM(nombre.value, apellido.value, email.value, sexo, edad.value, tel.value, direc.value, city.value, prov.value, pais.value)
+    
+    axios.delete(`http://localhost:3004/Mujer/${id}`)
+           .then(res => location.reload())
+           .catch(err => console.error(err))
+ }
+
 }else{
       // tambien se cancela el envio del formulario si no se cumplen todas las validaciones
     if (!validaNombre() || !validaApellido() || !validaEmail() || !Elsexo() || !ValidarFecha() || !Valtel() || !Validardireccion() || !ValidaCiudad() || !validaProvincia() || !ValidaPais()) 
@@ -426,6 +437,6 @@ if(DesdePagina == "../html/Homb.html" && sexo == "Masculino") {
            throw new Error(console.log(Error.value));
            return;
         };
-}
+  }
 });
 
