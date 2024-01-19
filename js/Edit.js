@@ -325,7 +325,7 @@ if(e.target){
            }
 //dependiendo de donde vengan los datos se actualizan y se regresa nuevamente a la pagina. 
    
-if(DesdePagina == "../html/Homb.html" && sexo == "Masculino") { 
+if(DesdePagina == "../html/Homb.html") { 
 
 
         actualizaDatosH(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)
@@ -340,14 +340,11 @@ if(DesdePagina == "../html/Homb.html" && sexo == "Masculino") {
             .catch(err => console.log(err));
     }else if(sexo == "Femenino"){
        
+        // Si por error hay datos femeninos en la tabla de masculinos se puede editar para cambiar el sexo, se envia a la tabla correspondiente y se elimina de la erronea.
         
      function CambioASexoF (nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais) {
 
-        // Buscando la forma de que al colocarlo en la planilla erroneo se pueda cambiar tomando los datos y eliminarlo de la otra planilla
-
-       
-         
-               return fetch(`http://localhost:3004/Mujer`, {
+         return fetch(`http://localhost:3004/Mujer`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -381,7 +378,7 @@ if(DesdePagina == "../html/Homb.html" && sexo == "Masculino") {
 
 
 
-     if(DesdePagina == "../html/Muj.html" && sexo == "Femenino") {
+     if(DesdePagina == "../html/Muj.html") {
        
         actualizaDatosM(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)
             .then(() => {
@@ -392,7 +389,7 @@ if(DesdePagina == "../html/Homb.html" && sexo == "Masculino") {
             }).catch(err => console.log(err));
     }
     else if(sexo == "Masculino"){
-
+           // Si por error hay datos masculinos en la tabla de femenina se puede editar para cambiar el sexo, se envia a la tabla correspondiente y se elimina de la erronea.
         function CambioASexoM(nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais){
 
         
