@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  nav.box_ul
+   li.logo
+    h1.titulo= logo
+   li.Ingreso
+    a(class="Estas_en", href="/")= EstasEn
+   div(class="fa-solid fa-bars")
+    ul.sex_on
+     li.sex_container
+      a(class="sexo" , href="#")= SexoM
+      a(class="sexo" , href="#")= SexoF
