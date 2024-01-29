@@ -13,5 +13,9 @@ block content
       a(class="sexo" , href="#")= SexoF
   dialog#modal
   form(class="form", data-form)
-    label(for="name")= labelN
-    input(id="name", class="nombre", type="text", placeholder="Ingresa tu Nombre")
+    label(for="name")= LNombre
+    input(id="name", class="nombre", type="text", placeholder="Ingresa tu Nombre", required , data-nombre)
+    label(for="apellido")= LApellido
+    input(id="apellido", class="ap",type="text",placeholder="Ingresa tu Apellido", required, data-apellido)
+    label(for="email")= LEmail
+    input(id="email", class="mail", type="email", placeholder="ejemplo@algien.com", required, data-email)
