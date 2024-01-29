@@ -4,10 +4,10 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import {fileURLToPath} from "url";
-import taskController from "./controllers/taskController.js";
+import taskController from "./controllers/formController.js";
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-
+//const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const app = express();
 const port = 3000;
 
