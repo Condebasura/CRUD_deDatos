@@ -7,7 +7,7 @@ import {fileURLToPath} from "url";
 import FormController from "./controllers/formController.js";
 
 //const __dirname = path.dirname(new URL(import.meta.url).pathname);
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const __dirname = (process.platform === "win32")? fileURLToPath(new URL(".", import.meta.url)):path.dirname(new URL(import.meta.url).pathname);
 const app = express();
 const port = 3000;
 
