@@ -19,3 +19,12 @@ block content
     input(id="apellido", class="ap",type="text",placeholder="Ingresa tu Apellido", required, data-apellido)
     label(for="email") Email
     input(id="email", class="mail", type="email", placeholder="ejemplo@algien.com", required, data-email)
+    label(for="sexo") sexo
+    select(name="sexo", type="select", id="sexo", class="sex", required, data-sexo)
+     option(value="") - --- -
+     option(value="Masculino") Masculino 
+     option(value="Femenino") Femenino
+    label(for="Nacimiento") Fecha de Nacimiento 
+    input(type="date", pattern="\d{2}/\d{2}/\d{4}", class="naci", id="Nacimiento", required , data-naciminto)
+    label(for="telefono") Telefono 
+    input(type="number", id="telefono", class="tel", placeholder="N° sin el 15, solo cod de area", maxlength="12", data-telefono, required)       

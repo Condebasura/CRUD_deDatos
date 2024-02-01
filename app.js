@@ -4,7 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import {fileURLToPath} from "url";
-import taskController from "./controllers/formController.js";
+import FormController from "./controllers/formController.js";
 
 //const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.get("/", taskController.getForm);
+app.get("/", FormController.getForm);
 
 app.listen(port , ()=>{
 	console.log(`La aplicacion esta funcionando en http://localhost:${port}`);
