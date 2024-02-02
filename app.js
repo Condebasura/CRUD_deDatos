@@ -15,6 +15,13 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan("dev"));
 
+app.use(helmet.contentSecurityPolicy({
+	directives: {
+	  defaultSrc: ["'self'"],
+	  scriptSrc: ["'self'", "https://kit.fontawesome.com/523f183385.js"],
+	  styleSrc: ["'self'", "'unsafe-inline'"]
+	}
+  }));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 

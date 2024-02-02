@@ -6,7 +6,7 @@ block content
     h1.titulo= logo
    li.Ingreso
     a(class="Estas_en", href="/")= EstasEn
-   div(class="fa-solid fa-bars")
+   div.fa-solid.fa-bars
     ul.sex_on
      li.sex_container
       a(class="sexo" , href="#")= SexoM
@@ -36,4 +36,15 @@ block content
     input(type="text", id="Provincia", class="prov", data-provincia , required)
     label(for="Pais") Pais 
     input(type="text", id="Pais", class="pais", data-pais, required)
-    button(type="submit", class="btnEnv") Enviar    
+    button(type="submit", class="btnEnv") Enviar     
+  footer
+   br
+   br
+   span.sig
+    | Contacto:
+    a.fa-brands.fa-linkedin(href='https://www.linkedin.com/in/pablo-c%C3%A9sar-zabala-51055b1bb')
+    a.fas.fa-hashtag(href='https://instagram.com/condebasura?utm_source=qr&igshid=NGExMmI2YTkyZg%3D%3D' target='_blank')
+   br
+   br
+   p.der Pablo C. Zabala &copy; 2023 
+   
