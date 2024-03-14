@@ -36,6 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 app.get("/", FormController.getForm);
+app.get("/Editar", FormController.getEdit);
 
 app.listen(port , ()=>{
 	console.log(`La aplicacion esta funcionando en http://localhost:${port}`);
