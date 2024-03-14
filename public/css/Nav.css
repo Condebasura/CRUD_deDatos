@@ -15,10 +15,10 @@
 }
 .titulo{
     background-color: rgba(23, 92, 241, 0.637);
-    border-radius: 5em;
+    border-radius: .4em;
     box-shadow: 1px 1px 12px  rgba(78, 77, 76, 0.589);
     color: white;
-    font-size: 38px;
+    font-size: 35px;
     font-style: italic;
     padding: .1em .3em;}
 

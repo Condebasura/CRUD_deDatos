@@ -10,18 +10,24 @@ import FormController from "./controllers/formController.js";
 const __dirname = (process.platform === "win32")? fileURLToPath(new URL(".", import.meta.url)):path.dirname(new URL(import.meta.url).pathname);
 const app = express();
 const port = 3000;
-
-app.use(cors());
-app.use(helmet());
+const corsOptions = {
+    origin: '*', // Origen permitido (puedes usar * para permitir todo)
+    methods: 'GET,POST,PUT,DELETE', // Métodos permitidos
+    allowedHeaders: 'Content-Type,Authorization',
+     // Encabezados permitidos
+    // ... otras opciones ...
+};
+const hConfi =  ({
+   directives: {
+	 defaultSrc: ["'self'"],
+	 scriptSrc: ["'self'", "https://kit.fontawesome.com/523f183385.js" ],
+	 styleSrc: ["'self'", "'unsafe-inline'"]
+   }
+ });
+app.use(cors(corsOptions));
+app.use(helmet(hConfi));
 app.use(morgan("dev"));
 
-app.use(helmet.contentSecurityPolicy({
-	directives: {
-	  defaultSrc: ["'self'"],
-	  scriptSrc: ["'self'", "https://kit.fontawesome.com/523f183385.js"],
-	  styleSrc: ["'self'", "'unsafe-inline'"]
-	}
-  }));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 

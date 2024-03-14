@@ -6,8 +6,8 @@ block content
     h1.titulo= logo
    li.Ingreso
     a(class="Estas_en", href="/")= EstasEn
-   div.fa-solid.fa-bars
-    ul.sex_on
+   div(class="fa-solid fa-bars")
+    ul(class="sex_off") 
      li.sex_container
       a(class="sexo" , href="#")= SexoM
       a(class="sexo" , href="#")= SexoF
@@ -47,4 +47,6 @@ block content
    br
    br
    p.der Pablo C. Zabala &copy; 2023 
-   
+   script(type="module", src="/js/Envio.js")
+   script( src="/js/Nav.js") 
+
