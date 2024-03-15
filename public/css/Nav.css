@@ -23,7 +23,7 @@
     padding: .1em .3em;}
 
 
-   .fa-bars-staggered::first-line , .fa-bars::first-line {
+   .equis, .barra {
        align-items: center;
        color:rgba(23, 92, 241, 0.637) ;
        cursor: pointer;

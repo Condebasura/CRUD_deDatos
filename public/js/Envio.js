@@ -192,7 +192,7 @@ formulario.addEventListener("submit", (e) => {
 
        // dependiendo de que sexo elijas, Masculino / Femenino, se envia en el archivo json
          if (sexo == "Masculino") {
-             return fetch(`http://localhost:3004/Hombre`, {
+             return fetch(`/Homb`, {
                  method: "POST",
                  headers: {
                      "Content-Type": "application/json"
@@ -223,7 +223,7 @@ formulario.addEventListener("submit", (e) => {
 
 
         if (sexo == "Femenino") {
-            return fetch(`http://localhost:3004/Mujer`, {
+            return fetch(`/Muj`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

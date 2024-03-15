@@ -6,11 +6,11 @@ block content
     h1.titulo= logo
    li.Ingreso
     a(class="Estas_en", href="/")= EstasEn
-   div(class="fa-solid fa-bars")
+   div(class="barra") H
     ul(class="sex_off") 
      li.sex_container
-      a(class="sexo" , href="#")= SexoM
-      a(class="sexo" , href="#")= SexoF
+      a(class="sexo" , href="Homb")= SexoM
+      a(class="sexo" , href="Muj")= SexoF
   dialog#modal
   form(class="form", data-form)
     label(for="name") Nombre
@@ -49,4 +49,4 @@ block content
    p.der Pablo C. Zabala &copy; 2023 
    script(type="module", src="/js/Envio.js")
    script( src="/js/Nav.js") 
-
+   
