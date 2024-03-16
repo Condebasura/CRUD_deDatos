@@ -1,4 +1,4 @@
-
+import bd from "../model/bd.js";
 
 const getForm = (req,res) =>{
     res.render("index", {title: "CRUD/Ingreso" , logo:"form", EstasEn: "Ingreso de Datos" , SexoM:"Masculino", SexoF: "Femenino"})
@@ -16,9 +16,42 @@ const getFemenino = (req , res)=>{
     res.render("Muj" , {title: "CRUD/Femenino", logo: "form", EstasEn: "Datos Femeninos", Ingreso: "Ingreso de Datos" , SexoM: "Masculino"})
 }
 
+const IngresaCliente = async(req, res)=>{
+    let cliente = {
+      Nombre: req.body.nombre,
+      Apellido: req.body.apellido,
+      Email: req.body.email,
+      Sexo: req.body.sexo,
+      Edad: req.body.edad,
+      Telefono: req.body.tel,
+      Direccion: req.body.direc,
+      Ciudad: req.body.city,
+      Provincia: req.body.prov,
+      Pais: req.body.pais,
+    };
+
+    try{
+            const CorreoUsado = await bd.EmailenUso(cliente);
+            if(CorreoUsado){
+                res.status(409);
+                res.json({mensaje:`${cliente.Email} No esta disponible`});
+                console.log(`${cliente.Email} No esta disponible`);
+            }else if(!CorreoUsado){
+                await bd.InsertCliente(cliente);
+                res.status(200);
+                res.json({mensaje: 'Cliente ingresado con exito!!'});
+                console.log('Cliente ingresado con exito!!');
+            }
+          
+    }catch(error){
+        console.log(error);
+    }
+}
+
 export default{
 	getForm, 
     getEdit,
     getMasculino, 
     getFemenino,
+    IngresaCliente,
 };
