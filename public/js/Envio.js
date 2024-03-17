@@ -215,16 +215,18 @@ formulario.addEventListener("submit", (e) => {
                     modal.showModal();
 
                     setTimeout(() => { modal.appendChild(Exito), location.reload(), 100000 });
+                    
                 }
 
                 else if(res.status === 409){
+                    console.log(data.mensaje);
                     const modal = document.getElementById("modal");
+                    modal.innerHTML = "";
                     const Exito = document.createElement("p");
-                    Exito.textContent = `El email ${email.value} ya fue usado`;
-                    Exito.setAttribute("class", "exito");
+                    Exito.innerHTML = data.mensaje;
+                    Exito.setAttribute("class", "noexito");
                     modal.showModal();
-
-                    
+                    modal.appendChild(Exito);
                 }
             }
 
@@ -256,8 +258,9 @@ formulario.addEventListener("submit", (e) => {
                     const modal = document.getElementById("modal");
                     const Exito = document.createElement("p");
                     Exito.textContent = data.mensaje;
-                    Exito.setAttribute("class", "exito");
+                    Exito.setAttribute("class", "noexito");
                     modal.showModal();
+                    modal.appendChild(Exito);
                    
                 }
 

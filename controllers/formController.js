@@ -34,7 +34,7 @@ const IngresaCliente = async(req, res)=>{
             const CorreoUsado = await bd.EmailenUso(cliente);
             if(CorreoUsado){
                 res.status(409);
-                res.json({mensaje:`${cliente.Email} No esta disponible`});
+                res.json({mensaje:`El email ${cliente.Email} No esta disponible`});
                 console.log(`${cliente.Email} No esta disponible`);
             }else if(!CorreoUsado){
                 await bd.InsertCliente(cliente);
