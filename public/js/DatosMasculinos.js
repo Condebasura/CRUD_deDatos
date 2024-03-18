@@ -16,10 +16,11 @@ $thead.appendChild($tr_head);
 
 // se creara el tbody con su tr.
 
-axios.get("http://localhost:3004/Hombre")
+axios.get("Homb")
   .then(res => {
-    let json = res.data;
-   console.log(json);
+  const json = res.data;
+const obj = JSON.stringify(json)
+   console.log(obj);
     // Creamos las columnas cabecera de los datos que se van a ingresar utilizando for.
     const NombColumn = ["Nombre", "Apelido","email", "Sexo", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
    
@@ -73,7 +74,7 @@ axios.get("http://localhost:3004/Hombre")
       $btnDelet.setAttribute("class", "del");
       $btnEdit.setAttribute("class", "edit");
       // creando el ipervinculo al editor con set!!    
-       $btnEdit.setAttribute("href", `../html/Editar.html?id=${el.id}&desdepagina=../html/Homb.html`);
+       $btnEdit.setAttribute("href", `/Editar?id=${el.id}&desdepagina=/Homb`);
           // programamos el ipervinculo de eliminacion
        $btnDelet.addEventListener("click", (e)=>{
       e.preventDefault();
@@ -99,7 +100,7 @@ axios.get("http://localhost:3004/Hombre")
         if(aceptar){
           aceptar.addEventListener("click",()=>{
 
-            axios.delete(`http://localhost:3004/Hombre/${el.id}`)
+            axios.delete(`Homb/${el.id}`)
             .then(res => location.reload())
             .catch(err => console.error(err))
           })

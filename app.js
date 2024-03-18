@@ -22,18 +22,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(helmet({ contentSecurityPolicy:{
   directives:{
-    defaultSrc:["'self'"],
-    scriptSrc: ["'self'", 
-    
-    "https://kit.fontawesome.com/523f183385.js",
-    
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", 
-    
-    "https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js", 
-    
-    "https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"],
-    scriptSrcElem:["'self'", "https://kit.fontawesome.com/523f183385.js","https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", "https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js", "https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"],
-    connectSrc: ["'self'", "wss:"],
+    defaultSrc:["'self' https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"],
+    scriptSrc: [ "'self' https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js "],
+   
 
   }
 }}));
