@@ -15,13 +15,18 @@ $thead.appendChild($tr_head);
 
 
 // se creara el tbody con su tr.
+const getDatos = async ()=>{
+  
+  const res =  await fetch("Homb")
+  if(res.status === 200){
+  
+  const datos = res.text();
+ 
+  console.log(datos)
 
-axios.get("Homb")
-  .then(res => {
-  const json = res.data;
-const obj = JSON.stringify(json)
-   console.log(obj);
     // Creamos las columnas cabecera de los datos que se van a ingresar utilizando for.
+
+    
     const NombColumn = ["Nombre", "Apelido","email", "Sexo", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
    
     for (let i = 0; i < NombColumn.length; i++) {
@@ -34,7 +39,7 @@ const obj = JSON.stringify(json)
     const tbody = document.createElement("tbody");
     $table.appendChild(tbody);
 
-    json.forEach(el => {
+    
       
 
       let tr = tbody.insertRow();
@@ -49,16 +54,16 @@ const obj = JSON.stringify(json)
       let tdProv = tr.insertCell();
       let tdPais = tr.insertCell();
 
-      tdNonmb.textContent = el.nombre;
-      tdApll.textContent = el.apellido;
-      tdemail.textContent = el.email;
-      tdSexo.textContent = el.sexo;
-      tdEdad.textContent = el.edad;
-       tdTel.textContent = el.tel;
-       tdDirec.textContent = el.direc;
-       tdCity.textContent = el.city;
-       tdProv.textContent = el.prov;
-       tdPais.textContent = el.pais;
+      tdNonmb.textContent = datos.nombre;
+      tdApll.textContent = datos.apellido;
+      tdemail.textContent = datos.email;
+      tdSexo.textContent = datos.sexo;
+      tdEdad.textContent = datos.edad;
+       tdTel.textContent = datos.tel;
+       tdDirec.textContent = datos.direc;
+       tdCity.textContent = datos.city;
+       tdProv.textContent = datos.prov;
+       tdPais.textContent = datos.pais;
       tr.setAttribute("class", "linea");
       tbody.appendChild(tr);
     
@@ -74,7 +79,7 @@ const obj = JSON.stringify(json)
       $btnDelet.setAttribute("class", "del");
       $btnEdit.setAttribute("class", "edit");
       // creando el ipervinculo al editor con set!!    
-       $btnEdit.setAttribute("href", `/Editar?id=${el.id}&desdepagina=/Homb`);
+       $btnEdit.setAttribute("href", `/Editar?id=${datos.id}&desdepagina=/Homb`);
           // programamos el ipervinculo de eliminacion
        $btnDelet.addEventListener("click", (e)=>{
       e.preventDefault();
@@ -88,7 +93,7 @@ const obj = JSON.stringify(json)
         cajaBtn.setAttribute("class", "cajabtn");
         aceptar.setAttribute("class", "aceptar");
         cancelar.setAttribute("class", "cancelar");
-        parrafo.innerHTML = `Se va a eliminar de su lista el cliente:<h1> ${el.nombre} ${el.apellido}</h1>`;
+        parrafo.innerHTML = `Se va a eliminar de su lista el cliente:<h1> ${el.nombre} ${datos.apellido}</h1>`;
         aceptar.textContent = "Eliminar";
         cancelar.textContent = "Cancelar";
         modal.showModal();
@@ -99,8 +104,8 @@ const obj = JSON.stringify(json)
         modal.appendChild(cajaBtn);
         if(aceptar){
           aceptar.addEventListener("click",()=>{
-
-            axios.delete(`Homb/${el.id}`)
+            
+            axios.delete(`Homb/${datos.id}`)
             .then(res => location.reload())
             .catch(err => console.error(err))
           })
@@ -109,21 +114,22 @@ const obj = JSON.stringify(json)
         cancelar.addEventListener("click",()=>{
           modal.close();
         })
-      
-      
+        
+        
       }
     })
-
     
-       fragment.appendChild($table);
+    
+    fragment.appendChild($table);
+    
+    
+  
+  RecibeDatos.appendChild(fragment);
+}
 
+  }
 
-    })
-    RecibeDatos.appendChild(fragment);
+  
 
-
-  })
-  .catch(err => console.error(err));
-
-
+getDatos();
 

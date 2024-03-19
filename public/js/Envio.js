@@ -280,7 +280,7 @@ formulario.addEventListener("submit", (e) => {
 
 
 
-    addDatos(nombre.value, apellido.value, email.value, sexo, edad.value, tel.value, direc.value, city.value, prov.value, pais.value);
+    addDatos(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value);
 
 
 });

@@ -37,12 +37,14 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.get("/Clientes", bd.ConsultRegistro);
+
 app.get("/", FormController.getForm);
 app.get("/Editar", FormController.getEdit);
 app.get("/Homb", FormController.getMasculino);
 app.get("/Muj" , FormController.getFemenino);
 app.post("/Homb", FormController.IngresaCliente);
 app.post("/Muj", FormController.IngresaCliente);
+app.get("/Homb", FormController.getDataM);
 
 app.listen(port , ()=>{
 	console.log(`La aplicacion esta funcionando en http://localhost:${port}`);

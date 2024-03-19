@@ -59,9 +59,29 @@ const EmailenUso =(cliente)=>{
     })
 };
 
+const DatosM = (Sexo) =>{
 
+
+    
+    let sql = 'SELECT * FROM clientes WHERE Sexo = ?';
+    
+    
+    bd.all(sql ,[Sexo], (err , rows)=>{
+        if(err){
+            console.log(err.message)
+        }else{
+            console.log('clientes encontrados' + rows.length);
+            rows.forEach((row) => {
+                console.log(row)
+                
+            });
+        }
+    })
+
+}
 export default {
     InsertCliente, 
     EmailenUso,
     ConsultRegistro,
+    DatosM,
 }
