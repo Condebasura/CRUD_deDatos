@@ -61,26 +61,43 @@ const EmailenUso =(cliente)=>{
 
 const DatosM = () =>{
 
+ return new Promise((resolve, reject)=>{
     let sql = 'SELECT * FROM clientes WHERE Sexo = "Masculino"';
     bd.all(sql, (err, rows)=>{
         if(err){
-            console.log(err.message);
-
+            reject(err.message);
         }else{
-            console.log("Encontrados" + rows.length);
-            rows.forEach((row)=>{
-                console.log(row)
-                return row;
-                
-            })
+            console.log("Encontrados:"  + rows.length);
+            resolve(rows);
         }
     })
+ })  
+ 
     
 
 }
+
+const DatosF = () =>{
+
+    return new Promise((resolve, reject)=>{
+       let sql = 'SELECT * FROM clientes WHERE Sexo = "Femenino"';
+       bd.all(sql, (err, rows)=>{
+           if(err){
+               reject(err.message);
+           }else{
+               console.log("Encontrados:"  + rows.length);
+               resolve(rows);
+           }
+       })
+    })  
+    
+       
+   
+   }
 export default {
     InsertCliente, 
     EmailenUso,
     ConsultRegistro,
     DatosM,
+    DatosF,
 }

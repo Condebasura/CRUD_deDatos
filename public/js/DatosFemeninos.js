@@ -13,10 +13,13 @@ $table.appendChild($thead);
 $thead.appendChild($tr_head);
 
 // se creara el tbody con su tr.
+const getDatos = async()=>{
 
-axios.get("http://localhost:3004/Mujer")
-  .then(res => {
-    let json = res.data;
+const res =  await axios.get("/Muj/clientesF")
+  if(res.status === 200){
+
+  
+    const datos = res.data;
 
     // Metodo resumido utilizando for
     const NombColumn = ["Nombre", "Apelido", "Email", "Sexo", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
@@ -29,7 +32,7 @@ axios.get("http://localhost:3004/Mujer")
     const tbody = document.createElement("tbody");
     $table.appendChild(tbody);
 
-    json.forEach(el => {
+    datos.forEach(el => {
       //encontrar la forma de que se creen los td en el trinea depndiendo de la cantidad de datos en e json
 
       let tr = tbody.insertRow();
@@ -44,16 +47,16 @@ axios.get("http://localhost:3004/Mujer")
       let tdProv = tr.insertCell();
       let tdPais = tr.insertCell();
 
-      tdNonmb.textContent = el.nombre;
-      tdApll.textContent = el.apellido;
-      tdemail.textContent = el.email;
-      tdSexo.textContent = el.sexo;
-      tdEdad.textContent = el.edad;
-      tdTel.textContent = el.tel;
-      tdDirec.textContent = el.direc;
-      tdCity.textContent = el.city;
-      tdProv.textContent = el.prov;
-      tdPais.textContent = el.pais;
+      tdNonmb.textContent = el.Nombre;
+      tdApll.textContent = el.Apellido;
+      tdemail.textContent = el.Email;
+      tdSexo.textContent = el.Sexo;
+      tdEdad.textContent = el.Edad;
+      tdTel.textContent = el.Telefono;
+      tdDirec.textContent = el.Direccion;
+      tdCity.textContent = el.Ciudad;
+      tdProv.textContent = el.Provincia;
+      tdPais.textContent = el.Pais;
       tr.setAttribute("class", "linea");
       tbody.appendChild(tr);
 
@@ -69,7 +72,7 @@ axios.get("http://localhost:3004/Mujer")
       $btnDelet.setAttribute("class", "del");
       $btnEdit.setAttribute("class", "edit");
       // creando el ipervinculo al editor con set!!    
-      $btnEdit.setAttribute("href", `../html/Editar.html?id=${el.id}&desdepagina=../html/Muj.html`);
+      $btnEdit.setAttribute("href", `Editar?id=${el.id}&desdepagina=Muj`);
 
       // programamos el ipervinculo de eliminacion
       $btnDelet.addEventListener("click", (e) => {
@@ -84,7 +87,7 @@ axios.get("http://localhost:3004/Mujer")
         cajaBtn.setAttribute("class", "cajabtn");
           aceptar.setAttribute("class", "aceptar");
           cancelar.setAttribute("class", "cancelar");
-          parrafo.innerHTML = `Se va a eliminar de su lista el cliente: <h1>${el.nombre} ${el.apellido}</h1>`;
+          parrafo.innerHTML = `Se va a eliminar de su lista el cliente: <h1>${el.Nombre} ${el.Apellido}</h1>`;
           aceptar.textContent = "Eliminar";
           cancelar.textContent = "Cancelar";
           modal.showModal();
@@ -96,7 +99,7 @@ axios.get("http://localhost:3004/Mujer")
           if (aceptar) {
             aceptar.addEventListener("click", () => {
 
-              axios.delete(`http://localhost:3004/Mujer/${el.id}`)
+              axios.delete(`Mujer/cientesF/${el.id}`)
                 .then(res => location.reload())
                 .catch(err => console.error(err))
             })
@@ -114,7 +117,10 @@ axios.get("http://localhost:3004/Mujer")
 
     })
     RecibeDatos.appendChild($fragment);
+  }
 
+  
+  
+};
 
-  })
-  .catch(err => console.error(err));
+getDatos();

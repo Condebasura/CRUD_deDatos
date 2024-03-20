@@ -41,8 +41,9 @@ app.get("/Clientes", bd.ConsultRegistro);
 app.get("/", FormController.getForm);
 app.get("/Editar", FormController.getEdit);
 app.get("/Homb", FormController.getMasculino);
-app.get("/homb", FormController.getDataM);
 app.get("/Muj" , FormController.getFemenino);
+app.get("/homb/clientesM", FormController.getDataM);
+app.get("/Muj/clientesF", FormController.getDataF);
 app.post("/Homb", FormController.IngresaCliente);
 app.post("/Muj", FormController.IngresaCliente);
 

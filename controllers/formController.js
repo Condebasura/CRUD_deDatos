@@ -9,7 +9,8 @@ const getEdit = (req , res)=>{
 };
 
 const getMasculino = (req , res)=>{
-    res.render("Homb" , {title: "CRUD/Masculino", logo: "form", EstasEn: "Datos Masculinos", Ingreso: "Ingreso de Datos" , SexoF: "Femenino"})
+    res.render("Homb" , {title: "CRUD/Masculino", logo: "form", EstasEn: "Datos Masculinos", Ingreso: "Ingreso de Datos" , SexoF: "Femenino"});
+   
 }
 
 const getFemenino = (req , res)=>{
@@ -48,16 +49,29 @@ const IngresaCliente = async(req, res)=>{
     }
 }
 
-const getDataM = (req, res)=>{
-   
+const getDataM =  (req, res)=>{
 
-   
- const datos =  bd.DatosM()
- .then(clientes =>{
-    console.log(clientes)
- }).catch(err =>{
-    console.log(err.message)
- })
+    bd.DatosM()
+    .then(cliente =>{
+        res.json(cliente);
+    }).catch(err =>{
+        console.log(err.message)
+    })
+
+ 
+
+
+}
+
+const getDataF =  (req, res)=>{
+
+    bd.DatosF()
+    .then(cliente =>{
+        res.json(cliente);
+    }).catch(err =>{
+        console.log(err.message)
+    })
+
  
 
 
@@ -70,4 +84,5 @@ export default{
     getFemenino,
     IngresaCliente,
     getDataM,
+    getDataF,
 };
