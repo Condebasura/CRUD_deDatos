@@ -59,24 +59,23 @@ const EmailenUso =(cliente)=>{
     })
 };
 
-const DatosM = (Sexo) =>{
+const DatosM = () =>{
 
-
-    
-    let sql = 'SELECT * FROM clientes WHERE Sexo = ?';
-    
-    
-    bd.all(sql ,[Sexo], (err , rows)=>{
+    let sql = 'SELECT * FROM clientes WHERE Sexo = "Masculino"';
+    bd.all(sql, (err, rows)=>{
         if(err){
-            console.log(err.message)
+            console.log(err.message);
+
         }else{
-            console.log('clientes encontrados' + rows.length);
-            rows.forEach((row) => {
+            console.log("Encontrados" + rows.length);
+            rows.forEach((row)=>{
                 console.log(row)
+                return row;
                 
-            });
+            })
         }
     })
+    
 
 }
 export default {

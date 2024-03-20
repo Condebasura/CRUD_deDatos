@@ -48,30 +48,18 @@ const IngresaCliente = async(req, res)=>{
     }
 }
 
-const getDataM = async(req, res)=>{
-    let cliente = {
-        Nombre: req.body.nombre,
-        Apellido: req.body.apellido,
-        Email: req.body.email,
-        Sexo: req.body.sexo,
-        Edad: req.body.edad,
-        Telefono: req.body.tel,
-        Direccion: req.body.direc,
-        Ciudad: req.body.city,
-        Provincia: req.body.prov,
-        Pais: req.body.pais,
-      };
-try{
- const datos = bd.DatosM(cliente.Sexo);
- console.log(datos);
- if(datos){
-res.status(200);
-console.log(datos)
- }
+const getDataM = (req, res)=>{
+   
+
+   
+ const datos =  bd.DatosM()
+ .then(clientes =>{
+    console.log(clientes)
+ }).catch(err =>{
+    console.log(err.message)
+ })
  
-}catch(error){
-console.log('Error al cargar los datos', error)
-}
+
 
 }
 

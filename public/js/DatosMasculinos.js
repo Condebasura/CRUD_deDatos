@@ -17,7 +17,7 @@ $thead.appendChild($tr_head);
 // se creara el tbody con su tr.
 const getDatos = async ()=>{
   
-  const res =  await fetch("Homb")
+  const res =  await fetch("/Homb")
   if(res.status === 200){
   
   const datos = res.text();
