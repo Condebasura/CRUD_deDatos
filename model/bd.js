@@ -90,14 +90,27 @@ const DatosF = () =>{
            }
        })
     })  
+}
     
-       
+    const UpdateCliente = async (cliente)=>{
+        try{
+             let stmt =  bd.prepare('UPDATE INTO clientes(Nombre ,Apellido , Email, Sexo, Edad , Telefono, Direccion , Ciudad , Provincia , Pais) VALUES(?,?,?,?,?,?,?,?,?,?)');
+             stmt.run(cliente.Nombre , cliente.Apellido , cliente.Email , cliente.Sexo , cliente.Edad, cliente.Telefono , cliente.Direccion , cliente.Ciudad , cliente.Provincia, cliente.Pais)
+    
+        stmt.finalize();
+        return "Cliente Actualizado con exito";
+    
+        }catch(error){
+            throw console.log(error);
+        }
+    } 
    
-   }
+   
 export default {
     InsertCliente, 
     EmailenUso,
     ConsultRegistro,
     DatosM,
     DatosF,
+    UpdateCliente,
 }

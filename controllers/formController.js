@@ -65,7 +65,7 @@ const getDataM =  (req, res)=>{
 
 const getDataF =  (req, res)=>{
 
-    bd.DatosF()
+    bd.DatosF(cliente)
     .then(cliente =>{
         res.json(cliente);
     }).catch(err =>{
@@ -75,7 +75,32 @@ const getDataF =  (req, res)=>{
  
 
 
+};
+const ActualizarCliente = async(req, res)=>{
+    let cliente = {
+      Nombre: req.body.nombre,
+      Apellido: req.body.apellido,
+      Email: req.body.email,
+      Sexo: req.body.sexo,
+      Edad: req.body.edad,
+      Telefono: req.body.tel,
+      Direccion: req.body.direc,
+      Ciudad: req.body.city,
+      Provincia: req.body.prov,
+      Pais: req.body.pais,
+    };
+
+    try{
+          const datos = bd.EmailenUso(cliente);
+          if(datos === cliente.Email){
+            console.log(cliente.Email)
+          }
+          
+    }catch(error){
+        console.log(error);
+    }
 }
+
 
 export default{
 	getForm, 
@@ -85,4 +110,5 @@ export default{
     IngresaCliente,
     getDataM,
     getDataF,
+    ActualizarCliente
 };

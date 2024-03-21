@@ -21,13 +21,13 @@ const regexLetrasMasNum = /^\w+([A-z])\s\w+\w+.{0,5}$/;
 
 // Trae los datos por id que van a ser cambiados
 const detalleDatosH = (id) => {
-  return fetch(`http://localhost:3004/Hombre/${id}`).then((res) => res.json()
+  return fetch(`/Homb/clientesM`).then((res) => res.data
 )
  
 };
 
 const detalleDatosM = (id) => {
-    return fetch(`http://localhost:3004/Mujer/${id}` ).then((res) => res.json()
+    return fetch(`Muj/${id}` ).then((res) => res.json()
     )
 };
 // cambia el formato de la fecha en el archivo json, de yyy/mm/dd a dd/mm/yyyy
@@ -38,7 +38,7 @@ function changeDateFormat(date) {
 // se crea la funcion para actualizar los datos  dependiendo el sexo que se elija.
 const actualizaDatosH = (nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais, id) => {
     edad = changeDateFormat(edad);
-    return fetch(`http://localhost:3004/Hombre/${id}`, { 
+    return fetch(`Homb/clientesM/${id}`, { 
        method: 'PUT',
     headers: {
             "Content-type": "application/json"
@@ -53,7 +53,7 @@ const actualizaDatosH = (nombre, apellido, email, sexo, edad, tel, direc, city, 
 
 const actualizaDatosM = (nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais, id) => {
     edad = changeDateFormat(edad);
-    return fetch(`http://localhost:3004/Mujer/${id}`, {
+    return fetch(`Muj/${id}`, {
     method: "PUT",    
     headers: {
             "Content-type": "application/json"
@@ -81,31 +81,30 @@ const obtenerDatos = async () => {
     console.log(id);
     const DesdePagina = url.get("desdepagina");
      console.log(DesdePagina);
-   
-
+  console.log(detalleDatosH())
      if (id == null) {
         console.error("Datos no encontrados");
         alert("NO SE ENCONTRARON LOS DATOS!!!");
     }
 
 
-    if (DesdePagina == "../html/Homb.html") {
+    if (DesdePagina == "Homb/clientesM") {
        try{
            const perfil = await detalleDatosH(id);
            console.log(perfil);
-           if (perfil.nombre && perfil.apellido && perfil.email, perfil.sexo && perfil.edad && perfil.direc && perfil.tel && perfil.city && perfil.prov && perfil.pais) {
-               nombre.value = perfil.nombre;
-               apellido.value = perfil.apellido;
-               email.value = perfil.email;
-               sexo.value = perfil.sexo;
-               perfil.edad = revertDateFormat(perfil.edad);
-               edad.value = perfil.edad;
-               tel.value = perfil.tel;
-               direc.value = perfil.direc;
-               city.value = perfil.city;
-               prov.value = perfil.prov;
-               pais.value = perfil.pais;
-               console.log(perfil.edad);
+           if (perfil.Nombre && perfil.Apellido && perfil.Email, perfil.Sexo && perfil.Edad && perfil.Direccion && perfil.Telefono && perfil.Ciudad && perfil.Provincia && perfil.Pais) {
+               nombre.value = perfil.Nombre;
+               apellido.value = perfil.Apellido;
+               email.value = perfil.Email;
+               sexo.value = perfil.Sexo;
+               perfil.Edad = revertDateFormat(perfil.Edad);
+               edad.value = perfil.Edad;
+               tel.value = perfil.Telefonol;
+               direc.value = perfil.Direccion;
+               city.value = perfil.Ciudad;
+               prov.value = perfil.Provincia;
+               pais.value = perfil.Pais;
+               console.log(perfil.Edad);
             
             
         }
