@@ -101,7 +101,19 @@ const ActualizarCliente = async(req, res)=>{
     }
 }
 
+const datAEditar = async (req,res)=>{
+ try{
 
+     const validar = await bd.EditData(req.body.Email);
+     if(validar){
+         console.log(`Los datos de ${req.body.Email} coinciden con el de la bd`)
+         res.json(validar);
+        }
+    }catch(err){
+        console.log(err.message)
+    }
+  
+}
 export default{
 	getForm, 
     getEdit,
@@ -110,5 +122,6 @@ export default{
     IngresaCliente,
     getDataM,
     getDataF,
-    ActualizarCliente
+    ActualizarCliente,
+    datAEditar,
 };

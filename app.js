@@ -45,8 +45,7 @@ app.get("/Homb/clientesM", FormController.getDataM);
 app.get("/Muj/clientesF", FormController.getDataF);
 app.post("/Homb", FormController.IngresaCliente);
 app.post("/Muj", FormController.IngresaCliente);
-app.get("/Editar", FormController.ActualizarCliente)
-
+app.post("/Editar", FormController.datAEditar)
 
 app.listen(port , ()=>{
 	console.log(`La aplicacion esta funcionando en http://localhost:${port}`);

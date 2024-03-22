@@ -104,6 +104,30 @@ const DatosF = () =>{
             throw console.log(error);
         }
     } 
+
+    const EditData =(Email)=>{
+
+        return new Promise((resolve , reject)=>{
+    
+            let sql = 'SELECT * FROM clientes WHERE Email = ?';
+            
+            
+            
+            bd.get(sql , [Email], (err , row )=> {
+            
+                if(err){
+                    console.error(err.message);
+                    reject(err);
+                    
+                }if(row){
+                    resolve(row)
+                   
+                } 
+                
+                
+            });
+        })
+    };
    
    
 export default {
@@ -113,4 +137,5 @@ export default {
     DatosM,
     DatosF,
     UpdateCliente,
+    EditData,
 }
