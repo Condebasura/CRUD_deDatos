@@ -20,8 +20,8 @@ const regexLetras = /[a-z A-Z\\s]+/gu;
 const regexLetrasMasNum = /^\w+([A-z])\s\w+\w+.{0,5}$/;
 
 // Trae los datos por id que van a ser cambiados
-const detalleDatosH = (id) => {
-  return fetch(`/Homb/clientesM`).then((res) => res.data
+const detalleDatosH = () => {
+  return fetch(`/Homb`).then((res) => res.data
 )
  
 };
@@ -81,16 +81,15 @@ const obtenerDatos = async () => {
     console.log(id);
     const DesdePagina = url.get("desdepagina");
      console.log(DesdePagina);
-  console.log(detalleDatosH())
      if (id == null) {
         console.error("Datos no encontrados");
         alert("NO SE ENCONTRARON LOS DATOS!!!");
     }
 
 
-    if (DesdePagina == "Homb/clientesM") {
+    if (DesdePagina == "Homb") {
        try{
-           const perfil = await detalleDatosH(id);
+           const perfil = await detalleDatosH();
            console.log(perfil);
            if (perfil.Nombre && perfil.Apellido && perfil.Email, perfil.Sexo && perfil.Edad && perfil.Direccion && perfil.Telefono && perfil.Ciudad && perfil.Provincia && perfil.Pais) {
                nombre.value = perfil.Nombre;
@@ -302,7 +301,6 @@ if(e.target){
     const url = new URLSearchParams(window.location.search);
     const id = url.get("id");
     const DesdePagina = url.get("desdepagina");
-
     const EdicionFin = () =>  {
 
         if(e.target.matches(".form_edit") ){
@@ -324,7 +322,7 @@ if(e.target){
            }
 //dependiendo de donde vengan los datos se actualizan y se regresa nuevamente a la pagina. 
    
-if(DesdePagina == "../html/Homb.html") { 
+if(DesdePagina == "Homb") { 
 
 
         actualizaDatosH(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)

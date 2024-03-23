@@ -36,6 +36,7 @@ app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
 app.get("/Clientes", bd.ConsultRegistro);
 app.get("/", FormController.getForm);
 app.get("/Editar", FormController.getEdit);
@@ -45,7 +46,8 @@ app.get("/Homb/clientesM", FormController.getDataM);
 app.get("/Muj/clientesF", FormController.getDataF);
 app.post("/Homb", FormController.IngresaCliente);
 app.post("/Muj", FormController.IngresaCliente);
-app.post("/Editar", FormController.datAEditar)
+app.post("/Editar", FormController.datAEditar);
+app.get("/Editar", FormController.datAEditar);
 
 app.listen(port , ()=>{
 	console.log(`La aplicacion esta funcionando en http://localhost:${port}`);

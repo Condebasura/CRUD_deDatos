@@ -82,8 +82,7 @@ console.log(datos);
       // creando el ipervinculo al editor con set!!  
       
         
-       //$btnEdit.setAttribute("href",`/Editar`);
-        $btnEdit.addEventListener("click",async()=>{
+      $btnEdit.addEventListener("click",async()=>{
          try{
 
            const res = await fetch("/Editar", {
@@ -96,10 +95,11 @@ console.log(datos);
           const resultado = await res.json();
           console.log(resultado)
         }catch(err){
-
+          
           console.log(err.message)
         }
-        })
+      })
+      $btnEdit.setAttribute("href",`/Editar`);
         
       // programamos el ipervinculo de eliminacion
       $btnDelet.addEventListener("click", (e)=>{
