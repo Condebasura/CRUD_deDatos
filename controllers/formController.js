@@ -99,7 +99,9 @@ const ActualizarCliente = async(req, res)=>{
     }catch(error){
         console.log(error);
     }
-}
+};
+
+
 
 const datAEditar = async (req,res)=>{
  try{

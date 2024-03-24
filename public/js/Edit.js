@@ -21,7 +21,7 @@ const regexLetrasMasNum = /^\w+([A-z])\s\w+\w+.{0,5}$/;
 
 // Trae los datos por id que van a ser cambiados
 const detalleDatosH = () => {
-  return fetch(`/Homb`).then((res) => res.data
+  return fetch(`/Editar`).then((res) => res.json()
 )
  
 };
@@ -78,7 +78,7 @@ const obtenerDatos = async () => {
 
     const url = new URLSearchParams(window.location.search);
     const id = url.get("id");
-    console.log(id);
+    console.log(detalleDatosH(id));
     const DesdePagina = url.get("desdepagina");
      console.log(DesdePagina);
      if (id == null) {
@@ -89,7 +89,7 @@ const obtenerDatos = async () => {
 
     if (DesdePagina == "Homb") {
        try{
-           const perfil = await detalleDatosH();
+           const perfil = await detalleDatosH(id);
            console.log(perfil);
            if (perfil.Nombre && perfil.Apellido && perfil.Email, perfil.Sexo && perfil.Edad && perfil.Direccion && perfil.Telefono && perfil.Ciudad && perfil.Provincia && perfil.Pais) {
                nombre.value = perfil.Nombre;
