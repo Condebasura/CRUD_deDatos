@@ -2,7 +2,7 @@
 const form = document.querySelector("[data-Edit]");
 const nombre = document.querySelector(".nombre");
 const apellido = document.querySelector(".ap");
-const email = document.querySelector(".mail");
+const  email = document.querySelector(".mail");
 let sexo = document.querySelector("[data-sexo]");
 let edad = document.querySelector(".naci");
 const tel = document.querySelector(".tel");
@@ -19,54 +19,12 @@ const regexLetras = /[a-z A-Z\\s]+/gu;
 // Para letras y hasta 5 digitos, para direccion
 const regexLetrasMasNum = /^\w+([A-z])\s\w+\w+.{0,5}$/;
 
-// Trae los datos por id que van a ser cambiados
-const detalleDatosH = () => {
-  return fetch(`/Editar`).then((res) => res.json()
-)
- 
-};
 
-const detalleDatosM = (id) => {
-    return fetch(`Muj/${id}` ).then((res) => res.json()
-    )
-};
 // cambia el formato de la fecha en el archivo json, de yyy/mm/dd a dd/mm/yyyy
 function changeDateFormat(date) {
     const dateParts = date.split('-');
     return `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
 }
-// se crea la funcion para actualizar los datos  dependiendo el sexo que se elija.
-const actualizaDatosH = (nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais, id) => {
-    edad = changeDateFormat(edad);
-    return fetch(`Homb/clientesM/${id}`, { 
-       method: 'PUT',
-    headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify({ nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais })
-    })
-        .then(res => { 
-            
-        })
-        .catch(err => console.error(err))
-}
-
-const actualizaDatosM = (nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais, id) => {
-    edad = changeDateFormat(edad);
-    return fetch(`Muj/${id}`, {
-    method: "PUT",    
-    headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify({ nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais })
-    })
-        .then(res => {
-      
-
-        })
-        .catch(err => console.error(err))
-}
-
 
 
 function revertDateFormat(date) {
@@ -78,18 +36,29 @@ const obtenerDatos = async () => {
 
     const url = new URLSearchParams(window.location.search);
     const id = url.get("id");
-    console.log(detalleDatosH(id));
-    const DesdePagina = url.get("desdepagina");
-     console.log(DesdePagina);
-     if (id == null) {
-        console.error("Datos no encontrados");
-        alert("NO SE ENCONTRARON LOS DATOS!!!");
-    }
+    console.log(id)
+    
+
+    try{
+
+        const res = await fetch("/Editar", {
+         method: "POST",
+         headers:{
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify({Email: id}),
+       });
+       const resultado = await res.json();
+      console.log(resultado);
+    
+     
+   
+     
 
 
-    if (DesdePagina == "Homb") {
-       try{
-           const perfil = await detalleDatosH(id);
+    
+       
+           const perfil = await resultado;
            console.log(perfil);
            if (perfil.Nombre && perfil.Apellido && perfil.Email, perfil.Sexo && perfil.Edad && perfil.Direccion && perfil.Telefono && perfil.Ciudad && perfil.Provincia && perfil.Pais) {
                nombre.value = perfil.Nombre;
@@ -98,7 +67,7 @@ const obtenerDatos = async () => {
                sexo.value = perfil.Sexo;
                perfil.Edad = revertDateFormat(perfil.Edad);
                edad.value = perfil.Edad;
-               tel.value = perfil.Telefonol;
+               tel.value = perfil.Telefono;
                direc.value = perfil.Direccion;
                city.value = perfil.Ciudad;
                prov.value = perfil.Provincia;
@@ -110,41 +79,16 @@ const obtenerDatos = async () => {
         
         
         else {throw new Error();}
-            }catch(err){
-
-                console.error('Error fetching data', err);
-            }
-        
-    };
-
-    if (DesdePagina == "../html/Muj.html") {
-        try {
-            const perfil = await detalleDatosM(id);
-            console.log(perfil);
-            if (perfil.nombre && perfil.apellido && perfil.email, perfil.sexo && perfil.edad && perfil.direc && perfil.tel && perfil.city && perfil.prov && perfil.pais) {
-                nombre.value = perfil.nombre;
-                apellido.value = perfil.apellido;
-                email.value = perfil.email;
-                sexo.value = perfil.sexo;
-                perfil.edad = revertDateFormat(perfil.edad);
-                edad.value = perfil.edad;
-                tel.value = perfil.tel;
-                direc.value = perfil.direc;
-                city.value = perfil.city;
-                prov.value = perfil.prov;
-                pais.value = perfil.pais;
-                console.log(perfil.edad)
-            }
-
-            else { throw new Error(); }
+           
 
         } catch (err) {
             console.error('Error fetching data', err);
         }
-    }
+    
 };
 
 obtenerDatos();
+
 
 
 //validaciones para el formulario
@@ -293,6 +237,12 @@ pais.addEventListener("input", ValidaPais);
 form.addEventListener("submit", (e) => {
     // cancelamos el comportamiento por defecto del formulario
     e.preventDefault();
+       // tambien se cancela el envio del formulario si no se cumplen todas las validaciones
+       if (!validaNombre() || !validaApellido() || !validaEmail() || !Elsexo() || !ValidarFecha() || !Valtel() || !Validardireccion() || !ValidaCiudad() || !validaProvincia() || !ValidaPais()) 
+       {
+          e.preventDefault();
+          
+       };
     
 if(e.target){
 
@@ -322,115 +272,28 @@ if(e.target){
            }
 //dependiendo de donde vengan los datos se actualizan y se regresa nuevamente a la pagina. 
    
-if(DesdePagina == "Homb") { 
 
+    edad = changeDateFormat(edad);
+    return fetch(``, {
+    method: "PUT",    
+    headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({ nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais })
+    })
+        .then(res => {
+      EdicionFin();
 
-        actualizaDatosH(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)
-            .then( () => { 
-                
-
-     // si el status es ok al ingresar los datos vuelve a la planilla de datos
-                   EdicionFin();
-                
-               
-            })
-            .catch(err => console.log(err));
-    }else if(sexo == "Femenino"){
-       
-        // Si por error hay datos femeninos en la tabla de masculinos se puede editar para cambiar el sexo, se envia a la tabla correspondiente y se elimina de la erronea.
-        
-     function CambioASexoF (nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais) {
-
-         return fetch(`http://localhost:3004/Mujer`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais, id })
-                })
-                .then(res => {
-
-                    if (res.status >= 201 && res.status <= 300) {
-                    const modal = document.getElementById("modal");
-                    const Exito = document.createElement("p");
-                    Exito.textContent = "Datos enviados a la seccion FEMENINO !!";
-                    Exito.setAttribute("class", "exito");
-                    modal.showModal();
-
-                    setTimeout(() =>{ modal.appendChild(Exito), location.reload(), 100000});
-                }
-                
-            })
-            .catch (err => console.log(err))
-    }
-        CambioASexoF(nombre.value, apellido.value, email.value, sexo, edad.value, tel.value, direc.value, city.value, prov.value, pais.value);
-
-       axios.delete(`http://localhost:3004/Hombre/${id}`)
-           .then(res => location.reload())
-           .catch(err => console.error(err))
-}
+        })
+        .catch(err => console.error(err))
 
 
 
-
-
-
-     if(DesdePagina == "../html/Muj.html") {
-       
-        actualizaDatosM(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value, id)
-            .then(() => {
- // si el status es ok al ingresar los datos vuelve a la planilla de datos
-                 // window.location.href = DesdePagina
-                EdicionFin();
-               
-            }).catch(err => console.log(err));
-    }
-    else if(sexo == "Masculino"){
-           // Si por error hay datos masculinos en la tabla de femenina se puede editar para cambiar el sexo, se envia a la tabla correspondiente y se elimina de la erronea.
-        function CambioASexoM(nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais){
-
-        
-        return fetch(`http://localhost:3004/Hombre`, {
-                 method: "POST",
-                 headers: {
-                     "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais, id })
-            })
-            .then(res => {
-
-                let json = res.data;
-               
-                           // si el status es ok al ingresar los datos aparece un aviso de que los datos an ingresados correctamente.
-                    if (res.status >= 201 && res.status <= 300) {
-                        const modal = document.getElementById("modal");
-                        const Exito = document.createElement("p");
-                        Exito.textContent = "Datos enviados a la seccion Masculino!!";
-                        Exito.setAttribute("class", "exito");
-                        modal.showModal();
-
-                        setTimeout(() =>{ modal.appendChild(Exito), location.reload(), 100000});
-                    }
-                    
-                })
-
-                .catch(err => console.log(err));
-    }
-
-    CambioASexoM(nombre.value, apellido.value, email.value, sexo, edad.value, tel.value, direc.value, city.value, prov.value, pais.value)
     
-    axios.delete(`http://localhost:3004/Mujer/${id}`)
-           .then(res => location.reload())
-           .catch(err => console.error(err))
- }
 
-}else{
-      // tambien se cancela el envio del formulario si no se cumplen todas las validaciones
-    if (!validaNombre() || !validaApellido() || !validaEmail() || !Elsexo() || !ValidarFecha() || !Valtel() || !Validardireccion() || !ValidaCiudad() || !validaProvincia() || !ValidaPais()) 
-        {
-           throw new Error(console.log(Error.value));
-           return;
-        };
+
+   
   }
 });
+
 

@@ -41,7 +41,7 @@ console.log(datos);
     const tbody = document.createElement("tbody");
     $table.appendChild(tbody);
 
-    datos.forEach(el => {
+    for( let el of datos) {
       
    
       
@@ -81,26 +81,9 @@ console.log(datos);
       $btnEdit.setAttribute("class", "edit");
       // creando el ipervinculo al editor con set!!  
       
-      //$btnEdit.setAttribute("href",`/Editar`);
+      $btnEdit.setAttribute("href",`/Editar?id=${el.Email}&desdepagina=/Homb`);
         
-      $btnEdit.addEventListener("click",async()=>{
-         try{
-
-           const res = await fetch("/Editar", {
-            method: "POST",
-            headers:{
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({Email: el.Email}),
-          });
-          const resultado = await res.json();
-         
-          console.log(resultado)
-        }catch(err){
-          
-          console.log(err.message)
-        }
-      })
+     
         
       // programamos el ipervinculo de eliminacion
       $btnDelet.addEventListener("click", (e)=>{
@@ -127,7 +110,7 @@ console.log(datos);
           if(aceptar){
             aceptar.addEventListener("click",()=>{
               
-              axios.delete(`${el.id}`)
+              axios.delete(`${el.Email}`)
               .then(res => location.reload())
               .catch(err => console.error(err))
             })
@@ -146,7 +129,7 @@ console.log(datos);
     fragment.appendChild($table);
     
     
-  });
+  }
   RecibeDatos.appendChild(fragment);
 }
 

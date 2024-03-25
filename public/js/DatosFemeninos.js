@@ -32,7 +32,7 @@ const res =  await axios.get("/Muj/clientesF")
     const tbody = document.createElement("tbody");
     $table.appendChild(tbody);
 
-    datos.forEach(el => {
+    for(let el of datos) {
       //encontrar la forma de que se creen los td en el trinea depndiendo de la cantidad de datos en e json
 
       let tr = tbody.insertRow();
@@ -72,7 +72,7 @@ const res =  await axios.get("/Muj/clientesF")
       $btnDelet.setAttribute("class", "del");
       $btnEdit.setAttribute("class", "edit");
       // creando el ipervinculo al editor con set!!    
-      $btnEdit.setAttribute("href", `Editar?id=${el.id}&desdepagina=Muj`);
+      $btnEdit.setAttribute("href", `/Editar?id=${el.Email}&desdepagina=/Muj`);
 
       // programamos el ipervinculo de eliminacion
       $btnDelet.addEventListener("click", (e) => {
@@ -99,7 +99,7 @@ const res =  await axios.get("/Muj/clientesF")
           if (aceptar) {
             aceptar.addEventListener("click", () => {
 
-              axios.delete(`Mujer/cientesF/${el.id}`)
+              axios.delete(`Mujer/cientesF/${el.Email}`)
                 .then(res => location.reload())
                 .catch(err => console.error(err))
             })
@@ -115,7 +115,7 @@ const res =  await axios.get("/Muj/clientesF")
       $fragment.appendChild($table);
 
 
-    })
+    }
     RecibeDatos.appendChild($fragment);
   }
 

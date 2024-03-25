@@ -65,7 +65,7 @@ const getDataM =  (req, res)=>{
 
 const getDataF =  (req, res)=>{
 
-    bd.DatosF(cliente)
+    bd.DatosF()
     .then(cliente =>{
         res.json(cliente);
     }).catch(err =>{
@@ -116,6 +116,11 @@ const datAEditar = async (req,res)=>{
     }
   
 }
+
+
+
+
+
 export default{
 	getForm, 
     getEdit,
@@ -126,4 +131,5 @@ export default{
     getDataF,
     ActualizarCliente,
     datAEditar,
+    
 };

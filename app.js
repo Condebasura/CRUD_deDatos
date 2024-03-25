@@ -47,6 +47,7 @@ app.get("/Muj/clientesF", FormController.getDataF);
 app.post("/Homb", FormController.IngresaCliente);
 app.post("/Muj", FormController.IngresaCliente);
 app.post("/Editar", FormController.datAEditar);
+//app.get("/Editar/Email", FormController.obtData)
 
 
 
