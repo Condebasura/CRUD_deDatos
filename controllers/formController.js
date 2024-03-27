@@ -91,13 +91,12 @@ const ActualizarCliente = async(req, res)=>{
     };
 
     try{
-          const datos = bd.EmailenUso(cliente);
-          if(datos === cliente.Email){
-            console.log(cliente.Email)
-          }
+         await bd.UpdateCliente(cliente);
+         res.status(200).json({message: "Datos actualizados correctamente , volviendo al listado"})
           
     }catch(error){
         console.log(error);
+        res.status(500).json({error: "Error al actualizar los datos"})
     }
 };
 

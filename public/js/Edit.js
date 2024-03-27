@@ -26,11 +26,12 @@ function changeDateFormat(date) {
     return `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
 }
 
-
 function revertDateFormat(date) {
    const dateParts = date.split("-");
    return `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
-}
+};
+
+
 // Funcion para obtener los datos por su id
 const obtenerDatos = async () => {
 
@@ -49,15 +50,7 @@ const obtenerDatos = async () => {
          body: JSON.stringify({Email: id}),
        });
        const resultado = await res.json();
-      console.log(resultado);
     
-     
-   
-     
-
-
-    
-       
            const perfil = await resultado;
            console.log(perfil);
            if (perfil.Nombre && perfil.Apellido && perfil.Email, perfil.Sexo && perfil.Edad && perfil.Direccion && perfil.Telefono && perfil.Ciudad && perfil.Provincia && perfil.Pais) {
@@ -237,22 +230,18 @@ pais.addEventListener("input", ValidaPais);
 form.addEventListener("submit", (e) => {
     // cancelamos el comportamiento por defecto del formulario
     e.preventDefault();
-       // tambien se cancela el envio del formulario si no se cumplen todas las validaciones
-       if (!validaNombre() || !validaApellido() || !validaEmail() || !Elsexo() || !ValidarFecha() || !Valtel() || !Validardireccion() || !ValidaCiudad() || !validaProvincia() || !ValidaPais()) 
-       {
-          e.preventDefault();
-          
-       };
+     
     
-if(e.target){
+const ActualizarDatos = async(nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais)=>{
 
+try{
 
-
+    
     const url = new URLSearchParams(window.location.search);
     const id = url.get("id");
     const DesdePagina = url.get("desdepagina");
     const EdicionFin = () =>  {
-
+        
         if(e.target.matches(".form_edit") ){
            
            let check = document.createElement("span");
@@ -269,12 +258,11 @@ if(e.target){
            console.log(DesdePagina);
            return window.location.assign(DesdePagina);    
                    
-           }
-//dependiendo de donde vengan los datos se actualizan y se regresa nuevamente a la pagina. 
+           }; 
    
 
     edad = changeDateFormat(edad);
-    return fetch(``, {
+    return fetch(`/Editar`, {
     method: "PUT",    
     headers: {
             "Content-type": "application/json"
@@ -282,6 +270,7 @@ if(e.target){
         body: JSON.stringify({ nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais })
     })
         .then(res => {
+            res.json();
       EdicionFin();
 
         })
@@ -289,11 +278,24 @@ if(e.target){
 
 
 
-    
+        }catch(err){
+            console.log(err.message)
+        }
+
+        // tambien se cancela el envio del formulario si no se cumplen todas las validaciones
+     if (!validaNombre() || !validaApellido() || !validaEmail() || !Elsexo() || !ValidarFecha() || !Valtel() || !Validardireccion() || !ValidaCiudad() || !validaProvincia() || !ValidaPais()) 
+     {
+        e.preventDefault();
+        
+     };
+
+
 
 
    
-  }
+  } 
+
+  ActualizarDatos(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value);
 });
 
 

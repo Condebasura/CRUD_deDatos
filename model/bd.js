@@ -94,11 +94,19 @@ const DatosF = () =>{
     
     const UpdateCliente = async (cliente)=>{
         try{
-             let stmt =  bd.prepare('UPDATE INTO clientes(Nombre ,Apellido , Email, Sexo, Edad , Telefono, Direccion , Ciudad , Provincia , Pais) VALUES(?,?,?,?,?,?,?,?,?,?)');
-             stmt.run(cliente.Nombre , cliente.Apellido , cliente.Email , cliente.Sexo , cliente.Edad, cliente.Telefono , cliente.Direccion , cliente.Ciudad , cliente.Provincia, cliente.Pais)
+             const sql = 'UPDATE clientes SET Nombre = ?, Apellido = ? , Sexo = ?, Edad = ?, Telefono = ?,  Direccion = ? , Ciudad = ?, Provincia = ? , Pais = ? WHERE Email = ? ';
+
+               bd.run(sql , [cliente.Nombre , cliente.Apellido , cliente.Sexo , cliente.Edad, cliente.Telefono , cliente.Direccion , cliente.Ciudad , cliente.Provincia, cliente.Pais ,cliente.Email ] , (err)=>{
+                if(err){
+                    console.log(err.message)
+                }else{
+                    console.log('Se actualizaron los datos correctamente');
+                    
+                }
+               } );
+             
     
-        stmt.finalize();
-        return "Cliente Actualizado con exito";
+        
     
         }catch(error){
             throw console.log(error);

@@ -174,10 +174,7 @@ formulario.addEventListener("submit", (e) => {
     // cancelamos el comportamiento por defecto
     e.preventDefault();
 
-    //si las validaciones no se cumplen se cancela el envio del formulario
-    if (!validaNombre() || !validaApellido() || !validaEmail() || !Elsexo() || !ValidarFecha() || !Valtel() || !Validardireccion() || !ValidaCiudad() || !validaProvincia() || !ValidaPais()) {
-        e.preventDefault();
-    }
+   
 
     // Funcion para cambiar l formato en que el archivo json recibe la fecha, de yyyy/mm/dd a dd/mm/yyyy
     function changeDateFormat(date) {
@@ -187,6 +184,7 @@ formulario.addEventListener("submit", (e) => {
 
     //Funcion para agregar los datos al json
     const addDatos = async (nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais) => {
+
         // ejecuta la funcion que cambia el formato de fecha en edad
         edad = changeDateFormat(edad);
 
@@ -276,7 +274,7 @@ formulario.addEventListener("submit", (e) => {
 
 
 
-    //RegEx para email (^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$)
+  
 
 
 
