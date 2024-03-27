@@ -176,6 +176,7 @@ formulario.addEventListener("submit", (e) => {
 
    
 
+
     // Funcion para cambiar l formato en que el archivo json recibe la fecha, de yyyy/mm/dd a dd/mm/yyyy
     function changeDateFormat(date) {
         const dateParts = date.split('-');
@@ -249,11 +250,12 @@ formulario.addEventListener("submit", (e) => {
                     Exito.textContent = data.mensaje;
                     Exito.setAttribute("class", "exito");
                     modal.showModal();
-
+                    
                     setTimeout(() => { modal.appendChild(Exito), location.reload(), 100000 });
                 }
                 else if(res.status === 409) {
                     const modal = document.getElementById("modal");
+                    modal.innerHTML = "";
                     const Exito = document.createElement("p");
                     Exito.textContent = data.mensaje;
                     Exito.setAttribute("class", "noexito");
@@ -268,19 +270,20 @@ formulario.addEventListener("submit", (e) => {
         } catch (error) {
             return console.log("Error del servidor", error)
         };
-
+        
     };
-
-
-
-
-  
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
     addDatos(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value);
+    
 
-
+    
 });
 
 

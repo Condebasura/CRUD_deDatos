@@ -22,7 +22,7 @@ const res =  await axios.get("/Muj/clientesF")
     const datos = res.data;
 
     // Metodo resumido utilizando for
-    const NombColumn = ["Nombre", "Apelido", "Email", "Sexo", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
+    const NombColumn = ["Nombre", "Apelido", "Email", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
     for (let i = 0; i < NombColumn.length; i++) {
       let total = NombColumn[i];
       let th_head = document.createElement("th");
@@ -39,7 +39,6 @@ const res =  await axios.get("/Muj/clientesF")
       let tdNonmb = tr.insertCell();
       let tdApll = tr.insertCell();
       let tdemail = tr.insertCell();
-      let tdSexo = tr.insertCell();
       let tdEdad = tr.insertCell();
       let tdTel = tr.insertCell();
       let tdDirec = tr.insertCell();
@@ -50,7 +49,6 @@ const res =  await axios.get("/Muj/clientesF")
       tdNonmb.textContent = el.Nombre;
       tdApll.textContent = el.Apellido;
       tdemail.textContent = el.Email;
-      tdSexo.textContent = el.Sexo;
       tdEdad.textContent = el.Edad;
       tdTel.textContent = el.Telefono;
       tdDirec.textContent = el.Direccion;
