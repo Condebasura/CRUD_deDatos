@@ -86,9 +86,21 @@ console.log(datos);
      
         
       // programamos el ipervinculo de eliminacion
-      $btnDelet.addEventListener("click", (e)=>{
+      $btnDelet.addEventListener("click", async (e)=>{
         e.preventDefault();
-        if(e.target.matches(".del")){
+        try{
+
+          if(e.target.matches(".del")){
+            const res = await fetch("/Homb/delete",{
+              method: "POST",
+              headers:{
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({Email: el.Email}),
+            });
+            const datos = await res.json();
+            
+
           let modal = document.getElementById("modal");
           let parrafo = document.createElement("h2");
           let cajaBtn = document.createElement("div");
@@ -99,7 +111,7 @@ console.log(datos);
           aceptar.setAttribute("class", "aceptar");
           cancelar.setAttribute("class", "cancelar");
           parrafo.innerHTML = `Se va a eliminar de su lista el cliente:<h1> ${el.Nombre} ${el.Apellido}</h1>`;
-          aceptar.textContent = "Eliminar";
+          aceptar.textContent = "Aceptar";
           cancelar.textContent = "Cancelar";
           modal.showModal();
           modal.innerHTML = "";
@@ -107,22 +119,35 @@ console.log(datos);
           cajaBtn.appendChild(aceptar);
           cajaBtn.appendChild(cancelar);
           modal.appendChild(cajaBtn);
-          if(aceptar){
-            aceptar.addEventListener("click",()=>{
-              
-              axios.delete(`${el.Email}`)
-              .then(res => location.reload())
-              .catch(err => console.error(err))
-            })
-            
+         aceptar.addEventListener("click", async ()=>{
+          try{
+
+               await fetch(`/Homb/delete`,{
+            method: "DELETE"
+           }); if(res.ok){
+             let modalDelete = document.getElementById("modal");
+             let parrafoDelete = document.createElement("p");
+             parrafoDelete.innerHTML = `El cliente ${el.Nombre} ${el.Apellido} fue eliminado con exito`;
+             modalDelete.showModal();
+             modalDelete.innerHTML = "";
+             modal.appendChild(parrafoDelete);
           }
-        cancelar.addEventListener("click",()=>{
-          modal.close();
-        })
-        
-        
-      }
-    })
+        }catch(error){
+          console.log("Error al enviar la solicitud DELETE", error)
+        }
+                           
+
+         })
+          cancelar.addEventListener("click",()=>{
+            modal.close();
+          })
+          
+          
+        }
+      }catch(err){
+        console.log(err.message)
+      };
+      })
     
     
   

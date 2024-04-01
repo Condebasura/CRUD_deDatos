@@ -113,7 +113,7 @@ const DatosF = () =>{
         }
     } 
 
-    const EditData =(Email)=>{
+    const validaDatos =(Email)=>{
 
         return new Promise((resolve , reject)=>{
     
@@ -136,6 +136,19 @@ const DatosF = () =>{
             });
         })
     };
+
+    const deleteCliente = (Email)=>{
+        
+            let sql = "DELETE FROM clientes WHERE Email = ?";
+            bd.run(sql , [Email], (err)=>{
+                if(err){
+                    console.log("Ocurrio un error al eliminar el cliente");
+                }else{
+                    console.log("Cliente eliminado con exito");
+                }
+            })
+        
+    }
    
    
 export default {
@@ -145,5 +158,6 @@ export default {
     DatosM,
     DatosF,
     UpdateCliente,
-    EditData,
+    validaDatos,
+    deleteCliente,
 }

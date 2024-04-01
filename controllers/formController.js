@@ -105,7 +105,7 @@ const ActualizarCliente = async(req, res)=>{
 const datAEditar = async (req,res)=>{
  try{
 
-     const validar = await bd.EditData(req.body.Email);
+     const validar = await bd.validaDatos(req.body.Email);
      if(validar){
          console.log(`Los datos de ${req.body.Email} coinciden con el de la bd`)
          res.json(validar);
@@ -116,6 +116,25 @@ const datAEditar = async (req,res)=>{
   
 }
 
+const EliminarCliente = async (req , res)=>{
+try{
+
+    const datos = await bd.validaDatos(req.body.Email);
+    if(datos){
+        console.log(`Los datos de ${req.body.Email} coinciden con el de la bd`)
+     res.json({datos});
+     if(res.status == 200){
+
+         await bd.deleteCliente(datos);
+         console.log(`Cliente con email ${req.body.Email} eliminado correctamente.`);
+        }
+    }
+
+}catch(err){
+    console.log(err.message)
+};
+
+}
 
 
 
@@ -130,5 +149,6 @@ export default{
     getDataF,
     ActualizarCliente,
     datAEditar,
+    EliminarCliente,
     
 };
