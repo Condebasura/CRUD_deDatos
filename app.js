@@ -48,8 +48,8 @@ app.post("/Homb", FormController.IngresaCliente);
 app.post("/Muj", FormController.IngresaCliente);
 app.post("/Editar", FormController.datAEditar);
 app.put("/Editar", FormController.ActualizarCliente);
-app.post("/Homb/delete", FormController.EliminarCliente);
-app.delete("Homb/delete", FormController.EliminarCliente);
+app.post("/Homb/delete", FormController.datAEditar);
+app.delete('/Homb/delete/:Email', FormController.EliminarCliente);
 
 
 

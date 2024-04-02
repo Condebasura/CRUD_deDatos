@@ -171,11 +171,9 @@ pais.addEventListener("input", ValidaPais);
 // Creamos la programacion de el evento submit
 formulario.addEventListener("submit", (e) => {
 
-    // cancelamos el comportamiento por defecto
+    // cancelamos el comportamiento por defecto 
     e.preventDefault();
-
-   
-
+ 
 
     // Funcion para cambiar l formato en que el archivo json recibe la fecha, de yyyy/mm/dd a dd/mm/yyyy
     function changeDateFormat(date) {
@@ -189,7 +187,7 @@ formulario.addEventListener("submit", (e) => {
         // ejecuta la funcion que cambia el formato de fecha en edad
         edad = changeDateFormat(edad);
 
-        // dependiendo de que sexo elijas, Masculino / Femenino, se envia en el archivo json
+        // dependiendo de que sexo elijas, Masculino / Femenino, se envia a la seccion correspondiente
         try {
 
             if (sexo == "Masculino") {
@@ -270,18 +268,14 @@ formulario.addEventListener("submit", (e) => {
         } catch (error) {
             return console.log("Error del servidor", error)
         };
+
         
     };
     
-    
-    
-    
-    
-    
-    
-    
+ 
     addDatos(nombre.value, apellido.value, email.value, sexo.value, edad.value, tel.value, direc.value, city.value, prov.value, pais.value);
     
+
 
     
 });

@@ -117,19 +117,11 @@ const datAEditar = async (req,res)=>{
 }
 
 const EliminarCliente = async (req , res)=>{
-try{
-
-    const datos = await bd.validaDatos(req.body.Email);
-    if(datos){
-        console.log(`Los datos de ${req.body.Email} coinciden con el de la bd`)
-     res.json({datos});
-     if(res.status == 200){
-
-         await bd.deleteCliente(datos);
-         console.log(`Cliente con email ${req.body.Email} eliminado correctamente.`);
-        }
-    }
-
+    
+    try{
+        let Email = await req.params.Email;
+     await bd.deleteCliente(Email);
+    console.log(`Cliente con email ${req.params.Email} eliminado correctamente.`);
 }catch(err){
     console.log(err.message)
 };

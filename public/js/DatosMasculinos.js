@@ -119,35 +119,42 @@ console.log(datos);
           cajaBtn.appendChild(aceptar);
           cajaBtn.appendChild(cancelar);
           modal.appendChild(cajaBtn);
-         aceptar.addEventListener("click", async ()=>{
-          try{
+          aceptar.addEventListener("click", async (e)=>{
+            e.preventDefault();
+            try{
 
-               await fetch(`/Homb/delete`,{
-            method: "DELETE"
-           }); if(res.ok){
-             let modalDelete = document.getElementById("modal");
+              let id = datos;
+              let Email = id.Email;
+              console.log('El id', Email);
+              
+             await fetch(`/Homb/delete/${Email}`,{
+                method: "DELETE",
+              }); 
+                let modalDelete = document.getElementById("modal");
              let parrafoDelete = document.createElement("p");
              parrafoDelete.innerHTML = `El cliente ${el.Nombre} ${el.Apellido} fue eliminado con exito`;
              modalDelete.showModal();
              modalDelete.innerHTML = "";
              modal.appendChild(parrafoDelete);
-          }
+             location.reload()
+          
         }catch(error){
           console.log("Error al enviar la solicitud DELETE", error)
         }
-                           
-
-         })
-          cancelar.addEventListener("click",()=>{
-            modal.close();
-          })
-          
-          
-        }
-      }catch(err){
-        console.log(err.message)
-      };
+        
+        
       })
+      cancelar.addEventListener("click",()=>{
+        modal.close();
+      })
+      
+    };
+      
+    }catch(err){
+      console.log(err.message)
+    }
+      
+    })
     
     
   
