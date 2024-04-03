@@ -70,16 +70,16 @@ const validaEmail = () => {
 email.addEventListener("input", validaEmail);
 
 const Elsexo = () => {
-    if (sexo.value == "") {
+    if(sexo === "Masculino") {
+        sexo = sexo.value;
+        return true;
+    }
+    if (sexo === "Femenino") {
+        sexo = sexo.value;
+        return true;
+    }
+    else if (sexo.value == "") {
         return false;
-    }
-    if (sexo.value == "Masculino") {
-        sexo = sexo.value;
-        return true;
-    }
-    if (sexo.value == "Femenino") {
-        sexo = sexo.value;
-        return true;
     }
 
 };
@@ -170,7 +170,6 @@ pais.addEventListener("input", ValidaPais);
 
 // Creamos la programacion de el evento submit
 formulario.addEventListener("submit", (e) => {
-
     // cancelamos el comportamiento por defecto 
     e.preventDefault();
  
@@ -189,19 +188,17 @@ formulario.addEventListener("submit", (e) => {
 
         // dependiendo de que sexo elijas, Masculino / Femenino, se envia a la seccion correspondiente
         try {
-
-            if (sexo == "Masculino") {
-                const res = await fetch(`/Homb`, {
+             
+            
+                const res = await fetch(`/Envio`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({ nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais })
                 })
-
-
-                const data = await res.json();
-               
+                  const data = await res.json();
+                 
                 
                 // si el status es ok al ingresar los datos aparece un aviso de que los datos an ingresados correctamente.
                 if (res.status === 200) {
@@ -225,46 +222,6 @@ formulario.addEventListener("submit", (e) => {
                     modal.showModal();
                     modal.appendChild(Exito);
                 }
-            }
-
-
-
-
-
-
-            if (sexo == "Femenino") {
-                const res = await fetch(`/Muj`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ nombre, apellido, email, sexo, edad, tel, direc, city, prov, pais })
-                })
-                const data = await res.json();
-
-                if (res.status === 200) {
-                    const modal = document.getElementById("modal");
-                    const Exito = document.createElement("p");
-                    Exito.textContent = data.mensaje;
-                    Exito.setAttribute("class", "exito");
-                    modal.showModal();
-                    
-                    setTimeout(() => { modal.appendChild(Exito), location.reload(), 100000 });
-                }
-                else if(res.status === 409) {
-                    const modal = document.getElementById("modal");
-                    modal.innerHTML = "";
-                    const Exito = document.createElement("p");
-                    Exito.textContent = data.mensaje;
-                    Exito.setAttribute("class", "noexito");
-                    modal.showModal();
-                    modal.appendChild(Exito);
-                   
-                }
-
-
-
-            }
         } catch (error) {
             return console.log("Error del servidor", error)
         };
