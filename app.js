@@ -22,9 +22,12 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(helmet({ contentSecurityPolicy:{
   directives:{
-    defaultSrc:["'self' https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"],
-    scriptSrc: [ "'self' https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js "],
+    defaultSrc:["'self' https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js https://kit.fontawesome.com/523f183385.js"],
+    
    
+    scriptSrc: [ "'self' https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js https://kit.fontawesome.com/523f183385.js "],
+   
+ 
 
   }
 }}));
@@ -48,7 +51,9 @@ app.post("/Envio", FormController.IngresaCliente);
 app.post("/Editar", FormController.datAEditar);
 app.put("/Editar", FormController.ActualizarCliente);
 app.post("/Homb/delete", FormController.datAEditar);
+app.post("/Muj/delete", FormController.datAEditar);
 app.delete('/Homb/delete/:Email', FormController.EliminarCliente);
+app.delete('/Muj/delete/:Email', FormController.EliminarCliente);
 
 
 

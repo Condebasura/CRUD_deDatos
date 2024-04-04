@@ -99,8 +99,7 @@ console.log(datos);
               body: JSON.stringify({Email: el.Email}),
             });
             const datos = await res.json();
-            
-
+      
           let modal = document.getElementById("modal");
           let parrafo = document.createElement("h2");
           let cajaBtn = document.createElement("div");
@@ -119,24 +118,22 @@ console.log(datos);
           cajaBtn.appendChild(aceptar);
           cajaBtn.appendChild(cancelar);
           modal.appendChild(cajaBtn);
+          
           aceptar.addEventListener("click", async (e)=>{
             e.preventDefault();
             try{
 
               let id = datos;
-              let Email = id.Email;
-              console.log('El id', Email);
-              
+              let Email = id.Email; 
+              let modalDelete = document.getElementById("modal");
+           let parrafoDelete = document.createElement("p");
+           parrafoDelete.innerHTML = `El cliente ${el.Nombre} ${el.Apellido} fue eliminado con exito`;
+           modalDelete.showModal();
+           modalDelete.innerHTML = "";
+           setTimeout(() => { modalDelete.appendChild(parrafoDelete), location.reload(), 100000 });  
              await fetch(`/Homb/delete/${Email}`,{
                 method: "DELETE",
               }); 
-                let modalDelete = document.getElementById("modal");
-             let parrafoDelete = document.createElement("p");
-             parrafoDelete.innerHTML = `El cliente ${el.Nombre} ${el.Apellido} fue eliminado con exito`;
-             modalDelete.showModal();
-             modalDelete.innerHTML = "";
-             modal.appendChild(parrafoDelete);
-             location.reload()
           
         }catch(error){
           console.log("Error al enviar la solicitud DELETE", error)

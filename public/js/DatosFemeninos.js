@@ -33,7 +33,7 @@ const res =  await axios.get("/Muj/clientesF")
     $table.appendChild(tbody);
 
     for(let el of datos) {
-      //encontrar la forma de que se creen los td en el trinea depndiendo de la cantidad de datos en e json
+     
 
       let tr = tbody.insertRow();
       let tdNonmb = tr.insertCell();
@@ -73,9 +73,21 @@ const res =  await axios.get("/Muj/clientesF")
       $btnEdit.setAttribute("href", `/Editar?id=${el.Email}&desdepagina=/Muj`);
 
       // programamos el ipervinculo de eliminacion
-      $btnDelet.addEventListener("click", (e) => {
+      $btnDelet.addEventListener("click", async (e) => {
         e.preventDefault();
+        try{
+
+        
         if (e.target.matches(".del")) {
+          const res = await fetch("/Muj/delete",{
+            method: "POST",
+            headers:{
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({Email: el.Email}),
+          });
+          const datos = await res.json();
+
           let modal = document.getElementById("modal");
           let parrafo = document.createElement("h2");
           let cajaBtn = document.createElement("div");
@@ -86,7 +98,7 @@ const res =  await axios.get("/Muj/clientesF")
           aceptar.setAttribute("class", "aceptar");
           cancelar.setAttribute("class", "cancelar");
           parrafo.innerHTML = `Se va a eliminar de su lista el cliente: <h1>${el.Nombre} ${el.Apellido}</h1>`;
-          aceptar.textContent = "Eliminar";
+          aceptar.textContent = "Aceptar";
           cancelar.textContent = "Cancelar";
           modal.showModal();
           modal.innerHTML = "";
@@ -94,19 +106,34 @@ const res =  await axios.get("/Muj/clientesF")
           cajaBtn.appendChild(aceptar);
           cajaBtn.appendChild(cancelar);
           modal.appendChild(cajaBtn);
-          if (aceptar) {
-            aceptar.addEventListener("click", () => {
 
-              axios.delete(`Mujer/cientesF/${el.Email}`)
-                .then(res => location.reload())
-                .catch(err => console.error(err))
-            })
-
-          }
+            aceptar.addEventListener("click", async (e) => {
+               e.preventDefault();
+               try{
+                let id = datos;
+                let Email = id.Email;
+                let modalDelete = document.getElementById("modal");
+                let parrafoDelete = document.createElement("p");
+                parrafoDelete.innerHTML = `El cliente ${el.Nombre} ${el.Apellido} fue eliminado con exito`;
+                modalDelete.showModal();
+                modalDelete.innerHTML = "";
+                setTimeout(() => { modalDelete.appendChild(parrafoDelete), location.reload(), 100000 });  
+                  await fetch(`/Muj/delete/${Email}`,{
+                     method: "DELETE",
+                   }); 
+               }catch(error){
+                console.log("Error al enviar la solicitud DELETE", error);
+               }
+             
+              });
+              
           cancelar.addEventListener("click", () => {
             modal.close();
           })
         }
+      }catch(err){
+        console.log(err.message)
+      }
       })
 
 
