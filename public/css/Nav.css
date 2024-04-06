@@ -23,7 +23,7 @@
     padding: .1em .3em;}
 
 
-   .equis, .barra {
+    .fa-bars-staggered , .fa-bars{
        align-items: center;
        color:rgba(23, 92, 241, 0.637) ;
        cursor: pointer;

@@ -22,12 +22,12 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(helmet({ contentSecurityPolicy:{
   directives:{
-    defaultSrc:["'self' https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js https://kit.fontawesome.com/523f183385.js"],
+    defaultSrc:["'self'"],
     
    
-    scriptSrc: [ "'self' https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js https://kit.fontawesome.com/523f183385.js "],
+    scriptSrc: [ "'self'" , "https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js" , "https://kit.fontawesome.com/523f183385.js "],
    
- 
+    styleSrc: ["'self'", "https://kit.fontawesome.com/523f183385.js"]
 
   }
 }}));
