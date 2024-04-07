@@ -2,15 +2,14 @@ extends layout
 
 block content
   nav.box_ul
-   li.logo
-    h1.titulo= logo
-   li.Ingreso
-    a(class="Estas_en", href="/")= EstasEn
-   div(class="fa-solid fa-bars")
-    ul(class="sex_off") 
-     li.sex_container
-      a(class="sexo" , href="Homb")= SexoM
-      a(class="sexo" , href="Muj")= SexoF
+    div.logo  
+    li.Ingreso
+     a(class="Estas_en", href="/")= EstasEn
+    div(class="fa-solid fa-bars") 
+       ul(class="sex_off") 
+         li.sex_container
+           a(class="sexo" , href="Homb")= SexoM
+           a(class="sexo" , href="Muj")= SexoF
   dialog#modal
   form(class="form", data-form)
     label(for="name") Nombre

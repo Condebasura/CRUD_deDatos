@@ -6,6 +6,7 @@ import morgan from "morgan";
 import {fileURLToPath} from "url";
 import FormController from "./controllers/formController.js";
 import bd from "./model/bd.js";
+
 //const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const __dirname = (process.platform === "win32")? fileURLToPath(new URL(".", import.meta.url)):path.dirname(new URL(import.meta.url).pathname);
 const app = express();
@@ -25,9 +26,11 @@ app.use(helmet({ contentSecurityPolicy:{
     defaultSrc:["'self'"],
     
    
-    scriptSrc: [ "'self'" , "https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js" , "https://kit.fontawesome.com/523f183385.js "],
+    scriptSrc: [ "'self'" , "https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js" , "'unsafe-inline'"],
    
-    styleSrc: ["'self'", "https://kit.fontawesome.com/523f183385.js"]
+    styleSrc: ["'self'", "https://kit.fontawesome.com/523f183385.js","https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" ,"'unsafe-inline'"],
+
+    fontSrc: ["'self'", "https://kit.fontawesome.com", "https://maxcdn.bootstrapcdn.com"],
 
   }
 }}));

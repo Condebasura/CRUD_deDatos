@@ -1,11 +1,11 @@
 /*barra de navegacion*/
 *
 .box_ul{
-    box-shadow: 1px 2px 10px   #7083f0a9 ;
+    box-shadow: 1px 2px 10px   #7083f065 ;
     display: grid;
     grid-template-columns: 2fr 1fr 2fr;
     list-style-type: none;
-    padding: 2.5em;
+    padding: .6em;
     text-align: center;
     width: 100% ;
     
@@ -13,14 +13,16 @@
  
     
 }
-.titulo{
-    background-color: rgba(23, 92, 241, 0.637);
-    border-radius: .4em;
-    box-shadow: 1px 1px 12px  rgba(78, 77, 76, 0.589);
+.logo{
+  background: url("/img/crud.svg") no-repeat  ;
+  background-size: cover;
+  background-position: center;
+  width: 7vmin;
     color: white;
-    font-size: 35px;
+    font-size: 16em;
     font-style: italic;
-    padding: .1em .3em;}
+    padding-top: 7vmin ;
+border-radius: 50%;}
 
 
     .fa-bars-staggered , .fa-bars{
@@ -36,8 +38,9 @@
 
 .Estas_en{
     color: tomato;
-    font-size: 25px;
+    font-size: 19px;
     text-decoration: none;
+    padding-top: 3px;
 }
 
 .sexo, .ing {
