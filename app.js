@@ -28,9 +28,9 @@ app.use(helmet({ contentSecurityPolicy:{
    
     scriptSrc: [ "'self'" , "https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js" , "'unsafe-inline'"],
    
-    styleSrc: ["'self'", "https://kit.fontawesome.com/523f183385.js","https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" ,"'unsafe-inline'"],
+    styleSrc: ["'self'", "https://kit.fontawesome.com/523f183385.js","https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.0/css/all.min.css" ,"'unsafe-inline'"],
 
-    fontSrc: ["'self'", "https://kit.fontawesome.com", "https://maxcdn.bootstrapcdn.com"],
+    fontSrc: ["'self'", "https://kit.fontawesome.com/", "https://maxcdn.bootstrapcdn.com/", "cdnjs.cloudflare.com"],
 
   }
 }}));

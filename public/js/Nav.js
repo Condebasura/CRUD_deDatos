@@ -7,7 +7,7 @@ btn_ir.addEventListener("click", (e) => {
         sexo.classList.remove("sex_off");
         sexo.classList.add("sex_on");
         btn_ir.classList.remove("fa-bars");
-        btn_ir.classList.add("fa-bars-staggered");
+        btn_ir.classList.add("fa-stream");
         
            
           
@@ -17,7 +17,7 @@ btn_ir.addEventListener("click", (e) => {
                 
             sexo.classList.remove("sex_on");
             sexo.classList.add("sex_off");
-            btn_ir.classList.remove("fa-bars-staggered");
+            btn_ir.classList.remove("fa-stream");
             btn_ir.classList.add("fa-bars");
       
     }
@@ -28,7 +28,7 @@ btn_ir.addEventListener("click", (e) => {
             
             sexo.classList.remove("sex_on");
             sexo.classList.add("sex_off");
-            btn_ir.classList.remove("fa-bars-staggered");
+            btn_ir.classList.remove("fa-stream");
             btn_ir.classList.add("fa-bars");
             
           

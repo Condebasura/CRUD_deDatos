@@ -25,7 +25,8 @@
 border-radius: 50%;}
 
 
-    .fa-bars-staggered , .fa-bars{
+    .fa-stream , .fa-bars{
+        justify-content: center;
        align-items: center;
        color:rgba(23, 92, 241, 0.637) ;
        cursor: pointer;
@@ -36,11 +37,21 @@ border-radius: 50%;}
             
 }
 
+
+.Ingreso{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 .Estas_en{
     color: tomato;
     font-size: 19px;
     text-decoration: none;
-    padding-top: 3px;
+
+    
 }
 
 .sexo, .ing {
@@ -129,7 +140,9 @@ footer{
     
     .sig{
         font-size: 20px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       
+    }
     
     .der{font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
 
