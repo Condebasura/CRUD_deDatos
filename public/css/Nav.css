@@ -25,7 +25,20 @@
 border-radius: 50%;}
 
 
-    .fa-stream , .fa-bars{
+    .fa-stream {  
+        justify-content: center;
+       align-items: center;
+       color:rgba(80, 131, 243, 0.637) ;
+       cursor: pointer;
+       font-size: 25px;
+       list-style-type: none;
+       margin-top: .6em;
+       text-align: center;
+       text-shadow: 1px 1px 12px rgba(190, 187, 187, 0.795);
+    } 
+    
+    .fa-bars{
+        display: flex;
         justify-content: center;
        align-items: center;
        color:rgba(23, 92, 241, 0.637) ;
@@ -36,6 +49,9 @@ border-radius: 50%;}
        text-shadow: 1px 1px 12px rgba(148, 146, 146, 0.795);
             
 }
+
+
+
 
 
 .Ingreso{
@@ -75,6 +91,7 @@ border-radius: 50%;}
    flex-direction: column;
    justify-content: center;
    position: absolute;
+   margin-bottom: .7em;
     
     
     
