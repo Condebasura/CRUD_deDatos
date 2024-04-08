@@ -30,9 +30,9 @@ border-radius: 50%;}
        align-items: center;
        color:rgba(80, 131, 243, 0.637) ;
        cursor: pointer;
-       font-size: 25px;
+       font-size: 20px;
        list-style-type: none;
-       margin-top: .6em;
+       margin-top: .8em;
        text-align: center;
        text-shadow: 1px 1px 12px rgba(190, 187, 187, 0.795);
     } 
@@ -43,7 +43,7 @@ border-radius: 50%;}
        align-items: center;
        color:rgba(23, 92, 241, 0.637) ;
        cursor: pointer;
-       font-size: 25px;
+       font-size: 20px;
        list-style-type: none;
        text-align: center;
        text-shadow: 1px 1px 12px rgba(148, 146, 146, 0.795);
@@ -148,16 +148,19 @@ footer{
     
     .fa-linkedin , .fa-hashtag{
         color: white;
-        font-size:  30px;
-        margin-right: 5px;
+        font-size:  24px;
+        margin-left: .3em;
         position: relative;left: 2px;
         text-decoration: none;
         top: 5px;
     }
     
     .sig{
-        font-size: 20px;
+        
+        font-size: 16px;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin-left: 2em;
+       
        
     }
     
