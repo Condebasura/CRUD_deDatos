@@ -1,5 +1,6 @@
 // se crea una variable para cada imput del formulario
-const form = document.querySelector("[data-Edit]");
+const formulario = document.querySelector("[data-Edit]");
+const form2 = document.querySelector(".form_edit2");
 const nombre = document.querySelector(".nombre");
 const apellido = document.querySelector(".ap");
 const  email = document.querySelector(".mail");
@@ -10,6 +11,8 @@ const direc = document.querySelector(".direc");
 const city = document.querySelector(".city");
 const prov = document.querySelector(".prov");
 const pais = document.querySelector(".pais");
+const siguiente = document.querySelector(".siguiente");
+const atras = document.querySelector(".atras");
 // Se crean  RegEx
 
 //  Para emails.
@@ -226,8 +229,27 @@ const ValidaPais = () => {
 
 pais.addEventListener("input", ValidaPais);
 
+siguiente.addEventListener("click", (e)=>{
+    e.preventDefault();
+    if(e.target){
+      
+      form2.style.display = "grid";
+      formulario.style.display = "none";
+
+    }
+});
+
+atras.addEventListener("click", (e)=>{
+    e.preventDefault();
+    if(e.target.matches(".atras")){
+        form2.style.display = "none";
+      formulario.style.display = "grid";
+    }
+});
+
 // iniciamos la programacion del evento submit
-form.addEventListener("submit", (e) => {
+
+form2.addEventListener("submit", (e) => {
     // cancelamos el comportamiento por defecto del formulario
     e.preventDefault();
      
@@ -242,11 +264,11 @@ try{
     const DesdePagina = url.get("desdepagina");
     const EdicionFin = () =>  {
         
-        if(e.target.matches(".form_edit") ){
+        if(e.target.matches(".form_edit2") ){
            
            let check = document.createElement("span");
             let parrafoModal = document.createElement("p");
-            check.setAttribute("class", "fa-sharp fa-solid fa-check")
+            check.setAttribute("class", "fas fa-check")
             parrafoModal.setAttribute("class", "p_modal-edit");
             parrafoModal.textContent = `Edición Finalizada!! Volviendo al Listado` ;
              let modal = document.getElementById("modal");

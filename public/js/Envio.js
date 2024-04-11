@@ -1,5 +1,6 @@
 // creacion de variables para los diferentes imputs del formulario
 const formulario = document.querySelector(".form");
+const form2 = document.querySelector(".form2");
 const nombre = document.querySelector(".nombre");
 const apellido = document.querySelector(".ap");
 const email = document.querySelector(".mail");
@@ -13,6 +14,8 @@ const pais = document.querySelector(".pais");
 let Hombre = document.querySelector("[data-hombre]");
 let Mujer = document.querySelector("[data-mujer]");
 const btn_submit = document.querySelector(".btnEnv");
+const siguiente = document.querySelector(".siguiente");
+const atras = document.querySelector(".atras");
 // Se crean  RegEx
 
 //  Para emails.
@@ -167,12 +170,31 @@ const ValidaPais = () => {
 };
 
 pais.addEventListener("input", ValidaPais);
+// configuramos el boton siguiente y atras
+
+siguiente.addEventListener("click", (e)=>{
+    e.preventDefault();
+    if(e.target){
+      
+      form2.style.display = "grid";
+      formulario.style.display = "none";
+
+    }
+});
+
+atras.addEventListener("click", (e)=>{
+    e.preventDefault();
+    if(e.target.matches(".atras")){
+        form2.style.display = "none";
+      formulario.style.display = "grid";
+    }
+});
 
 // Creamos la programacion de el evento submit
-formulario.addEventListener("submit", (e) => {
+form2.addEventListener("submit", (e) => {
     // cancelamos el comportamiento por defecto 
     e.preventDefault();
- 
+   
 
     // Funcion para cambiar l formato en que el archivo json recibe la fecha, de yyyy/mm/dd a dd/mm/yyyy
     function changeDateFormat(date) {
@@ -188,7 +210,7 @@ formulario.addEventListener("submit", (e) => {
 
         // dependiendo de que sexo elijas, Masculino / Femenino, se envia a la seccion correspondiente
         try {
-             
+           
             
                 const res = await fetch(`/Envio`, {
                     method: "POST",

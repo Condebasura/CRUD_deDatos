@@ -25,6 +25,8 @@ block content
      option(value='Femenino') Femenino
     label(for="Nacimiento") Fecha de Nacimiento 
     input(type="date", pattern="\d{2}/\d{2}/\d{4}", class="naci", id="Nacimiento", required , data-naciminto)
+    button( class="siguiente", type='click') Siguiente
+  form(class="form2") 
     label(for="telefono") Telefono 
     input(type="number", id="telefono", class="tel", placeholder="N° sin el 15, solo cod de area", maxlength="12", data-telefono, required)       
     label(for="direccion") Direccion 
@@ -35,6 +37,7 @@ block content
     input(type="text", id="Provincia", class="prov", data-provincia , required)
     label(for="Pais") Pais 
     input(type="text", id="Pais", class="pais", data-pais, required)
+    button(type="click", class="atras") Atras     
     button(type="submit", class="btnEnv") Enviar     
   footer
    br

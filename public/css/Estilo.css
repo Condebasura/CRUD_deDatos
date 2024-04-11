@@ -39,8 +39,9 @@ body{
 
 }
 
-.form,
+.form, 
 .form_edit {
+    animation: fadeCH 1.5s ;
     background-color: rgba(23, 92, 241, 0.637);
     border-radius: 2em;
     box-shadow: 1px 2px 16px 2px rgb(158, 98, 30);
@@ -52,9 +53,34 @@ body{
     margin-top: 3em;
     padding: 4em;
     text-align: center;
+}@keyframes fadeCH{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
 }
 
-
+.form2, .form_edit2{
+    animation: fadeIn 1.5s ;
+    background-color: rgba(23, 92, 241, 0.637);
+    border-radius: 2em;
+    box-shadow: 1px 2px 16px 2px rgb(158, 98, 30);
+    display: none;
+    grid-template-columns: 3fr 3fr;
+    gap: 35px;
+    justify-content: center;
+    max-width: max-content;
+    margin-top: 3em;
+    padding: 4em;
+    text-align: center;99
+}@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }to{
+      opacity: 1;
+    }
+}
 
 label {
     color: white;
@@ -88,7 +114,7 @@ outline: none;
 }
 
 
-.btnEnv,
+.btnEnv,.siguiente, .atras,  
 .btn_end {
     background-color: rgba(36, 197, 21, 0.952);
     border-radius: 0.4em;
@@ -116,7 +142,7 @@ outline: none;
 
 }
 
-.btnEnv:active,
+.btnEnv:active,.siguiente:active, .atras:active,
 .btn_end:active {
     box-shadow: 2px 2px 8px 2px #1d1b1b44;
 
