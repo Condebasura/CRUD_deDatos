@@ -139,6 +139,7 @@ border-radius: 50%;}
 /*Pie de pagina*/
 
 footer{
+
     background-color: #000000c9;
     border-top-color: rgb(241, 102, 10);
     border-top-style: solid;
@@ -147,6 +148,7 @@ footer{
     margin: 14em 0 -1em 0 ;
     max-width:  100%;
     text-align: center;
+   
 }
     
     .fa-linkedin , .fa-hashtag{
