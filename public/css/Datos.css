@@ -2,13 +2,14 @@
 .recibe{
     display: grid;
     grid-template-columns: 1fr;
-   
+    
 }
 
 .fa-circle-notch {
-    margin-top: 5em;
-    width: 56px;
-    height: 56px;
+    margin-top: 6em;
+    margin-bottom:  6em;
+    width: 65px;
+    height: 65px;
     display: grid;
     animation: spinner-plncf9 4s infinite;
  }

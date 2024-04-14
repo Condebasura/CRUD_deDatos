@@ -22,7 +22,7 @@ const atras = document.querySelector(".atras");
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Para solo letras.
-const regexLetras = /[a-z A-Z\\s]+/gu;
+const regexLetras = /[a-z A-Z\\s].+/;
 
 // Para letras y hasta 5 digitos, para direccion.
 

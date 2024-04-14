@@ -1,5 +1,9 @@
 /*barra de navegacion*/
-*
+
+
+body{
+    margin: 0% auto;
+}
 .box_ul{
     box-shadow: 1px 2px 10px   #7083f065 ;
     display: grid;
@@ -145,7 +149,7 @@ footer{
     border-top-style: solid;
     color: cornsilk;
     height: 8em;
-    margin:  2em 0 -1px 0 ;
+    margin:  14em 0 -1px 0 ;
     max-width:  100%;
     text-align: center;
    
