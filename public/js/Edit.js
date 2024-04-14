@@ -273,12 +273,10 @@ try{
             parrafoModal.textContent = `Edición Finalizada!! Volviendo al Listado` ;
              let modal = document.getElementById("modal");
              modal.showModal();
-             modal.appendChild(check);
-             modal.appendChild(parrafoModal);
+            setTimeout(() =>{ modal.appendChild(check) , modal.appendChild(parrafoModal),window.location.assign(DesdePagina)  , 150000 });
             
            }
-           console.log(DesdePagina);
-           return window.location.assign(DesdePagina);    
+          
                    
            }; 
    

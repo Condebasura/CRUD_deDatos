@@ -28,15 +28,18 @@ console.log(datos);
 
     // Creamos las columnas cabecera de los datos que se van a ingresar utilizando for.
 
-    
+  
     const NombColumn = ["Nombre", "Apelido","Email", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
-   
+    const loader = document.createElement("div");
+    loader.setAttribute("class", "fas fa-circle-notch"); 
+    RecibeDatos.appendChild(loader);
     for (let i = 0; i < NombColumn.length; i++) {
       let total = NombColumn[i];
       let th_head = document.createElement("th");
 
       $tr_head.appendChild(th_head);
       th_head.textContent = total;
+      
     }
     const tbody = document.createElement("tbody");
     $table.appendChild(tbody);
@@ -67,12 +70,23 @@ console.log(datos);
        tdProv.textContent = el.Provincia;
        tdPais.textContent = el.Pais;
       tr.setAttribute("class", "linea");
+      tdNonmb.setAttribute("title", el.Nombre);
+      tdApll.setAttribute("title", el.Apellido);
+      tdemail.setAttribute("title", el.Email);
+      tdEdad.setAttribute("title", el.Edad);
+      tdTel.setAttribute("title", el.Telefono);
+      tdDirec.setAttribute("title", el.Direccion);
+      tdCity.setAttribute("title", el.Ciudad);
+      tdProv.setAttribute("title", el.Provincia)
+      tdPais.setAttribute("title", el.Pais);
       tbody.appendChild(tr);
     
       let Edit = tr.insertCell();
       let Delet = tr.insertCell();
       let $btnEdit = document.createElement("a");
       let $btnDelet = document.createElement("a");
+      Edit.setAttribute("title", "Editar");
+      Delet.setAttribute("title", "Eliminar");
       Edit.appendChild($btnEdit);
       Delet.appendChild($btnDelet);
       $btnDelet.textContent = "Eliminar";
@@ -159,6 +173,7 @@ console.log(datos);
     
     
   }
+  RecibeDatos.removeChild(loader);
   RecibeDatos.appendChild(fragment);
 }
 

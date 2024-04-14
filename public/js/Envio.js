@@ -239,10 +239,18 @@ form2.addEventListener("submit", (e) => {
                     const modal = document.getElementById("modal");
                     modal.innerHTML = "";
                     const Exito = document.createElement("p");
+                    const salir = document.createElement("i");
+                    salir.setAttribute("class", "fas fa-times-circle");
                     Exito.innerHTML = data.mensaje;
                     Exito.setAttribute("class", "noexito");
                     modal.showModal();
+                    modal.appendChild(salir);
                     modal.appendChild(Exito);
+                    salir.addEventListener("click", (e)=>{
+                        if(e.target){
+                            modal.close();
+                        }
+                    })
                 }
         } catch (error) {
             return console.log("Error del servidor", error)

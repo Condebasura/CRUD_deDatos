@@ -186,6 +186,10 @@ border:1px solid #585857;
     border-style: none;
 }
 
+.fa-times-circle{
+    position: absolute;right: 2px; top: 2px;
+    color: red;
+}
 
 .error {
     color: red;
