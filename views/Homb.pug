@@ -1,0 +1,28 @@
+extends layout 
+block content 
+ nav.box_ul 
+   div.logo 
+   li.Ingreso 
+    a(class="Estas_en" ,href="Homb")= EstasEn 
+   div(class="fas fa-bars")
+     ul.sex_off 
+      li.sex_container
+        a(class="ing" , href="/")= Ingreso 
+        a(class="sexo", data-mujer href="Muj")= SexoF 
+ div(class="recibe" data-recibe)
+ dialog#modal 
+ footer
+   br
+   br
+   span.sig
+    | Contacto:
+    a.fab.fa-linkedin(href='https://www.linkedin.com/in/pablo-c%C3%A9sar-zabala-51055b1bb')
+    a.fas.fa-hashtag(href='https://instagram.com/condebasura?utm_source=qr&igshid=NGExMmI2YTkyZg%3D%3D' target='_blank')
+   br
+   br
+   p.der Pablo C. Zabala &copy; 2024 
+   script(src="/js/Nav.js")
+   script(type="module", src="/js/DatosMasculinos.js")
+   script(src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js")
+   
+      

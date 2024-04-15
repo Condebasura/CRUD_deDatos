@@ -1,0 +1,57 @@
+extends layout 
+block content 
+ nav.box_ul
+   div.logo  
+   li.Ingreso 
+    a(class="Estas_en" , href="Editar")= EstasEn
+   div(class="fas fa-bars")
+    ul.sex_off 
+     li.sex_container 
+      a(class="ing", href="/")= Ingreso 
+      a(class="sexo" , data-hombre , href="Homb")= SexoM 
+      a(class="sexo" , data-mujer , href="Muj")= SexoF 
+ dialog#modal 
+ form(class="form_edit" , data-Edit)
+   label(for="name") Nombre 
+   input(type="text", id="name" , class="nombre", placeholder="Ingresa tu Nombre" , required , data-Nombre)
+   label(for="apellido") Apellido 
+   input(type="text" , id="apellido", class="ap", placeholder="Ingresa tu Apellido",  required, data-apelido ) 
+   label(for="email") Email 
+   input(type="email" , class="mail" , id="email" , placeholder="ejemplo@algo.com" , data-email , required, readonly)
+   label(for="sexo") Sexo 
+   select(name="sexo", id="sexo", class="sex" , required,data-sexo)
+    option(value="") - -- -
+    option(value="Masculino") Masculino 
+    option(value="Femenino") Femenino
+   label(for="Nacimiento") Fecha de Nacimiento
+   input(type="date" , pattern="\d{2}/\d{2}/\d{4}" , class="naci" , id="Nacimiento", required , data-nacimiento)
+   button( class="siguiente", type='click') Siguiente
+   
+ form(class="form_edit2") 
+   label(for="telefono") Telefono 
+   input(type="number", id="telefono", class="tel", data-telefono , required)
+   label(for="direccion") Direccion 
+   input(type="text", id="direccion", name="direccion", class="direc",    data-direccion , required)
+   label(for="Ciudad") Ciudad 
+   input(type="text", id="Ciudad" , class="city", data-ciudad , required) 
+   label(for="Provincia") Provincia
+   input(type="text", id="Provincia", class="prov", data-provincia , required)
+   label(for="pais") Pais 
+   input(type="text", name="Pais", id="pais" , class="pais", data-pais , required)
+   button(type="click", class="atras") Atras     
+   button(type="submit" class="btn_end") Finalizar Edicion
+ footer
+   br
+   br
+   span.sig
+    | Contacto:
+    a.fab.fa-linkedin(href='https://www.linkedin.com/in/pablo-c%C3%A9sar-zabala-51055b1bb')
+    a.fas.fa-hashtag(href='https://instagram.com/condebasura?utm_source=qr&igshid=NGExMmI2YTkyZg%3D%3D' target='_blank')
+   br
+   br
+   p.der Pablo C. Zabala &copy; 2024  
+
+
+ script( src="/js/Nav.js") 
+ script( type="module", src="/js/Edit.js") 
+ script(src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js")
