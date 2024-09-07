@@ -72,10 +72,17 @@ const getDataF =  (req, res)=>{
         console.log(err.message)
     })
 
- 
-
-
 };
+ 
+    
+const filterDataF = async (req ,res) =>{
+   const cliente = {
+    apellido: req.body.filtro,
+   }
+   console.log(cliente.apellido)
+}
+
+
 const ActualizarCliente = async(req, res)=>{
     let cliente = {
       Nombre: req.body.nombre,
@@ -139,6 +146,7 @@ export default{
     IngresaCliente,
     getDataM,
     getDataF,
+    filterDataF,
     ActualizarCliente,
     datAEditar,
     EliminarCliente,

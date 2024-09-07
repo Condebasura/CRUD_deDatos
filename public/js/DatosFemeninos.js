@@ -1,5 +1,6 @@
 const RecibeDatos = document.querySelector("[data-recibe]"),
-
+fiter = document.querySelector(".filter"),
+formBuscar = document.querySelector(".formFilter"),
   $fragment = document.createDocumentFragment();
 
 
@@ -164,3 +165,18 @@ const res =  await axios.get("/Muj/clientesF")
 };
 
 getDatos();
+
+
+formBuscar.addEventListener("submit",async (e)=>{
+  e.preventDefault();
+  if(e.target){
+    const res = await fetch("/Muj/clentesF/filter" , {
+      method: "GET",
+      headers:{ "Content-Type": "application/json",
+      },
+      body: JSON.stringify(fiter),
+    })
+    let datos = await res.text();
+    console.log(datos);
+  }
+})

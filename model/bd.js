@@ -75,7 +75,9 @@ const DatosM = () =>{
  
     
 
-}
+};
+
+
 
 const DatosF = () =>{
 
@@ -90,6 +92,24 @@ const DatosF = () =>{
            }
        })
     })  
+};
+
+const filDatosFemeninos = () =>{
+    return new Promise((resolve , reject)=>{
+        let sql = 'SELECT * FROM clientes WHERE Sexo = "Femenino" AND  Apellido = ?';
+        
+        let lastName = cliente.Apellido;
+        bd.all(sql, lastName, (err, rows)=>{
+            if(err){
+                reject(err.message)
+            }
+            else{
+                console.log("Filtrado:" + rows.lastName)
+                resolve(rows)
+            }
+        })
+    })
+
 }
     
     const UpdateCliente = async (cliente)=>{
@@ -157,6 +177,7 @@ export default {
     ConsultRegistro,
     DatosM,
     DatosF,
+    filDatosFemeninos,
     UpdateCliente,
     validaDatos,
     deleteCliente,
