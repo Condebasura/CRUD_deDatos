@@ -179,9 +179,9 @@ formBuscar.addEventListener("submit", (e)=>{
         method: "POST",
         headers:{ "Content-Type": "application/json",
         },
-        body: JSON.stringify(fiter),
+        body: JSON.stringify({fiter}),
        })
-       let datos = await res.text();
+       let datos = await res.json();
        const obj = JSON.parse(datos);
        console.log(obj)
        

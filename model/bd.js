@@ -99,7 +99,7 @@ const filDatosFemeninos = () =>{
         let sql = 'SELECT * FROM clientes WHERE Sexo = "Femenino" AND  Apellido = ?';
         
         let lastName = cliente.Apellido;
-        bd.all(sql, lastName, (err, rows)=>{
+        bd.get(sql, lastName, (err, rows)=>{
             if(err){
                 reject(err.message)
             }

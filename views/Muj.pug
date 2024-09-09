@@ -9,9 +9,9 @@ block content
       li.sex_container
         a(class="ing" , href="/")= Ingreso 
         a(class="sexo", data-hombre href="Homb")= SexoM 
- form( class="formFilter")         
+ form( class="formFilter", method="post")         
   label(for="fill") filtrar 
-   input(type="search", id="fill", class="filter" , name="filtro") 
+  input(type="search", id="fill", class="filter" , name="filtro") 
   button(type="submit", class="buscar") Buscar 
 
  div(class="recibe" data-recibe)
