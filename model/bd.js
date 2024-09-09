@@ -94,18 +94,18 @@ const DatosF = () =>{
     })  
 };
 
-const filDatosFemeninos = () =>{
+const filDatosFemeninos = (cliente) =>{
     return new Promise((resolve , reject)=>{
-        let sql = 'SELECT * FROM clientes WHERE Sexo = "Femenino" AND  Apellido = ?';
+        let sql = 'SELECT * FROM clientes WHERE  Apellido = ?';
         
         let lastName = cliente.Apellido;
-        bd.get(sql, lastName, (err, rows)=>{
+        bd.all(sql, [lastName], (err, rows)=>{
             if(err){
                 reject(err.message)
             }
             else{
-                console.log("Filtrado:" + rows.lastName)
                 resolve(rows)
+                console.log("Filtrado:" + lastName)
             }
         })
     })

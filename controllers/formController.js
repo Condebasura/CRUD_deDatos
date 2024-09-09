@@ -77,21 +77,21 @@ const getDataF =  (req, res)=>{
     
 const filterDataF = async (req ,res) =>{
    const cliente = {
-    apellido: req.body.fiter,
+    Apellido: req.body.fiter,
    }
    try {
-    const cliApp = cliente.apellido;
-    const lastName = bd.filDatosFemeninos(cliApp);
-    if(lastName === cliente.apellido){
-        console.log("coincide");
+    const lastName = await bd.filDatosFemeninos(cliente);
+    
+    if(lastName[0].Apellido === cliente.Apellido) {
+
+        return  console.log("coincide");
     }else{
-        console.log("cliente no encontrado");
+        return console.log("cliente no encontrado");
     }
     
    } catch (error) {
     console.log(error)
    }
-   console.log(cliente.apellido)
 }
 
 
