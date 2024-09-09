@@ -81,17 +81,17 @@ const filterDataF = async (req ,res) =>{
    }
    try {
     const lastName = await bd.filDatosFemeninos(cliente);
-    
-    if(lastName[0].Apellido === cliente.Apellido) {
+    const cliApp = cliente.Apellido;
+    const AppelidoEnDb = lastName[0].Apellido;
+    if(AppelidoEnDb.includes(cliApp)) {
 
-        return  console.log("coincide");
-    }else{
-        return console.log("cliente no encontrado");
+        return  console.log("clientes encontrados:" , lastName);
     }
-    
-   } catch (error) {
-    console.log(error)
-   }
+        
+    } catch (error) {
+        return console.log("cliente no encontrado");
+        
+    }
 }
 
 
