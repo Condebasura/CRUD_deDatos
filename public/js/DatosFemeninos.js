@@ -167,16 +167,29 @@ const res =  await axios.get("/Muj/clientesF")
 getDatos();
 
 
-formBuscar.addEventListener("submit",async (e)=>{
+formBuscar.addEventListener("submit", (e)=>{
   e.preventDefault();
-  if(e.target){
-    const res = await fetch("/Muj/clentesF/filter" , {
-      method: "GET",
-      headers:{ "Content-Type": "application/json",
-      },
-      body: JSON.stringify(fiter),
-    })
-    let datos = await res.text();
-    console.log(datos);
-  }
-})
+  
+  
+    const filtrarCliente = async (fiter)=>{
+    
+      try{
+ 
+        const res = await fetch("/Muj/clentesF/filter" , {
+        method: "POST",
+        headers:{ "Content-Type": "application/json",
+        },
+        body: JSON.stringify(fiter),
+       })
+       let datos = await res.text();
+       const obj = JSON.parse(datos);
+       console.log(obj)
+       
+      }
+      
+      catch(err){
+        console.log(err);
+       } 
+      }
+      filtrarCliente(fiter.value);
+});
