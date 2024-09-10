@@ -80,16 +80,23 @@ const filterDataF = async (req ,res) =>{
     Apellido: req.body.fiter,
    }
    try {
+    const RegLast =  /[a-z A-Z\\s].+/;
     const lastName = await bd.filDatosFemeninos(cliente);
     const cliApp = cliente.Apellido;
     const AppelidoEnDb = lastName[0].Apellido;
+    
+    
     if(AppelidoEnDb.includes(cliApp)) {
 
-        return  console.log("clientes encontrados:" , lastName);
+        
+       res.status(200);
+      return res.json({mensaje:lastName})
     }
         
-    } catch (error) {
-        return console.log("cliente no encontrado");
+    
+    } catch (err) {
+        res.status(404);
+        return  res.json({mensaje:"cliente no encontrado"});
         
     }
 }

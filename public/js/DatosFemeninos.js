@@ -22,6 +22,7 @@ const res =  await axios.get("/Muj/clientesF")
   
     const datos = res.data;
 
+   
     // Metodo resumido utilizando for
     const NombColumn = ["Nombre", "Apelido", "Email", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
     const loader = document.createElement("div");
@@ -86,6 +87,52 @@ const res =  await axios.get("/Muj/clientesF")
       $btnEdit.setAttribute("class", "edit");
       // creando el ipervinculo al editor con set!!    
       $btnEdit.setAttribute("href", `/Editar?id=${el.Email}&desdepagina=/Muj`);
+      formBuscar.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        
+        
+          const filtrarCliente = async (fiter)=>{
+          
+            try{
+       
+              const res = await fetch("/Muj/clentesF/filter" , {
+              method: "POST",
+              headers:{ "Content-Type": "application/json",
+              },
+              body: JSON.stringify({fiter}),
+             })
+             if(res.ok){
+      
+               let FiltrerDatos = await res.text();
+               const obj = JSON.parse(FiltrerDatos);
+               const dataJson = obj.mensaje;
+               let dataApellido = dataJson[0].Apellido;
+                 tr.style.backgroundColor = "#ae271299";
+               if(!el.Apellido.includes(dataApellido)){
+                 let quitarHijo = tr.remove(el);  
+               quitarHijo
+               }
+              
+              }else if(res.status == 404){
+                
+                let FiltrerDatos = await res.text();
+                const obj = JSON.parse(FiltrerDatos);
+                tr.style.backgroundColor = "white";
+
+                tbody.appendChild(tr);
+                 
+                
+              }
+             
+            }
+            
+            catch(err){
+              console.log(err);
+             } 
+            }
+            filtrarCliente(fiter.value);
+      });
+
       
       // programamos el ipervinculo de eliminacion
       $btnDelet.addEventListener("click", async (e) => {
@@ -160,36 +207,9 @@ const res =  await axios.get("/Muj/clientesF")
     RecibeDatos.appendChild($fragment);
   }
 
-  
+
   
 };
 
 getDatos();
 
-
-formBuscar.addEventListener("submit", (e)=>{
-  e.preventDefault();
-  
-  
-    const filtrarCliente = async (fiter)=>{
-    
-      try{
- 
-        const res = await fetch("/Muj/clentesF/filter" , {
-        method: "POST",
-        headers:{ "Content-Type": "application/json",
-        },
-        body: JSON.stringify({fiter}),
-       })
-       let datos = await res.json();
-       const obj = JSON.parse(datos);
-       console.log(obj)
-       
-      }
-      
-      catch(err){
-        console.log(err);
-       } 
-      }
-      filtrarCliente(fiter.value);
-});
