@@ -1,6 +1,7 @@
 const RecibeDatos = document.querySelector("[data-recibe]"),
 fiter = document.querySelector(".filter"),
 formBuscar = document.querySelector(".formFilter"),
+parrafo = document.querySelector(".parrafo"),
   $fragment = document.createDocumentFragment();
 
 
@@ -103,26 +104,32 @@ const res =  await axios.get("/Muj/clientesF")
              })
              if(res.ok){
       
+              let FiltrerDatos = await res.text();
+              const obj = JSON.parse(FiltrerDatos);
+              const dataJson = obj.mensaje;
+              tr.style.backgroundColor = "rgb(25, 121, 45,0.6)";
+              let dataApellido = dataJson[0].Apellido;
+                
+              if(el.Apellido.includes(dataApellido)){
+               
+                let traerHijo = tr.style.display = "inline-table";
+                return traerHijo;
+               }else if(!el.Apellido.includes(dataApellido)){
+              parrafo.style.display = "none";
+              let remplazarHijo = tr.style.display = "none";
+               return remplazarHijo;
+              }
+             
+             }else if(res.status == 404){
+               
                let FiltrerDatos = await res.text();
                const obj = JSON.parse(FiltrerDatos);
-               const dataJson = obj.mensaje;
-               let dataApellido = dataJson[0].Apellido;
-                 tr.style.backgroundColor = "#ae271299";
-               if(!el.Apellido.includes(dataApellido)){
-                 let quitarHijo = tr.remove(el);  
-               quitarHijo
-               }
-              
-              }else if(res.status == 404){
-                
-                let FiltrerDatos = await res.text();
-                const obj = JSON.parse(FiltrerDatos);
-                tr.style.backgroundColor = "white";
-
-                tbody.appendChild(tr);
-                 
-                
-              }
+               tr.style.backgroundColor = "white";
+               let traerHijo = tr.style.display = "inline-table";
+                traerHijo;
+            return parrafo.style.display = "flex";
+             }
+            
              
             }
             

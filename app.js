@@ -51,6 +51,7 @@ app.get("/Muj" , FormController.getFemenino);
 app.get("/Homb/clientesM", FormController.getDataM);
 app.get("/Muj/clientesF", FormController.getDataF);
 app.post("/Muj/clentesF/filter", FormController.filterDataF);
+app.post("/Homb/clientesM/filter", FormController.filterDataM);
 app.post("/Envio", FormController.IngresaCliente);
 app.post("/Editar", FormController.datAEditar);
 app.put("/Editar", FormController.ActualizarCliente);

@@ -1,6 +1,8 @@
 
 const RecibeDatos = document.querySelector("[data-recibe]"),
-
+fiter = document.querySelector(".filter"),
+formBuscar = document.querySelector(".formFilter"),
+ parrafo = document.querySelector(".parrafo"),
   fragment = document.createDocumentFragment();
 
 // El tr que va dentro de $thead, th que es el encabezado para cada columna de datos 
@@ -21,9 +23,6 @@ const getDatos = async ()=>{
   if(res.status === 200){
   
   const datos = res.data;
-  
-
-console.log(datos);
   
 
     // Creamos las columnas cabecera de los datos que se van a ingresar utilizando for.
@@ -97,7 +96,57 @@ console.log(datos);
       
       $btnEdit.setAttribute("href",`/Editar?id=${el.Email}&desdepagina=/Homb`);
         
-     
+      formBuscar.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        
+        
+          const filtrarCliente = async (fiter)=>{
+          
+            try{
+       
+              const res = await fetch("/Homb/clientesM/filter" , {
+              method: "POST",
+              headers:{ "Content-Type": "application/json",
+              },
+              body: JSON.stringify({fiter}),
+             })
+             
+             if(res.ok){
+      
+               let FiltrerDatos = await res.text();
+               const obj = JSON.parse(FiltrerDatos);
+               const dataJson = obj.mensaje;
+               tr.style.backgroundColor = "rgb(25, 121, 45,0.6)";
+               let dataApellido = dataJson[0].Apellido;
+                 
+               if(el.Apellido.includes(dataApellido)){
+                
+                 let traerHijo = tr.style.display = "inline-table";
+                 return traerHijo;
+                }else if(!el.Apellido.includes(dataApellido)){
+               parrafo.style.display = "none";
+               let remplazarHijo = tr.style.display = "none";
+                return remplazarHijo;
+               }
+              
+              }else if(res.status == 404){
+                
+                let FiltrerDatos = await res.text();
+                const obj = JSON.parse(FiltrerDatos);
+                tr.style.backgroundColor = "white";
+                let traerHijo = tr.style.display = "inline-table";
+                 traerHijo;
+             return parrafo.style.display = "flex";
+              }
+             
+            }
+            
+            catch(err){
+              console.log(err);
+             } 
+            }
+            filtrarCliente(fiter.value);
+      });
         
       // programamos el ipervinculo de eliminacion
       $btnDelet.addEventListener("click", async (e)=>{

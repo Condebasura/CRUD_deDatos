@@ -1,4 +1,45 @@
+.formFilter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 60vh;
+    margin-top: 2em;
+    gap: 1em;
+    justify-content: center;
+    position: static;
+    padding: 3px;
+    border: 1px solid #5600c68c;
+    box-shadow: 2px 2px 8px #445454;
+    border-radius: 4px;
+}
 
+.filter:focus{
+border-style: none;
+}
+
+.buscar{
+border: none;
+font-size: 16px;
+background-color: rgb(65, 171, 65);
+padding: 5px;
+border-radius: 5px ;
+color: #efe1db;
+box-shadow: 2px 2px 6px #444;
+}
+
+.buscar:active{
+    box-shadow: 1px 1px 1px #444;
+}
+
+.parrafo{
+    display: none;
+    color: red;
+    text-shadow: 2px 2px 2px #4444;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 2em;
+}
 .recibe{
     display: grid;
     grid-template-columns: 1fr;
@@ -84,6 +125,8 @@ line-height: 2em;
     border-radius: 6px;
     text-align: center;
     
+    display: inline-table;
+    gap: 3px;
     
 
     
@@ -99,6 +142,7 @@ tr{
     overflow: hidden;
     height: 100%;
     width: 100%;
+    
     
     
 }

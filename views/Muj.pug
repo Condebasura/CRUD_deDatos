@@ -11,8 +11,10 @@ block content
         a(class="sexo", data-hombre href="Homb")= SexoM 
  form( class="formFilter", method="post")         
   label(for="fill") filtrar 
-  input(type="search", id="fill", class="filter" , name="filtro") 
+  input(type="text", id="fill", class="filter" , name="filtro" , placeholder="Ingrese un apellido", required) 
   button(type="submit", class="buscar") Buscar 
+ h3(class="parrafo") Cliente no encontrado!!        
+
 
  div(class="recibe" data-recibe)
  dialog#modal 
