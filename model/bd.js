@@ -75,7 +75,9 @@ const DatosM = () =>{
  
     
 
-}
+};
+
+
 
 const DatosF = () =>{
 
@@ -90,6 +92,42 @@ const DatosF = () =>{
            }
        })
     })  
+};
+
+const filDatosFemeninos = (cliente) =>{
+    return new Promise((resolve , reject)=>{
+        let sql = 'SELECT * FROM clientes WHERE Sexo = "Femenino" AND Apellido = ?';
+        
+        let lastName = cliente.Apellido;
+        bd.all(sql, [lastName], (err, rows)=>{
+            if(err){
+                reject(err.message)
+            }
+            else{
+                resolve(rows)
+                console.log("Filtrado:" + lastName)
+            }
+        })
+    })
+
+}
+
+const filDatosMasculinos = (cliente) =>{
+    return new Promise((resolve , reject)=>{
+        let sql = 'SELECT * FROM clientes WHERE Sexo = "Masculino" AND Apellido = ?';
+        
+        let lastName = cliente.Apellido;
+        bd.all(sql, [lastName], (err, rows)=>{
+            if(err){
+                reject(err.message)
+            }
+            else{
+                resolve(rows)
+                console.log("Filtrado:" + lastName)
+            }
+        })
+    })
+
 }
     
     const UpdateCliente = async (cliente)=>{
@@ -156,7 +194,9 @@ export default {
     EmailenUso,
     ConsultRegistro,
     DatosM,
+    filDatosMasculinos,
     DatosF,
+    filDatosFemeninos,
     UpdateCliente,
     validaDatos,
     deleteCliente,

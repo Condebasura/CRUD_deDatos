@@ -57,11 +57,33 @@ const getDataM =  (req, res)=>{
     }).catch(err =>{
         console.log(err.message)
     })
-
- 
-
-
 }
+
+const filterDataM = async (req ,res) =>{
+    const cliente = {
+     Apellido: req.body.fiter,
+    }
+    try {
+     const RegLast =  /[a-z A-Z\\s].+/;
+     const lastName = await bd.filDatosMasculinos(cliente);
+     const cliApp = cliente.Apellido;
+     const AppelidoEnDb = lastName[0].Apellido;
+     
+     
+     if(AppelidoEnDb.includes(cliApp)) {
+ 
+         
+        res.status(200);
+       return res.json({mensaje:lastName})
+     }
+         
+     
+     } catch (err) {
+         res.status(404);
+         return  res.json({mensaje:"cliente no encontrado"});
+         
+     }
+ }
 
 const getDataF =  (req, res)=>{
 
@@ -72,10 +94,36 @@ const getDataF =  (req, res)=>{
         console.log(err.message)
     })
 
- 
-
-
 };
+ 
+    
+const filterDataF = async (req ,res) =>{
+   const cliente = {
+    Apellido: req.body.fiter,
+   }
+   try {
+    const RegLast =  /[a-z A-Z\\s].+/;
+    const lastName = await bd.filDatosFemeninos(cliente);
+    const cliApp = cliente.Apellido;
+    const AppelidoEnDb = lastName[0].Apellido;
+    
+    
+    if(AppelidoEnDb.includes(cliApp)) {
+
+        
+       res.status(200);
+      return res.json({mensaje:lastName})
+    }
+        
+    
+    } catch (err) {
+        res.status(404);
+        return  res.json({mensaje:"cliente no encontrado"});
+        
+    }
+}
+
+
 const ActualizarCliente = async(req, res)=>{
     let cliente = {
       Nombre: req.body.nombre,
@@ -139,6 +187,8 @@ export default{
     IngresaCliente,
     getDataM,
     getDataF,
+    filterDataF,
+    filterDataM,
     ActualizarCliente,
     datAEditar,
     EliminarCliente,

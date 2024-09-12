@@ -1,5 +1,8 @@
 const RecibeDatos = document.querySelector("[data-recibe]"),
-
+fiter = document.querySelector(".filter"),
+formBuscar = document.querySelector(".formFilter"),
+parrafo = document.querySelector(".parrafo"),
+pie = document.querySelector("footer"),
   $fragment = document.createDocumentFragment();
 
 
@@ -21,11 +24,13 @@ const res =  await axios.get("/Muj/clientesF")
   
     const datos = res.data;
 
+   
     // Metodo resumido utilizando for
     const NombColumn = ["Nombre", "Apelido", "Email", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
     const loader = document.createElement("div");
     loader.setAttribute("class", "fas fa-circle-notch"); 
     RecibeDatos.appendChild(loader);
+   // pie.style.display = "fixed";
     for (let i = 0; i < NombColumn.length; i++) {
       let total = NombColumn[i];
       let th_head = document.createElement("th");
@@ -85,6 +90,63 @@ const res =  await axios.get("/Muj/clientesF")
       $btnEdit.setAttribute("class", "edit");
       // creando el ipervinculo al editor con set!!    
       $btnEdit.setAttribute("href", `/Editar?id=${el.Email}&desdepagina=/Muj`);
+      formBuscar.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        
+        
+          const filtrarCliente = async (fiter)=>{
+          
+            try{
+       
+              const res = await fetch("/Muj/clentesF/filter" , {
+              method: "POST",
+              headers:{ "Content-Type": "application/json",
+              },
+              body: JSON.stringify({fiter}),
+             })
+             if(res.ok){
+      
+              let FiltrerDatos = await res.text();
+              const obj = JSON.parse(FiltrerDatos);
+              const dataJson = obj.mensaje;
+              tr.style.backgroundColor = "rgb(153, 240, 106,0.6)";
+               
+              setTimeout(() => {
+                tr.style.backgroundColor = "white";
+               
+              },2500);
+              let dataApellido = dataJson[0].Apellido;
+                
+              if(el.Apellido.includes(dataApellido)){
+               
+                let traerHijo = tr.style.display = "inline-table";
+                return traerHijo;
+               }else if(!el.Apellido.includes(dataApellido)){
+              parrafo.style.display = "none";
+              let remplazarHijo = tr.style.display = "none";
+               return remplazarHijo;
+              }
+             
+             }else if(res.status == 404){
+               
+               let FiltrerDatos = await res.text();
+               const obj = JSON.parse(FiltrerDatos);
+               tr.style.backgroundColor = "white";
+               let traerHijo = tr.style.display = "inline-table";
+                traerHijo;
+            return parrafo.style.display = "flex";
+             }
+            
+             
+            }
+            
+            catch(err){
+              console.log(err);
+             } 
+            }
+            filtrarCliente(fiter.value);
+      });
+
       
       // programamos el ipervinculo de eliminacion
       $btnDelet.addEventListener("click", async (e) => {
@@ -156,11 +218,14 @@ const res =  await axios.get("/Muj/clientesF")
 
     }
     RecibeDatos.removeChild(loader);
+  
+
     RecibeDatos.appendChild($fragment);
   }
 
-  
+
   
 };
 
 getDatos();
+
