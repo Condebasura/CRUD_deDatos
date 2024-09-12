@@ -11,3 +11,8 @@ Registro de cambios:
 Se agrego el backend para el guardado de datos en base de datos.
 Se cambio de html a pug para practica de la misma
 Ahora la app envia los datos ingresados a una base de datos, los cuales se pueden visualizar en los apartados "Masculinos" "Femeninos", tambien se puede editar o eliminar datos, se modifico el diseño (No es adaptable a dispositivos mobiles).
+
+# CRUD_deDatos.
+# Actualizacion v 2.1.0
+Registro de cambios:
+Se implemento un filtro para la busqueda de clientes en ambas planillas.
