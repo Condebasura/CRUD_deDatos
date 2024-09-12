@@ -31,14 +31,13 @@ box-shadow: 2px 2px 6px #444;
     box-shadow: 1px 1px 1px #444;
 }
 
-.parrafo{
-    display: none;
+#modal{
+    
     color: red;
     text-shadow: 2px 2px 2px #4444;
     justify-content: center;
     align-items: center;
-    position: relative;
-    top: 2em;
+    outline: none;
 }
 .recibe{
     display: grid;

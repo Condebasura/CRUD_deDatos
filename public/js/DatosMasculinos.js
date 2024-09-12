@@ -2,7 +2,7 @@
 const RecibeDatos = document.querySelector("[data-recibe]"),
 fiter = document.querySelector(".filter"),
 formBuscar = document.querySelector(".formFilter"),
- parrafo = document.querySelector(".parrafo"),
+ modal = document.getElementById("modal"),
   fragment = document.createDocumentFragment();
 
 // El tr que va dentro de $thead, th que es el encabezado para cada columna de datos 
@@ -129,7 +129,7 @@ const getDatos = async ()=>{
                  let traerHijo = tr.style.display = "inline-table";
                  return traerHijo;
                 }else if(!el.Apellido.includes(dataApellido)){
-               parrafo.style.display = "none";
+               modal.close();
                let remplazarHijo = tr.style.display = "none";
                 return remplazarHijo;
                }
@@ -141,7 +141,9 @@ const getDatos = async ()=>{
                 tr.style.backgroundColor = "white";
                 let traerHijo = tr.style.display = "inline-table";
                  traerHijo;
-             return parrafo.style.display = "flex";
+                 modal.innerHTML = "Cliente no encontrado !!";
+                 modal.showModal();
+                 
               }
              
             }

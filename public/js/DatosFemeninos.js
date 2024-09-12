@@ -1,8 +1,7 @@
 const RecibeDatos = document.querySelector("[data-recibe]"),
 fiter = document.querySelector(".filter"),
 formBuscar = document.querySelector(".formFilter"),
-parrafo = document.querySelector(".parrafo"),
-pie = document.querySelector("footer"),
+modal = document.getElementById("modal"),
   $fragment = document.createDocumentFragment();
 
 
@@ -122,7 +121,7 @@ const res =  await axios.get("/Muj/clientesF")
                 let traerHijo = tr.style.display = "inline-table";
                 return traerHijo;
                }else if(!el.Apellido.includes(dataApellido)){
-              parrafo.style.display = "none";
+              modal.close();
               let remplazarHijo = tr.style.display = "none";
                return remplazarHijo;
               }
@@ -134,7 +133,9 @@ const res =  await axios.get("/Muj/clientesF")
                tr.style.backgroundColor = "white";
                let traerHijo = tr.style.display = "inline-table";
                 traerHijo;
-            return parrafo.style.display = "flex";
+                modal.innerHTML = "Cliente no encontrado !!";
+                modal.showModal();
+                
              }
             
              
