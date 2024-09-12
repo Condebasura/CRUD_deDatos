@@ -116,11 +116,16 @@ const getDatos = async ()=>{
                let FiltrerDatos = await res.text();
                const obj = JSON.parse(FiltrerDatos);
                const dataJson = obj.mensaje;
-               tr.style.backgroundColor = "rgb(25, 121, 45,0.6)";
+               tr.style.backgroundColor = "rgb(153, 240, 106,0.6)";
+               
+               setTimeout(() => {
+                 tr.style.backgroundColor = "white";
+                
+               },2500);
                let dataApellido = dataJson[0].Apellido;
                  
                if(el.Apellido.includes(dataApellido)){
-                
+              
                  let traerHijo = tr.style.display = "inline-table";
                  return traerHijo;
                 }else if(!el.Apellido.includes(dataApellido)){

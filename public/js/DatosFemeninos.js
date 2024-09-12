@@ -2,6 +2,7 @@ const RecibeDatos = document.querySelector("[data-recibe]"),
 fiter = document.querySelector(".filter"),
 formBuscar = document.querySelector(".formFilter"),
 parrafo = document.querySelector(".parrafo"),
+pie = document.querySelector("footer"),
   $fragment = document.createDocumentFragment();
 
 
@@ -29,6 +30,7 @@ const res =  await axios.get("/Muj/clientesF")
     const loader = document.createElement("div");
     loader.setAttribute("class", "fas fa-circle-notch"); 
     RecibeDatos.appendChild(loader);
+   // pie.style.display = "fixed";
     for (let i = 0; i < NombColumn.length; i++) {
       let total = NombColumn[i];
       let th_head = document.createElement("th");
@@ -107,7 +109,12 @@ const res =  await axios.get("/Muj/clientesF")
               let FiltrerDatos = await res.text();
               const obj = JSON.parse(FiltrerDatos);
               const dataJson = obj.mensaje;
-              tr.style.backgroundColor = "rgb(25, 121, 45,0.6)";
+              tr.style.backgroundColor = "rgb(153, 240, 106,0.6)";
+               
+              setTimeout(() => {
+                tr.style.backgroundColor = "white";
+               
+              },2500);
               let dataApellido = dataJson[0].Apellido;
                 
               if(el.Apellido.includes(dataApellido)){
@@ -211,6 +218,8 @@ const res =  await axios.get("/Muj/clientesF")
 
     }
     RecibeDatos.removeChild(loader);
+  
+
     RecibeDatos.appendChild($fragment);
   }
 
