@@ -89,7 +89,7 @@ const res =  await axios.get("/Muj/clientesF")
       $btnEdit.setAttribute("class", "edit");
       // creando el ipervinculo al editor con set!!    
       $btnEdit.setAttribute("href", `/Editar?id=${el.Email}&desdepagina=/Muj`);
-      formBuscar.addEventListener("submit", (e)=>{
+      formBuscar.addEventListener("input", (e)=>{
         e.preventDefault();
         
         
@@ -120,7 +120,9 @@ const res =  await axios.get("/Muj/clientesF")
                
                 let traerHijo = tr.style.display = "inline-table";
                 return traerHijo;
-               }else if(!el.Apellido.includes(dataApellido)){
+               }
+               
+               else if(!el.Apellido.includes(dataApellido)){
               modal.close();
               let remplazarHijo = tr.style.display = "none";
                return remplazarHijo;
