@@ -92,9 +92,10 @@ const res =  await axios.get("/Muj/clientesF")
       formBuscar.addEventListener("input", (e)=>{
         e.preventDefault();
         
-        
+      
+        if(fiter === "") return;
+
           const filtrarCliente = async (fiter)=>{
-          
             try{
        
               const res = await fetch("/Muj/clentesF/filter" , {
@@ -105,36 +106,35 @@ const res =  await axios.get("/Muj/clientesF")
              })
              if(res.ok){
       
-              let FiltrerDatos = await res.text();
-              const obj = JSON.parse(FiltrerDatos);
+              
+              const obj = await res.json();
               const dataJson = obj.mensaje;
-              tr.style.backgroundColor = "rgb(153, 240, 106,0.6)";
+             
+              let encontrado = false;
+                
+              dataJson.forEach((cliente) => {
+                if(el.Apellido === cliente.Apellido){
+                    tr.style.display = "inline-table";
+                   tr.style.backgroundColor = "rgb(153, 240, 106,0.6)";
                
+                   encontrado = true;
               setTimeout(() => {
                 tr.style.backgroundColor = "white";
                
               },2500);
-              let dataApellido = dataJson[0].Apellido;
-                
-              if(el.Apellido.includes(dataApellido)){
-               
-                let traerHijo = tr.style.display = "inline-table";
-                return traerHijo;
-               }
-               
-               else if(!el.Apellido.includes(dataApellido)){
-              modal.close();
-              let remplazarHijo = tr.style.display = "none";
-               return remplazarHijo;
-              }
-             
-             }else if(res.status == 404){
-               
-               let FiltrerDatos = await res.text();
-               const obj = JSON.parse(FiltrerDatos);
+                }
+              });
+              
+             if(!encontrado){
+             tr.style.display = "none";
                tr.style.backgroundColor = "white";
-               let traerHijo = tr.style.display = "inline-table";
-                traerHijo;
+             }
+             }
+             
+             else if(res.status == 404){
+               
+                 tr.style.display = "none";
+                
                 modal.innerHTML = "Cliente no encontrado !!";
                 modal.showModal();
                 

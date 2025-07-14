@@ -96,7 +96,7 @@ const DatosF = () =>{
 
 const filDatosFemeninos = (cliente) =>{
     return new Promise((resolve , reject)=>{
-        let sql = 'SELECT * FROM clientes WHERE Sexo = "Femenino" AND Apellido LIKE ?';
+        let sql = 'SELECT * FROM clientes WHERE Sexo = "Femenino" AND Apellido  LIKE ?';
         
         let lastName = cliente.Apellido;
         bd.all(sql, [`%${lastName}%`], (err, rows)=>{
@@ -114,7 +114,7 @@ const filDatosFemeninos = (cliente) =>{
 
 const filDatosMasculinos = (cliente) =>{
     return new Promise((resolve , reject)=>{
-        let sql = 'SELECT * FROM clientes WHERE Sexo = "Masculino" AND Apellido = LIKE ?';
+        let sql = 'SELECT * FROM clientes WHERE Sexo = "Masculino" AND Apellido  LIKE ?';
         
         let lastName = cliente.Apellido;
         bd.all(sql, [`%${lastName}%`], (err, rows)=>{

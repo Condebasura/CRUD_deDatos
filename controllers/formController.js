@@ -60,29 +60,25 @@ const getDataM =  (req, res)=>{
 }
 
 const filterDataM = async (req ,res) =>{
-    const cliente = {
-     Apellido: req.body.fiter,
+   const {fiter} = req.body;
+   try {
+    
+    const lastName = await bd.filDatosMasculinos({Apellido: fiter});
+
+    
+    
+    if(lastName.length > 0) {
+
+        return res.status(200).json({mensaje:lastName})
     }
-    try {
-     const RegLast =  /[a-z A-Z\\s].+/;
-     const lastName = await bd.filDatosMasculinos(cliente);
-     const cliApp = cliente.Apellido;
-     const AppelidoEnDb = lastName[0].Apellido;
-     
-     
-     if(AppelidoEnDb.includes(cliApp)) {
- 
-         
-        res.status(200);
-       return res.json({mensaje:lastName})
-     }
-         
-     
-     } catch (err) {
-         res.status(404);
-         return  res.json({mensaje:"cliente no encontrado"});
-         
-     }
+       else{
+
+           return res.status(404).json({mensaje:"cliente no encontrado"});
+       } 
+    
+    } catch (err) {
+      return res.status(500).json({mensaje:`Error del servidor ${err}`})  
+    }
  }
 
 const getDataF =  (req, res)=>{
@@ -98,28 +94,24 @@ const getDataF =  (req, res)=>{
  
     
 const filterDataF = async (req ,res) =>{
-   const cliente = {
-    Apellido: req.body.fiter,
-   }
+   const {fiter} = req.body;
    try {
-    const RegLast =  /[a-z A-Z\\s].+/;
-    const lastName = await bd.filDatosFemeninos(cliente);
-    const cliApp = cliente.Apellido;
-    const AppelidoEnDb = lastName[0].Apellido;
     
-    
-    if(AppelidoEnDb.includes(cliApp)) {
+    const lastName = await bd.filDatosFemeninos({Apellido: fiter});
 
-        
-       res.status(200);
-      return res.json({mensaje:lastName})
+    
+    
+    if(lastName.length > 0) {
+
+        return res.status(200).json({mensaje:lastName})
     }
-        
+       else{
+
+           return res.status(404).json({mensaje:"cliente no encontrado"});
+       } 
     
     } catch (err) {
-        res.status(404);
-        return  res.json({mensaje:"cliente no encontrado"});
-        
+      return res.status(500).json({mensaje:`Error del servidor ${err}`})  
     }
 }
 

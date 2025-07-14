@@ -28,7 +28,7 @@ const getDatos = async ()=>{
     // Creamos las columnas cabecera de los datos que se van a ingresar utilizando for.
 
   
-    const NombColumn = ["Nombre", "Apelido","Email", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
+    const NombColumn = ["Nombre", "Apellido","Email", "Nacimiento", "Telefono", "Direccion", "Ciudad", "Provincia", "Pais", "Editar", "Eliminar"];
     const loader = document.createElement("div");
     loader.setAttribute("class", "fas fa-circle-notch"); 
     RecibeDatos.appendChild(loader);
@@ -96,10 +96,10 @@ const getDatos = async ()=>{
       
       $btnEdit.setAttribute("href",`/Editar?id=${el.Email}&desdepagina=/Homb`);
         
-      formBuscar.addEventListener("submit", (e)=>{
+      formBuscar.addEventListener("input", (e)=>{
         e.preventDefault();
         
-        
+        if(fiter === "") return;
           const filtrarCliente = async (fiter)=>{
           
             try{
@@ -113,34 +113,38 @@ const getDatos = async ()=>{
              
              if(res.ok){
       
-               let FiltrerDatos = await res.text();
-               const obj = JSON.parse(FiltrerDatos);
-               const dataJson = obj.mensaje;
-               tr.style.backgroundColor = "rgb(153, 240, 106,0.6)";
                
-               setTimeout(() => {
-                 tr.style.backgroundColor = "white";
-                
-               },2500);
-               let dataApellido = dataJson[0].Apellido;
-                 
-               if(el.Apellido.includes(dataApellido)){
-              
-                 let traerHijo = tr.style.display = "inline-table";
-                 return traerHijo;
-                }else if(!el.Apellido.includes(dataApellido)){
-               modal.close();
-               let remplazarHijo = tr.style.display = "none";
-                return remplazarHijo;
-               }
-              
-              }else if(res.status == 404){
-                
-                let FiltrerDatos = await res.text();
-                const obj = JSON.parse(FiltrerDatos);
+               const obj = await res.json();
+               const dataJson = obj.mensaje;
+               
+               let encontrado = false;
+
+               dataJson.forEach((cliente) => {
+                if(el.Apellido === cliente.Apellido){
+                    tr.style.display = "inline-table";
+                   tr.style.backgroundColor = "rgb(153, 240, 106,0.6)";
+               
+                   encontrado = true;
+              setTimeout(() => {
                 tr.style.backgroundColor = "white";
-                let traerHijo = tr.style.display = "inline-table";
-                 traerHijo;
+               
+              },2500);
+                }
+              });
+                 
+             
+              if(!encontrado){
+                tr.style.display = "none";
+               tr.style.backgroundColor = "white";
+
+              }
+              }
+              
+              
+              
+              else if(res.status == 404){
+                
+               tr.style.display = "none";
                  modal.innerHTML = "Cliente no encontrado !!";
                  modal.showModal();
                  
