@@ -11,7 +11,7 @@ import bd from "./model/bd.js";
 const __dirname = (process.platform === "win32")? fileURLToPath(new URL(".", import.meta.url)):path.dirname(new URL(import.meta.url).pathname);
 const app = express();
 
-const port = 3000;
+const port = 8080;
 const corsOptions = {
     origin: '*', // Origen permitido (puedes usar * para permitir todo)
     methods: 'GET,POST,PUT,DELETE', // Métodos permitidos
@@ -63,5 +63,5 @@ app.delete('/Muj/delete/:Email', FormController.EliminarCliente);
 
 
 app.listen(port , ()=>{
-	console.log(`La aplicacion esta funcionando en http://localhost:${port}`);
+	console.log(`La aplicacion esta corriendo en el puerto ${port}`);
 });
